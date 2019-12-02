@@ -14,6 +14,8 @@
 		66C14A3323958A5E00845B16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66C14A3223958A5E00845B16 /* Assets.xcassets */; };
 		66C14A3623958A5E00845B16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66C14A3423958A5E00845B16 /* LaunchScreen.storyboard */; };
 		66C14A4123958A5E00845B16 /* FINAL_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A4023958A5E00845B16 /* FINAL_ProjectTests.swift */; };
+		66C14A4C23958AB500845B16 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A4B23958AB500845B16 /* TabBar.swift */; };
+		66C14A5423958C9200845B16 /* AddLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A5323958C9200845B16 /* AddLocationVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		66C14A3C23958A5E00845B16 /* FINAL ProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FINAL ProjectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66C14A4023958A5E00845B16 /* FINAL_ProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FINAL_ProjectTests.swift; sourceTree = "<group>"; };
 		66C14A4223958A5E00845B16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66C14A4B23958AB500845B16 /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		66C14A5323958C9200845B16 /* AddLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +84,9 @@
 			isa = PBXGroup;
 			children = (
 				66C14A2823958A5C00845B16 /* AppDelegate.swift */,
+				66C14A4B23958AB500845B16 /* TabBar.swift */,
 				66C14A2A23958A5C00845B16 /* ViewController.swift */,
+				66C14A4F23958C2200845B16 /* AddLocation */,
 				66C14A2C23958A5C00845B16 /* Main.storyboard */,
 				66C14A3223958A5E00845B16 /* Assets.xcassets */,
 				66C14A3423958A5E00845B16 /* LaunchScreen.storyboard */,
@@ -97,6 +103,38 @@
 				66C14A4223958A5E00845B16 /* Info.plist */,
 			);
 			path = "FINAL ProjectTests";
+			sourceTree = "<group>";
+		};
+		66C14A4F23958C2200845B16 /* AddLocation */ = {
+			isa = PBXGroup;
+			children = (
+				66C14A5123958C4C00845B16 /* Views */,
+				66C14A5023958C3B00845B16 /* ViewModels */,
+				66C14A5223958C6E00845B16 /* Models */,
+			);
+			name = AddLocation;
+			sourceTree = "<group>";
+		};
+		66C14A5023958C3B00845B16 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		66C14A5123958C4C00845B16 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				66C14A5323958C9200845B16 /* AddLocationVC.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		66C14A5223958C6E00845B16 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +241,8 @@
 				66C14A3123958A5C00845B16 /* FINAL_Project.xcdatamodeld in Sources */,
 				66C14A2B23958A5C00845B16 /* ViewController.swift in Sources */,
 				66C14A2923958A5C00845B16 /* AppDelegate.swift in Sources */,
+				66C14A5423958C9200845B16 /* AddLocationVC.swift in Sources */,
+				66C14A4C23958AB500845B16 /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
