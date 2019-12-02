@@ -20,6 +20,34 @@ class AddLocationVC: UIViewController {
     var idLbl = UILabel(frame: .zero)
     var pswLbl = UILabel(frame: .zero)
     
+    var viewModel: AddLocationViewModel {
+        didSet {
+            self.viewModel.showAlert = { alertText in
+                let alert = UIAlertController(title: "Ошибка", message: alertText, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { _ in }))
+                self.navigationController?.present(alert, animated: true, completion: nil)
+            }
+            
+            self.viewModel.formDataDidChange = {
+                self.refreshFormData()
+            }
+        }
+    }
+    
+    
+    init(viewModel: AddLocationViewModel = AddLocationViewModel()) {
+        self.viewModel = AddLocationViewModel()
+        
+        defer {
+            self.viewModel = viewModel
+        }
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -146,28 +174,27 @@ class AddLocationVC: UIViewController {
     }
     
     @objc func addLocation(){
-        
+        viewModel.addLocation()
+    }
+    
+    func refreshFormData() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.addAdressTextView.text = self.viewModel.locationFormData.adress
+            self.addCityTextView.text = self.viewModel.locationFormData.city
+            self.addIdTextView.text = self.viewModel.locationFormData.adress
+            self.addPswTextView.text = self.viewModel.locationFormData.adress
+        }
     }
     
 }
 
 extension AddLocationVC : UITextViewDelegate {
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView == addCityTextView {
-            //data[2] = addCity.text
-        } else if textView == addIdTextView {
-            //data[0] = addId.text
-        } else {
-            //data[1] = addPsw.text
-        }
-        
-    }
-    
     
     func textViewDidChange(_ textView: UITextView) {
-        if textView == addAdressTextView {
-            //data[3] = addAdress.text
-        }
+      
+       viewModel.refreshLocation(addAdressText: addAdressTextView.text, addCityText:  addCityTextView.text, addIdText: addIdTextView.text, addPswText: addPswTextView.text)
+        
     }
     
 }
