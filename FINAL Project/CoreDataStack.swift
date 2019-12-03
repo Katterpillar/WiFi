@@ -35,7 +35,6 @@ internal final class CoreDataStack {
     func addToCoreData(location: WiFiEntity ){
         
         persistentContainer.performBackgroundTask { (context) in
-            //создаем новый  managed-object
             let savedData = NSEntityDescription.insertNewObject(forEntityName: "WiFiLock", into: context)
             savedData.setValue(location.id, forKey: "id")
             savedData.setValue(location.psw, forKey: "psw")
@@ -52,5 +51,26 @@ internal final class CoreDataStack {
         }
     }
     
+    func refreshData(){
+        let context = persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "WiFiLock")
+        do
+        {
+            let results = try context.fetch(request)
+            if results.count > 0
+            {
+                for result in results as! [NSManagedObject]
+                {
+                    do
+                    {
+                        context.delete(result)
+                        print("success")
+                    }
+                }
+            }
+            try context.save()
+        }
+        catch { }
+    }
     
 }

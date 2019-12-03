@@ -21,7 +21,7 @@ class TabBarViewController : UITabBarController {
 
         
         
-        let wiFiListVC = UINavigationController(rootViewController: UIViewController())
+        let wiFiListVC = UINavigationController(rootViewController: WiFiVC())
          wiFiListVC.tabBarItem = UITabBarItem.init(title: "", image: UIImage(named: "search1"), tag: 2)
    
         

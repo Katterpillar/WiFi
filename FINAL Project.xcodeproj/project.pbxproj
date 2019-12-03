@@ -24,6 +24,10 @@
 		66C14A6423959B1B00845B16 /* MOLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A5F23959B1B00845B16 /* MOLocation.swift */; };
 		66C14A6523959B1B00845B16 /*  SaveDataToCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A6023959B1B00845B16 /*  SaveDataToCoreData.swift */; };
 		66C14A6623959B1B00845B16 /* FavoritesCDStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A6123959B1B00845B16 /* FavoritesCDStack.swift */; };
+		66F5FEE9239642BC00F2EBEB /* WiFiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F5FEE8239642BC00F2EBEB /* WiFiVC.swift */; };
+		66F5FEEB2396432400F2EBEB /* WiFiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F5FEEA2396432400F2EBEB /* WiFiViewModel.swift */; };
+		66F5FEED2396453500F2EBEB /* ChooseCityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F5FEEC2396453500F2EBEB /* ChooseCityVC.swift */; };
+		66F5FEEF23968C9600F2EBEB /* WiFiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F5FEEE23968C9600F2EBEB /* WiFiModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +62,10 @@
 		66C14A5F23959B1B00845B16 /* MOLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOLocation.swift; sourceTree = "<group>"; };
 		66C14A6023959B1B00845B16 /*  SaveDataToCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = " SaveDataToCoreData.swift"; sourceTree = "<group>"; };
 		66C14A6123959B1B00845B16 /* FavoritesCDStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesCDStack.swift; sourceTree = "<group>"; };
+		66F5FEE8239642BC00F2EBEB /* WiFiVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiVC.swift; sourceTree = "<group>"; };
+		66F5FEEA2396432400F2EBEB /* WiFiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiViewModel.swift; sourceTree = "<group>"; };
+		66F5FEEC2396453500F2EBEB /* ChooseCityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCityVC.swift; sourceTree = "<group>"; };
+		66F5FEEE23968C9600F2EBEB /* WiFiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,7 @@
 				66C14A4B23958AB500845B16 /* TabBar.swift */,
 				66C14A2A23958A5C00845B16 /* ViewController.swift */,
 				66C14A6723959B2700845B16 /* CoreData */,
+				66F5FEE42396423800F2EBEB /* WiFiList */,
 				66C14A4F23958C2200845B16 /* AddLocation */,
 				66C14A2C23958A5C00845B16 /* Main.storyboard */,
 				66C14A3223958A5E00845B16 /* Assets.xcassets */,
@@ -167,6 +176,41 @@
 				66C14A5F23959B1B00845B16 /* MOLocation.swift */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		66F5FEE42396423800F2EBEB /* WiFiList */ = {
+			isa = PBXGroup;
+			children = (
+				66F5FEE52396424B00F2EBEB /* Views */,
+				66F5FEE62396425D00F2EBEB /* ViewModels */,
+				66F5FEE72396428100F2EBEB /* Models */,
+			);
+			name = WiFiList;
+			sourceTree = "<group>";
+		};
+		66F5FEE52396424B00F2EBEB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				66F5FEE8239642BC00F2EBEB /* WiFiVC.swift */,
+				66F5FEEC2396453500F2EBEB /* ChooseCityVC.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		66F5FEE62396425D00F2EBEB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				66F5FEEA2396432400F2EBEB /* WiFiViewModel.swift */,
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		66F5FEE72396428100F2EBEB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				66F5FEEE23968C9600F2EBEB /* WiFiModel.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,17 +314,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66F5FEED2396453500F2EBEB /* ChooseCityVC.swift in Sources */,
 				66C14A3123958A5C00845B16 /* Wi_Fi_Map.xcdatamodeld in Sources */,
 				66C14A2B23958A5C00845B16 /* ViewController.swift in Sources */,
 				66C14A2923958A5C00845B16 /* AppDelegate.swift in Sources */,
+				66F5FEEF23968C9600F2EBEB /* WiFiModel.swift in Sources */,
 				66C14A6323959B1B00845B16 /* MOFavorites.swift in Sources */,
 				66C14A6223959B1B00845B16 /* CoreDataStack.swift in Sources */,
 				66C14A6623959B1B00845B16 /* FavoritesCDStack.swift in Sources */,
 				66C14A5A2395963D00845B16 /* AddLocationModel.swift in Sources */,
 				66C14A56239590DF00845B16 /* AddLocationViewModel.swift in Sources */,
 				66C14A5423958C9200845B16 /* AddLocationVC.swift in Sources */,
+				66F5FEE9239642BC00F2EBEB /* WiFiVC.swift in Sources */,
 				66C14A4C23958AB500845B16 /* TabBar.swift in Sources */,
 				66C14A6423959B1B00845B16 /* MOLocation.swift in Sources */,
+				66F5FEEB2396432400F2EBEB /* WiFiViewModel.swift in Sources */,
 				66C14A5C2395977B00845B16 /* WifiEntity.swift in Sources */,
 				66C14A6523959B1B00845B16 /*  SaveDataToCoreData.swift in Sources */,
 			);

@@ -11,7 +11,6 @@ import Foundation
 class AddLocationViewModel {
     
     var model: AddLocationModel
-    
     var locationFormData: WiFiEntity {
         get {
             return self.model.locationFormData

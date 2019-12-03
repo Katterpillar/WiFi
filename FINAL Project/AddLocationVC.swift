@@ -32,8 +32,7 @@ class AddLocationVC: UIViewController {
                 self.refreshFormData()
             }
         }
-    }
-    
+    }    
     
     init(viewModel: AddLocationViewModel = AddLocationViewModel()) {
         self.viewModel = AddLocationViewModel()

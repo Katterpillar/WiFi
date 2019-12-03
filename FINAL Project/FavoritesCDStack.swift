@@ -20,7 +20,6 @@ internal final class FavoritesCDStack{
     
     init(){
         let group = DispatchGroup()
-        
         persistentContainer = NSPersistentContainer(name: "Wi_Fi_Map")
         group.enter()
         persistentContainer.loadPersistentStores { storeDescription, error in
