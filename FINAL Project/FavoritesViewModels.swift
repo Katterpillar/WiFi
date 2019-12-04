@@ -36,8 +36,4 @@ class FavoritesViewModels {
         self.setupDetails?(location)
     }
     
-
-    func saveFavoriteLocation(with location: WiFiEntity){
-        
-    }
 }

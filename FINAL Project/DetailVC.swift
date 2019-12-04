@@ -15,10 +15,22 @@ class DetailVC : UIViewController {
     var id = UITextView(frame: .zero)
     var psw = UITextView(frame: .zero)
     var addToFavoritesList = UIButton(frame: .zero)
-    var viewModel: DetailViewModels
     
-    init(viewModel: DetailViewModels = DetailViewModels()) {
-        self.viewModel = DetailViewModels()
+    var viewModel: WiFiViewModel {
+        didSet {
+            self.viewModel.setupDetails = { location in
+                DispatchQueue.main.async { 
+                    self.adress.text = location.adress
+                    self.id.text = location.id
+                    self.psw.text = location.psw
+                }
+            }
+        }
+    }
+    
+    
+    init(viewModel: WiFiViewModel = WiFiViewModel()) {
+        self.viewModel = WiFiViewModel()
         
         defer {
             self.viewModel = viewModel
@@ -35,7 +47,7 @@ class DetailVC : UIViewController {
         super.viewDidLoad()
         
         addSubviews()
-        setupDetails(adress: adress.text, id: id.text, psw: psw.text)
+        setupView()
         setupConstrains()
         
         navigationItem.title = "Описание"
@@ -105,13 +117,7 @@ class DetailVC : UIViewController {
         self.psw.textColor = .black
     }
     
-    func setupDetails(adress: String, id: String, psw: String) {
-        DispatchQueue.main.async {
-            self.adress.text = adress
-            self.id.text = id
-            self.psw.text = psw
-        }
-        
+    func setupView() {
         view.backgroundColor = UIColor(red:0.75, green:0.86, blue:0.87, alpha:1.0)
         addToFavoritesList.setTitle("В избранное", for: .normal)
         addToFavoritesList.addTarget(self, action: #selector(addToFavoritesCoreData), for: .touchUpInside)
@@ -119,7 +125,6 @@ class DetailVC : UIViewController {
         addToFavoritesList.backgroundColor = UIColor(red:0.87, green:0.69, blue:0.40, alpha:1.0)
         addToFavoritesList.layer.cornerRadius = 5
     }
-    
     
     @objc func addToFavoritesCoreData(){
         

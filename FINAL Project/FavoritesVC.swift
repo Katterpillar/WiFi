@@ -80,7 +80,7 @@ extension FavoritesVC: UITableViewDelegate{
         
         viewModel.showDetail(with: location)
         
-        navigationController?.pushViewController(DetailVC(), animated: true)        
+        navigationController?.pushViewController(DetailFavoritesVC(), animated: true)        
     }
     
 }

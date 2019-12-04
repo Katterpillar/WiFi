@@ -10,7 +10,6 @@
 		660EC84323979ED10051A575 /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EC84223979ED10051A575 /* FavoritesVC.swift */; };
 		660EC84923979F440051A575 /* FavoritesViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EC84823979F440051A575 /* FavoritesViewModels.swift */; };
 		660EC84F2397A2A70051A575 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EC84E2397A2A70051A575 /* DetailVC.swift */; };
-		660EC8512397A2B50051A575 /* DetailViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EC8502397A2B50051A575 /* DetailViewModels.swift */; };
 		660EC8532397AA380051A575 /* DetailFavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EC8522397AA380051A575 /* DetailFavoritesVC.swift */; };
 		66C14A2923958A5C00845B16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A2823958A5C00845B16 /* AppDelegate.swift */; };
 		66C14A2B23958A5C00845B16 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A2A23958A5C00845B16 /* ViewController.swift */; };
@@ -48,7 +47,6 @@
 		660EC84223979ED10051A575 /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
 		660EC84823979F440051A575 /* FavoritesViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModels.swift; sourceTree = "<group>"; };
 		660EC84E2397A2A70051A575 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
-		660EC8502397A2B50051A575 /* DetailViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModels.swift; sourceTree = "<group>"; };
 		660EC8522397AA380051A575 /* DetailFavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFavoritesVC.swift; sourceTree = "<group>"; };
 		66C14A2523958A5C00845B16 /* FINAL Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FINAL Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66C14A2823958A5C00845B16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,39 +126,6 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		660EC84A2397A27C0051A575 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				660EC84D2397A28B0051A575 /* Views */,
-				660EC84C2397A2860051A575 /* ViewModels */,
-				660EC84B2397A2820051A575 /* Models */,
-			);
-			name = "New Group";
-			sourceTree = "<group>";
-		};
-		660EC84B2397A2820051A575 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
-		660EC84C2397A2860051A575 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				660EC8502397A2B50051A575 /* DetailViewModels.swift */,
-			);
-			name = ViewModels;
-			sourceTree = "<group>";
-		};
-		660EC84D2397A28B0051A575 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				660EC84E2397A2A70051A575 /* DetailVC.swift */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
 		66C14A1C23958A5C00845B16 = {
 			isa = PBXGroup;
 			children = (
@@ -186,7 +151,6 @@
 				66C14A4B23958AB500845B16 /* TabBar.swift */,
 				66C14A2A23958A5C00845B16 /* ViewController.swift */,
 				66C14A6723959B2700845B16 /* CoreData */,
-				660EC84A2397A27C0051A575 /* New Group */,
 				660EC84423979EEF0051A575 /* Favorites */,
 				66F5FEE42396423800F2EBEB /* WiFiList */,
 				66C14A4F23958C2200845B16 /* AddLocation */,
@@ -269,6 +233,7 @@
 			children = (
 				66F5FEE8239642BC00F2EBEB /* WiFiVC.swift */,
 				66F5FEEC2396453500F2EBEB /* ChooseCityVC.swift */,
+				660EC84E2397A2A70051A575 /* DetailVC.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -408,7 +373,6 @@
 				66F5FEE9239642BC00F2EBEB /* WiFiVC.swift in Sources */,
 				66C14A4C23958AB500845B16 /* TabBar.swift in Sources */,
 				66C14A6423959B1B00845B16 /* MOLocation.swift in Sources */,
-				660EC8512397A2B50051A575 /* DetailViewModels.swift in Sources */,
 				66F5FEEB2396432400F2EBEB /* WiFiViewModel.swift in Sources */,
 				66C14A5C2395977B00845B16 /* WifiEntity.swift in Sources */,
 			);

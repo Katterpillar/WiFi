@@ -20,6 +20,8 @@ class WiFiVC :  UIViewController {
             }
         }
     }
+    
+    
     var term = "Москва" {
         didSet {
             DispatchQueue.main.async { [weak self] in
@@ -125,7 +127,25 @@ extension WiFiVC: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        guard let sections = viewModel.fetchResultController.sections else {
+            fatalError()
+        }
+        let section = sections[indexPath.section]
+        guard let itemsInSection = section.objects as? [WiFiLock] else {
+            fatalError()
+        }
+        
+        var location = WiFiEntity()
+        location.id = itemsInSection[indexPath.row].id
+        location.psw = itemsInSection[indexPath.row].psw
+        location.adress = itemsInSection[indexPath.row].adress
+        location.city = itemsInSection[indexPath.row].city
+        
+        viewModel.showDetail(with: location)
+        
+        navigationController?.pushViewController(DetailVC(), animated: true)
     }
+    
 }
 
 extension WiFiVC: UITableViewDataSource {

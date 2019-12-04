@@ -16,12 +16,12 @@ class WiFiViewModel {
     var predicate: NSPredicate?
     
     var dataDidChange: (() -> ())?
-  
+    var setupDetails: ((WiFiEntity) -> ())?
+    
     init(model: WiFiModel = WiFiModel(), coreDataStack: CoreDataStack = CoreDataStack.shared) {
         self.model = model
         self.coreDataStack = coreDataStack
     }
-
     
     var fetchResultController : NSFetchedResultsController<WiFiLock> = {
         //fetchRequest — запрос на извлечение объектов NSFetchRequest
@@ -34,8 +34,6 @@ class WiFiViewModel {
         return fetchResultController
         
     }()
-    
-    
     
     func loadList(){
         do {
@@ -73,6 +71,10 @@ class WiFiViewModel {
         self.model.refreshCoreData()
         self.loadList()
         self.dataDidChange?()
+    }
+    
+    func showDetail(with location: WiFiEntity){
+        self.setupDetails?(location)
     }
     
 }
