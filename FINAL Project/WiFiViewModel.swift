@@ -28,6 +28,7 @@ class WiFiViewModel {
         let fetchRequest = NSFetchRequest<WiFiLock>(entityName: "WiFiLock")
         let sortByIndex = NSSortDescriptor(key: "id", ascending: true)
         fetchRequest.sortDescriptors = [sortByIndex]
+        fetchRequest.fetchBatchSize = 20
         let context = CoreDataStack.shared.persistentContainer.viewContext
         let fetchResultController = NSFetchedResultsController<WiFiLock>(fetchRequest: fetchRequest, managedObjectContext: context , sectionNameKeyPath: nil, cacheName: nil)
         return fetchResultController
@@ -68,5 +69,10 @@ class WiFiViewModel {
     }
 
 }
+    func refreshData(){
+        self.model.refreshCoreData()
+        self.loadList()
+        self.dataDidChange?()
+    }
     
 }

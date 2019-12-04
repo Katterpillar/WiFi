@@ -25,7 +25,7 @@ class TabBarViewController : UITabBarController {
          wiFiListVC.tabBarItem = UITabBarItem.init(title: "", image: UIImage(named: "search1"), tag: 2)
    
         
-        let favoritesVC = UINavigationController(rootViewController: UIViewController())
+        let favoritesVC = UINavigationController(rootViewController: FavoritesVC())
         favoritesVC.tabBarItem = UITabBarItem.init(title: "", image: UIImage(named: "favorites"), tag: 3)
 
         

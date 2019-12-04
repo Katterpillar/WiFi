@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-internal final class FavoritesCDStack{
+internal final class FavoritesCDStack {
     
     static var shared : FavoritesCDStack {
         let shared = FavoritesCDStack()
@@ -30,5 +30,27 @@ internal final class FavoritesCDStack{
         }
         group.wait()
     }
+    
+    func save(location: WiFiEntity) {
+        
+        persistentContainer.performBackgroundTask { (context) in
+            
+            //создаем новый  managed-object
+            let savedData = NSEntityDescription.insertNewObject(forEntityName: "Favorites", into: context)
+            savedData.setValue(location.id, forKey: "id")
+            savedData.setValue(location.psw, forKey: "psw")
+            savedData.setValue(location.city, forKey: "city")
+            savedData.setValue(location.adress, forKey: "adress")
+            
+            do {
+                try context.save()
+                print("Succesful Favorites")
+            } catch {
+                print("WTF")
+            }
+            
+        }
+    }
+    
     
 }

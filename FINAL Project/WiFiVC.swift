@@ -52,6 +52,13 @@ class WiFiVC :  UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel.loadList()
+        viewModel.refreshData()
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -65,7 +72,8 @@ class WiFiVC :  UIViewController {
         wiFiList.delegate = self
         searchBar.delegate = self
         wiFiList.register(UITableViewCell.self, forCellReuseIdentifier: "cellFromCoreData")
-        searchBar.showsCancelButton = true        
+        searchBar.showsCancelButton = true
+        
         chooseCity(with: term)
         
     }
@@ -76,10 +84,7 @@ class WiFiVC :  UIViewController {
         view.addSubview(searchBar)
         view.addSubview(button)
     }
-    
-    func loadList() {
-        viewModel.loadList()
-    }
+
     
     func chooseCity(with city: String){
         viewModel.chooseCity(with: term)
@@ -110,7 +115,7 @@ class WiFiVC :  UIViewController {
     }
     
     @objc func pushChooseCityVC() {
-        navigationController?.pushViewController(UIViewController(), animated: true)
+        navigationController?.pushViewController(ChoiceCityVC(), animated: true)
     }
     
     
@@ -140,7 +145,7 @@ extension WiFiVC: UITableViewDataSource {
         
         let cellFromCoreData = tableView.dequeueReusableCell(withIdentifier: "cellFromCoreData", for: indexPath)
         
-        guard let sections = viewModel.fetchResultController.sections else {return UITableViewCell() }
+        guard let sections = viewModel.fetchResultController.sections else { fatalError() }
         let section = sections[indexPath.section]
         guard let itemsInSection = section.objects as? [WiFiLock] else {
             fatalError("нет данных")

@@ -15,10 +15,30 @@ protocol DetailViewControllerDelegate {
 
 class ChoiceCityVC :  UIViewController {
     
-    var data = ["Дмитров","Железнодорожный","Москва","Орехово-Зуево","Павловский-Посад"]
+    var viewModel: WiFiViewModel
+    
     var detailDelegate: DetailViewControllerDelegate?
     var cityList = UITableView(frame: .zero)
-    var wifiTableDelegate: DetailViewControllerDelegate?
+    
+    init(viewModel: WiFiViewModel = WiFiViewModel()) {
+        self.viewModel = WiFiViewModel()
+        
+        defer {
+            self.viewModel = viewModel
+        }
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.viewDidAppear(animated)
+        
+         viewModel.loadList()
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -28,6 +48,7 @@ class ChoiceCityVC :  UIViewController {
         
         addSubview()
         setupConstraints()
+       
         
         
     }
@@ -52,26 +73,25 @@ class ChoiceCityVC :  UIViewController {
         
     }
     
-    func addCity(city: String) {
-        if data.contains(city.capitalizingFirstLetter()) {
-            return
-        }
-        data.append(city.capitalizingFirstLetter())
-    }
-    
 }
 
 extension ChoiceCityVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  data.count
+        guard let sections = viewModel.fetchResultController.sections else { return 1 }
+        return sections[section].numberOfObjects
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = cityList.dequeueReusableCell(withIdentifier: "city") else {
             fatalError()
         }
-        cell.textLabel?.text = data[indexPath.row]
+        guard let sections = viewModel.fetchResultController.sections else { fatalError() }
+        let section = sections[indexPath.section]
+        guard let itemsInSection = section.objects as? [WiFiLock] else {
+            fatalError("нет данных")
+        }
+        cell.textLabel?.text = itemsInSection[indexPath.row].city
         return cell
     }
     
@@ -81,17 +101,8 @@ extension ChoiceCityVC: UITableViewDataSource {
 extension ChoiceCityVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        wifiTableDelegate?.updateWiFiList(with: data[indexPath.row])
+        
         navigationController?.popViewController(animated: true)
     }
 }
 
-extension String {
-    func capitalizingFirstLetter() -> String {
-        return prefix(1).uppercased() + self.lowercased().dropFirst()
-    }
-    
-    mutating func capitalizeFirstLetter() {
-        self = self.capitalizingFirstLetter()
-    }
-}

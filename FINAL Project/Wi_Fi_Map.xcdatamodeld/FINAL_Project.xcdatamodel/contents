@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G103" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Favorites" representedClassName="Favorites" syncable="YES">
+        <attribute name="adress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="psw" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="WiFiLock" representedClassName="WiFiLock" syncable="YES">
         <attribute name="adress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
@@ -8,5 +14,6 @@
     </entity>
     <elements>
         <element name="WiFiLock" positionX="-54" positionY="-9" width="128" height="105"/>
+        <element name="Favorites" positionX="-54" positionY="18" width="128" height="105"/>
     </elements>
 </model>
