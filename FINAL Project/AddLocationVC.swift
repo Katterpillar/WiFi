@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+/// вью для добавления пользовательской точки
 class AddLocationVC: UIViewController {
     var addAdressTextView = UITextView(frame: .zero)
     var addIdTextView = UITextView(frame: .zero)
@@ -20,14 +21,16 @@ class AddLocationVC: UIViewController {
     var idLbl = UILabel(frame: .zero)
     var pswLbl = UILabel(frame: .zero)
     
+    /// жкземпляр viewmodel
     var viewModel: AddLocationViewModel {
         didSet {
+            //показывает сообщение, если какое-либо поле не записано
             self.viewModel.showAlert = { alertText in
                 let alert = UIAlertController(title: "Ошибка", message: alertText, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { _ in }))
                 self.navigationController?.present(alert, animated: true, completion: nil)
             }
-            
+            //оповещает о том, что в окошко что-то записали
             self.viewModel.formDataDidChange = {
                 self.refreshFormData()
             }

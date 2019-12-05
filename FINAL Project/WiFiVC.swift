@@ -156,6 +156,7 @@ extension WiFiVC: UITableViewDelegate{
         location.adress = itemsInSection[indexPath.row].adress
         location.city = itemsInSection[indexPath.row].city
         
+        //передаются данные о выбранной ячейке для детального представление
         viewModel.showDetail(with: location)
         let detailVC = DetailVC()
         navigationController?.pushViewController(detailVC, animated: true)
