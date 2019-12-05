@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+/// вью, показывающее детальную информации по точке
 class DetailFavoritesVC : UIViewController {
     
     var adress = UITextView(frame: .zero)
@@ -118,6 +119,13 @@ class DetailFavoritesVC : UIViewController {
         self.psw.textColor = .black
     }
     
+    /// функция, устанавливающая значения для детального отображения элементов
+    ///
+    /// - Parameters:
+    ///   - adress: адрес точки
+    ///   - id: имя точки
+    ///   - psw: пароль от вай-фая
+    ///   - city: город
     func setupDetails(adress: String, id: String, psw: String, city: String) {
         
         DispatchQueue.main.async {

@@ -9,13 +9,16 @@
 import Foundation
 import UIKit
 
+/// основная вью, на которой распологается список доступных вай-фай точек
 class WiFiVC :  UIViewController {
     
     var wiFiList = UITableView(frame: .zero)
     var searchBar = UISearchBar(frame: .zero)
     var reloadDataWorkItem : DispatchWorkItem?
+    //view model экземпляр
     var viewModel: WiFiViewModel {
         didSet {
+            // оповещате о том, что список был изменен и необходимо обновить таблицу
             self.viewModel.dataDidChange = {
                 self.reloadDataWorkItem = DispatchWorkItem { [weak self] in
                     guard let self = self else{
@@ -33,16 +36,18 @@ class WiFiVC :  UIViewController {
     }
     
     
+    /// название города
     var term = "Москва" {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.button.setTitle(self.term, for: .normal)
+                self.chooseCityBtn.setTitle(self.term, for: .normal)
             }
         }
     }
     
-    lazy var button: UIButton = {
+    /// по нажатию на эту кнопку открывается список городов
+    lazy var chooseCityBtn: UIButton = {
         let button = UIButton(frame: .zero)
         button.setTitle(term, for: .normal)
         button.titleLabel?.font = UIFont(name: "System", size: 17.0)
@@ -93,7 +98,7 @@ class WiFiVC :  UIViewController {
     func addSubview(){
         view.addSubview(wiFiList)
         view.addSubview(searchBar)
-        view.addSubview(button)
+        view.addSubview(chooseCityBtn)
     }
 
     
@@ -103,12 +108,12 @@ class WiFiVC :  UIViewController {
     
     func setupConstraints(){
         
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
-        button.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
+        chooseCityBtn.translatesAutoresizingMaskIntoConstraints = false
+        chooseCityBtn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+        chooseCityBtn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         
-        button.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -15).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        chooseCityBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -15).isActive = true
+        chooseCityBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60).isActive = true
@@ -125,6 +130,7 @@ class WiFiVC :  UIViewController {
         
     }
     
+    /// показывется список городов
     @objc func pushChooseCityVC() {
         navigationController?.pushViewController(ChoiceCityVC(), animated: true)
     }

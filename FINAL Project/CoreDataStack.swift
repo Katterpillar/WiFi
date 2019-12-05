@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreData
-
+/// класс, реализущий основную работу с Core data в приложении
 internal final class CoreDataStack {
     
     static var shared : CoreDataStack {
@@ -32,6 +32,7 @@ internal final class CoreDataStack {
         group.wait()
     }
     
+    ///  функция добавления Данных о вай-фай точках в core data
     func addToCoreData(location: WiFiEntity ){
         
         persistentContainer.performBackgroundTask { (context) in
@@ -51,6 +52,7 @@ internal final class CoreDataStack {
         }
     }
     
+    /// функция добавления списка городов
     func addCityToCoreData(city: String) {
         
         persistentContainer.performBackgroundTask { (context) in
@@ -66,6 +68,7 @@ internal final class CoreDataStack {
         }
     }
     
+    /// очищение core data перед загрузкой новых данных из сети
     func refreshData(){
         let context = persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "WiFiLock")
@@ -88,6 +91,8 @@ internal final class CoreDataStack {
         catch { }
     }
     
+    
+    /// функция очищения списка городов перед обновлением
     func refreshCity(){
         let context = persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Cities")

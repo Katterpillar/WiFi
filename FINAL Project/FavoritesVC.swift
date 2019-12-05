@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 
+/// вью для избранного
 class FavoritesVC : UIViewController {
-    
+
     var wiFiList = UITableView(frame: .zero)
     var viewModel: FavoritesViewModels
     
@@ -43,13 +44,15 @@ class FavoritesVC : UIViewController {
         
     }
     
+    /// добавляет объекты на вью
     func addSubview(){
         view.addSubview(wiFiList)
         
     }
     
+    /// настараивает Constraints
     func setupConstraints(){
-        
+    
         wiFiList.translatesAutoresizingMaskIntoConstraints = false
         wiFiList.topAnchor.constraint(equalTo:view.topAnchor, constant: 30).isActive = true
         wiFiList.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true

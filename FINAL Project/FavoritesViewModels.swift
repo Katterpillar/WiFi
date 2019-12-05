@@ -9,10 +9,13 @@
 import Foundation
 import CoreData
 
+///  view model, осуществляет все операции не касающиеся UI
 class FavoritesViewModels {
     
     
-    var setupDetails: ((WiFiEntity) -> ())? 
+    var setupDetails: ((WiFiEntity) -> ())?
+    
+    ///  загружает данные из core data не поднимая все данные, удобно при использовании table view
     var fetchResultController : NSFetchedResultsController<Favorites> = {
         //fetchRequest — запрос на извлечение объектов NSFetchRequest
         let fetchRequest = NSFetchRequest<Favorites>(entityName: "Favorites")
@@ -24,6 +27,7 @@ class FavoritesViewModels {
         
     }()
     
+    /// загружает данные по точкам из coredata
     func loadFromCoreData() {
         do {
             try fetchResultController.performFetch()
@@ -32,6 +36,9 @@ class FavoritesViewModels {
         }
     }
     
+    /// показывает детальную информацию
+    ///
+    /// - Parameter location: содержит все необходимые пользователю параметры для подключения к сети
     func showDetail(with location: WiFiEntity){
         self.setupDetails?(location)
     }

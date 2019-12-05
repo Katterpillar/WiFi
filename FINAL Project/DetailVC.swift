@@ -9,12 +9,14 @@
 import Foundation
 import UIKit
 
+/// вью, показывающее детальную информацию о выбранной вай-фай точке
 class DetailVC : UIViewController {
     
     var adress = UITextView(frame: .zero)
     var id = UITextView(frame: .zero)
     var psw = UITextView(frame: .zero)
     var addToFavoritesList = UIButton(frame: .zero)
+    // экземпляр view model
     var viewModel: WiFiViewModel
     
     
@@ -50,6 +52,7 @@ class DetailVC : UIViewController {
         view.addSubview(addToFavoritesList)
     }
     
+    /// устанавливает значение соответствующих полей
     func setupText(){
         let location = self.viewModel.setupDetail()
         self.id.text = location.id
@@ -117,8 +120,9 @@ class DetailVC : UIViewController {
         addToFavoritesList.layer.cornerRadius = 5
     }
     
+    /// добавляет точку в избранное
     @objc func addToFavoritesCoreData(){
-        
+        //FIX ME
     }
     
     

@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+/// класс, работающий с core data, для сохранения избранного
 internal final class FavoritesCDStack {
     
     static var shared : FavoritesCDStack {
@@ -31,6 +32,7 @@ internal final class FavoritesCDStack {
         group.wait()
     }
     
+    /// функция сохранения в список избранного 
     func save(location: WiFiEntity) {
         
         persistentContainer.performBackgroundTask { (context) in
