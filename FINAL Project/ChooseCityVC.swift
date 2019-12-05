@@ -15,10 +15,11 @@ protocol DetailViewControllerDelegate {
 
 class ChoiceCityVC :  UIViewController {
     
-    var viewModel: WiFiViewModel
-    
+    var data: [String] = []
     var detailDelegate: DetailViewControllerDelegate?
     var cityList = UITableView(frame: .zero)
+    
+    var viewModel: WiFiViewModel
     
     init(viewModel: WiFiViewModel = WiFiViewModel()) {
         self.viewModel = WiFiViewModel()
@@ -33,30 +34,24 @@ class ChoiceCityVC :  UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        self.viewDidAppear(animated)
-        
-         viewModel.loadList()
-    }
-    
     override func viewDidLoad() {
-        
-        super.viewDidLoad()
         
         view.backgroundColor = UIColor(red:0.97, green:0.97, blue:0.96, alpha:1.0)
         
-        
         addSubview()
         setupConstraints()
-       
-        
+        loadData()
         
     }
     
+    func loadData(){
+        for city in self.viewModel.cities ?? [] {
+            data.append(city)
+        }
+    }
     
     func addSubview(){
         view.addSubview(cityList)
-        
         cityList.dataSource = self
         cityList.delegate = self
         cityList.register(UITableViewCell.self, forCellReuseIdentifier: "city")
@@ -78,20 +73,14 @@ class ChoiceCityVC :  UIViewController {
 extension ChoiceCityVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let sections = viewModel.fetchResultController.sections else { return 1 }
-        return sections[section].numberOfObjects
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = cityList.dequeueReusableCell(withIdentifier: "city") else {
             fatalError()
         }
-        guard let sections = viewModel.fetchResultController.sections else { fatalError() }
-        let section = sections[indexPath.section]
-        guard let itemsInSection = section.objects as? [WiFiLock] else {
-            fatalError("нет данных")
-        }
-        cell.textLabel?.text = itemsInSection[indexPath.row].city
+        cell.textLabel?.text = data[indexPath.row]
         return cell
     }
     

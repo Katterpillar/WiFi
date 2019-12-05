@@ -13,10 +13,21 @@ class WiFiVC :  UIViewController {
     
     var wiFiList = UITableView(frame: .zero)
     var searchBar = UISearchBar(frame: .zero)
+    var reloadDataWorkItem : DispatchWorkItem?
     var viewModel: WiFiViewModel {
         didSet {
             self.viewModel.dataDidChange = {
-                self.wiFiList.reloadData()
+                self.reloadDataWorkItem = DispatchWorkItem { [weak self] in
+                    guard let self = self else{
+                        return
+                    }
+                    print(self.reloadDataWorkItem!.isCancelled)
+                    if self.reloadDataWorkItem!.isCancelled { return  }
+                  self.wiFiList.reloadData()
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: self.reloadDataWorkItem!)
+                
             }
         }
     }
@@ -58,7 +69,6 @@ class WiFiVC :  UIViewController {
         super.viewWillAppear(animated)
         
         viewModel.loadList()
-        viewModel.refreshData()
     }
     
     override func viewDidLoad() {

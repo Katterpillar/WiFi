@@ -10,17 +10,28 @@ import Foundation
 import CoreData
 
 class WiFiViewModel {
-
-    var model: WiFiModel
+    
     var coreDataStack: CoreDataStack
     var predicate: NSPredicate?
     
+    var model: WiFiModel {
+        didSet {
+            self.model.dataDidLoad = {
+                self.dataDidChange?()
+            }
+        }
+    }
     var dataDidChange: (() -> ())?
     var setupDetails: ((WiFiEntity) -> ())?
-    
+    var cities: Set<String>?
     init(model: WiFiModel = WiFiModel(), coreDataStack: CoreDataStack = CoreDataStack.shared) {
-        self.model = model
+        
+        self.model = WiFiModel()
         self.coreDataStack = coreDataStack
+        defer{
+            self.model = model
+            self.cities = model.cityList
+        }
     }
     
     var fetchResultController : NSFetchedResultsController<WiFiLock> = {
@@ -41,10 +52,11 @@ class WiFiViewModel {
         } catch {
             print(error.localizedDescription)
         }
+        self.dataDidChange?()
     }
     
     func chooseCity(with city: String){
-       fetchResultController.fetchRequest.predicate = NSPredicate(format: "city CONTAINS[c] %@", city)
+        fetchResultController.fetchRequest.predicate = NSPredicate(format: "city CONTAINS[c] %@", city)
     }
     
     func pushChoiseVC(){
@@ -55,7 +67,7 @@ class WiFiViewModel {
     func searchActivate(with searchBarText: String, and label: String){
         if searchBarText == "" {
             fetchResultController.fetchRequest.predicate = NSPredicate(format: "city CONTAINS[c] %@", label)
-
+            
         } else {
             let predicate1 = NSPredicate(format: "city CONTAINS[c] %@", label)
             
@@ -63,14 +75,9 @@ class WiFiViewModel {
             let predicateCompound = NSCompoundPredicate(type: .and, subpredicates: [predicate1,predicte2])
             
             fetchResultController.fetchRequest.predicate = predicateCompound
-
-    }
-
-}
-    func refreshData(){
-        self.model.refreshCoreData()
-        self.loadList()
-        self.dataDidChange?()
+            
+        }
+        
     }
     
     func showDetail(with location: WiFiEntity){

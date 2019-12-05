@@ -12,10 +12,10 @@ import CoreData
 class WiFiModel{
     
     var coreDataStack: CoreDataStack
-    
+    var cityList = Set<String>()
+    var dataDidLoad: (() -> ())?
     init(coreDataStack: CoreDataStack = CoreDataStack.shared) {
         self.coreDataStack = coreDataStack
-        
     }
     
     func loadList(completion: @escaping ([[String]]) -> Void) {
@@ -39,6 +39,8 @@ class WiFiModel{
     }
     
     
+    
+    
     func refreshCoreData(){
         DispatchQueue.main.async {
             self.coreDataStack.refreshData()
@@ -49,12 +51,13 @@ class WiFiModel{
                     location.psw = list[i][1]
                     location.city = list[i][2]
                     location.adress = list[i][3]
+                    self.cityList.insert(list[i][2])
                     self.coreDataStack.addToCoreData(location: location)
                 }
             }
-            UserDefaults.standard.set(true, forKey: "wasLoadedToCoreData")
         }
     }
-    
 }
+
+
 

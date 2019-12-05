@@ -25,6 +25,7 @@ class DetailVC : UIViewController {
                     self.psw.text = location.psw
                 }
             }
+            
         }
     }
     
