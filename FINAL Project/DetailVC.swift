@@ -15,9 +15,10 @@ class DetailVC : UIViewController {
     var adress = UITextView(frame: .zero)
     var id = UITextView(frame: .zero)
     var psw = UITextView(frame: .zero)
+    var city = String()
     var addToFavoritesList = UIButton(frame: .zero)
     /// экземпляр view model
-    var viewModel: WiFiViewModel {
+    var viewModel: WiFiViewService {
         didSet{
             // устанавливает значение соответствующих полей
             self.viewModel.setupDetails = { details in
@@ -25,14 +26,15 @@ class DetailVC : UIViewController {
                     self.id.text = details.id
                     self.adress.text = details.adress
                     self.psw.text = details.psw
+                    self.city = details.city
                 }
             }
         }
     }
     
     
-    init(viewModel: WiFiViewModel = WiFiViewModel.shared) {
-        self.viewModel = WiFiViewModel()
+    init(viewModel: WiFiViewService = WiFiViewService.shared) {
+        self.viewModel = WiFiViewService()
         
         defer {
             self.viewModel = viewModel
@@ -51,11 +53,6 @@ class DetailVC : UIViewController {
         setupView()
         setupConstrains()
         navigationItem.title = "Описание"
-    }
-    
-    override func viewDidAppear(_ animated: Bool)  {
-        super.viewDidAppear(true)
-        
     }
     
     func addSubviews() {
@@ -128,7 +125,8 @@ class DetailVC : UIViewController {
     
     /// добавляет точку в избранное
     @objc func addToFavoritesCoreData(){
-        //FIX ME
+        let location = WiFiEntity(adress: self.adress.text, city: self.city, id: self.id.text, psw: self.psw.text)
+      viewModel.addToFavorites(location)
     }
     
     

@@ -18,10 +18,10 @@ class ChoiceCityVC :  UIViewController {
     var detailDelegate: DetailViewControllerDelegate?
     var cityList = UITableView(frame: .zero)
     
-    var viewModel: WiFiViewModel
+    var viewModel: WiFiViewService
     
-    init(viewModel: WiFiViewModel = WiFiViewModel.shared) {
-        self.viewModel = WiFiViewModel()
+    init(viewModel: WiFiViewService = WiFiViewService.shared) {
+        self.viewModel = WiFiViewService()
         
         defer {
             self.viewModel = viewModel
@@ -76,10 +76,10 @@ extension ChoiceCityVC: UITableViewDataSource {
         }
         guard let sections = viewModel.fetchResultCityController.sections else { fatalError() }
         let section = sections[indexPath.section]
-        guard let itemsInSection = section.objects as? [AnyObject] else {
+        guard let itemsInSection = section.objects as [AnyObject]? else {
             fatalError("нет данных")
         }
-        cell.textLabel?.text = itemsInSection[indexPath.row].city as? String
+        cell.textLabel?.text = itemsInSection[indexPath.row].city
         return cell
     }
     
@@ -89,7 +89,13 @@ extension ChoiceCityVC: UITableViewDataSource {
 extension ChoiceCityVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        guard let sections = viewModel.fetchResultCityController.sections else { fatalError() }
+        let section = sections[indexPath.section]
+        guard let itemsInSection = section.objects as [AnyObject]? else {
+            fatalError("нет данных")
+        }
+        let city = itemsInSection[indexPath.row].city
+        viewModel.chooseCity(with: city ?? "")
         navigationController?.popViewController(animated: true)
     }
 }

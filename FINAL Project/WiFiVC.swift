@@ -16,10 +16,10 @@ class WiFiVC :  UIViewController {
     var searchBar = UISearchBar(frame: .zero)
     var reloadDataWorkItem : DispatchWorkItem?
     //view model экземпляр
-    var viewModel: WiFiViewModel {
+    var viewModel: WiFiViewService {
         didSet {
             // оповещате о том, что список был изменен и необходимо обновить таблицу
-            self.viewModel.dataDidChange = {
+            self.viewModel.dataDidLoad = {
                 self.reloadDataWorkItem = DispatchWorkItem { [weak self] in
                     guard let self = self else{
                         return
@@ -32,7 +32,19 @@ class WiFiVC :  UIViewController {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: self.reloadDataWorkItem!)
                 
             }
+            self.viewModel.dataDidChange = {
+                DispatchQueue.main.async {
+                    self.viewModel.loadList()
+                    self.wiFiList.reloadData()
+                }
+            }
+            self.viewModel.cityChange = { city in
+                DispatchQueue.main.async {
+                    self.chooseCityBtn.setTitle(city, for: .normal)
+                }
+            }
         }
+        
     }
     
     
@@ -57,8 +69,8 @@ class WiFiVC :  UIViewController {
         return button
     }()
     
-    init(viewModel: WiFiViewModel = WiFiViewModel.shared) {
-        self.viewModel = WiFiViewModel()
+    init(viewModel: WiFiViewService = WiFiViewService.shared) {
+        self.viewModel = WiFiViewService()
         defer {
             self.viewModel = viewModel
         }

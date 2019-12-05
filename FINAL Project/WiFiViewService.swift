@@ -9,19 +9,23 @@
 import Foundation
 import CoreData
 
-class WiFiViewModel {
+class WiFiViewService {
     
     var coreDataStack: CoreDataStack
+    var favoritesCD: FavoritesCDStack
     var predicate: NSPredicate?
-    static let shared = WiFiViewModel()
+    static let shared = WiFiViewService()
     var location: WiFiEntity?
     var model: WiFiModel
+    var dataDidLoad: (() -> ())?
     var dataDidChange: (() -> ())?
+    var cityChange: ((String) -> ())?
     var setupDetails: ((WiFiEntity) -> ())?
     var cities: Set<String>?
-    init(model: WiFiModel = WiFiModel(), coreDataStack: CoreDataStack = CoreDataStack.shared) {
+    init(model: WiFiModel = WiFiModel(), coreDataStack: CoreDataStack = CoreDataStack.shared, favoritesCD: FavoritesCDStack = FavoritesCDStack.shared) {
         self.model = WiFiModel()
         self.coreDataStack = coreDataStack
+        self.favoritesCD = favoritesCD
         defer{
             self.model = model
         }
@@ -45,7 +49,7 @@ class WiFiViewModel {
         } catch {
             print(error.localizedDescription)
         }
-        self.dataDidChange?()
+        self.dataDidLoad?()
     }
     
     var fetchResultCityController : NSFetchedResultsController<Cities> = {
@@ -70,6 +74,12 @@ class WiFiViewModel {
     
     func chooseCity(with city: String){
         fetchResultController.fetchRequest.predicate = NSPredicate(format: "city CONTAINS[c] %@", city)
+        self.cityChange?(city)
+        self.dataDidChange?()
+    }
+    
+    func addToFavorites(_ location: WiFiEntity) {
+        self.favoritesCD.save(location: location)
     }
     
     func pushChoiseVC(){
@@ -80,15 +90,15 @@ class WiFiViewModel {
     func searchActivate(with searchBarText: String, and label: String){
         if searchBarText == "" {
             fetchResultController.fetchRequest.predicate = NSPredicate(format: "city CONTAINS[c] %@", label)
+            self.dataDidChange?()
             
         } else {
             let predicate1 = NSPredicate(format: "city CONTAINS[c] %@", label)
             
             let predicte2 = NSPredicate(format: "adress CONTAINS[c] %@", searchBarText)
             let predicateCompound = NSCompoundPredicate(type: .and, subpredicates: [predicate1,predicte2])
-            
             fetchResultController.fetchRequest.predicate = predicateCompound
-            
+            self.dataDidChange?()
         }
         
     }

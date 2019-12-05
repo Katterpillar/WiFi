@@ -14,7 +14,7 @@ class FavoritesViewModels {
     
     
     var setupDetails: ((WiFiEntity) -> ())?
-    
+    static let shared = FavoritesViewModels()
     ///  загружает данные из core data не поднимая все данные, удобно при использовании table view
     var fetchResultController : NSFetchedResultsController<Favorites> = {
         //fetchRequest — запрос на извлечение объектов NSFetchRequest

@@ -11,17 +11,16 @@ import UIKit
 
 /// вью для избранного
 class FavoritesVC : UIViewController {
-
+    
     var wiFiList = UITableView(frame: .zero)
     var viewModel: FavoritesViewModels
     
-    init(viewModel: FavoritesViewModels = FavoritesViewModels()) {
-    self.viewModel = FavoritesViewModels()
-    
-    defer {
-    self.viewModel = viewModel
-    }
-    super.init(nibName: nil, bundle: nil)
+    init(viewModel: FavoritesViewModels = FavoritesViewModels.shared) {
+        self.viewModel = FavoritesViewModels()
+        defer {
+            self.viewModel = viewModel
+        }
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -52,7 +51,7 @@ class FavoritesVC : UIViewController {
     
     /// настараивает Constraints
     func setupConstraints(){
-    
+        
         wiFiList.translatesAutoresizingMaskIntoConstraints = false
         wiFiList.topAnchor.constraint(equalTo:view.topAnchor, constant: 30).isActive = true
         wiFiList.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
@@ -81,9 +80,9 @@ extension FavoritesVC: UITableViewDelegate{
         location.adress = itemsInSection[indexPath.row].adress
         location.city = itemsInSection[indexPath.row].city
         
+        let detailVC = DetailFavoritesVC()
         viewModel.showDetail(with: location)
-        
-        navigationController?.pushViewController(DetailFavoritesVC(), animated: true)        
+        navigationController?.pushViewController( detailVC, animated: true)
     }
     
 }
@@ -110,17 +109,17 @@ extension FavoritesVC: UITableViewDataSource {
         
         if ( viewModel.fetchResultController.sections?.count != nil ) {
             
-        let cellFromCoreData = tableView.dequeueReusableCell(withIdentifier: "favoritesCell", for: indexPath)
-        
-        guard let sections = viewModel.fetchResultController.sections else {
-            fatalError()
-        }
-        let section = sections[indexPath.section]
-        guard let itemsInSection = section.objects as? [Favorites] else {
-            fatalError()
-        }
-        cellFromCoreData.textLabel?.text = itemsInSection[indexPath.row].adress
-        return cellFromCoreData
+            let cellFromCoreData = tableView.dequeueReusableCell(withIdentifier: "favoritesCell", for: indexPath)
+            
+            guard let sections = viewModel.fetchResultController.sections else {
+                fatalError()
+            }
+            let section = sections[indexPath.section]
+            guard let itemsInSection = section.objects as? [Favorites] else {
+                fatalError()
+            }
+            cellFromCoreData.textLabel?.text = itemsInSection[indexPath.row].adress
+            return cellFromCoreData
             
         } else { return UITableViewCell()  }
     }

@@ -22,14 +22,14 @@
 		66C14A4C23958AB500845B16 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A4B23958AB500845B16 /* TabBar.swift */; };
 		66C14A5423958C9200845B16 /* AddLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A5323958C9200845B16 /* AddLocationVC.swift */; };
 		66C14A56239590DF00845B16 /* AddLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A55239590DF00845B16 /* AddLocationViewModel.swift */; };
-		66C14A5A2395963D00845B16 /* AddLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A592395963D00845B16 /* AddLocationModel.swift */; };
+		66C14A5A2395963D00845B16 /* AddLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A592395963D00845B16 /* AddLocationService.swift */; };
 		66C14A5C2395977B00845B16 /* WifiEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A5B2395977B00845B16 /* WifiEntity.swift */; };
 		66C14A6223959B1B00845B16 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A5D23959B1B00845B16 /* CoreDataStack.swift */; };
 		66C14A6323959B1B00845B16 /* MOFavorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A5E23959B1B00845B16 /* MOFavorites.swift */; };
 		66C14A6423959B1B00845B16 /* MOLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A5F23959B1B00845B16 /* MOLocation.swift */; };
 		66C14A6623959B1B00845B16 /* FavoritesCDStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A6123959B1B00845B16 /* FavoritesCDStack.swift */; };
 		66F5FEE9239642BC00F2EBEB /* WiFiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F5FEE8239642BC00F2EBEB /* WiFiVC.swift */; };
-		66F5FEEB2396432400F2EBEB /* WiFiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F5FEEA2396432400F2EBEB /* WiFiViewModel.swift */; };
+		66F5FEEB2396432400F2EBEB /* WiFiViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F5FEEA2396432400F2EBEB /* WiFiViewService.swift */; };
 		66F5FEED2396453500F2EBEB /* ChooseCityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F5FEEC2396453500F2EBEB /* ChooseCityVC.swift */; };
 		66F5FEEF23968C9600F2EBEB /* WiFiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F5FEEE23968C9600F2EBEB /* WiFiModel.swift */; };
 /* End PBXBuildFile section */
@@ -64,14 +64,14 @@
 		66C14A4B23958AB500845B16 /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		66C14A5323958C9200845B16 /* AddLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationVC.swift; sourceTree = "<group>"; };
 		66C14A55239590DF00845B16 /* AddLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewModel.swift; sourceTree = "<group>"; };
-		66C14A592395963D00845B16 /* AddLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationModel.swift; sourceTree = "<group>"; };
+		66C14A592395963D00845B16 /* AddLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationService.swift; sourceTree = "<group>"; };
 		66C14A5B2395977B00845B16 /* WifiEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiEntity.swift; sourceTree = "<group>"; };
 		66C14A5D23959B1B00845B16 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		66C14A5E23959B1B00845B16 /* MOFavorites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOFavorites.swift; sourceTree = "<group>"; };
 		66C14A5F23959B1B00845B16 /* MOLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOLocation.swift; sourceTree = "<group>"; };
 		66C14A6123959B1B00845B16 /* FavoritesCDStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesCDStack.swift; sourceTree = "<group>"; };
 		66F5FEE8239642BC00F2EBEB /* WiFiVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiVC.swift; sourceTree = "<group>"; };
-		66F5FEEA2396432400F2EBEB /* WiFiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiViewModel.swift; sourceTree = "<group>"; };
+		66F5FEEA2396432400F2EBEB /* WiFiViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiViewService.swift; sourceTree = "<group>"; };
 		66F5FEEC2396453500F2EBEB /* ChooseCityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCityVC.swift; sourceTree = "<group>"; };
 		66F5FEEE23968C9600F2EBEB /* WiFiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -203,7 +203,7 @@
 		66C14A5223958C6E00845B16 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				66C14A592395963D00845B16 /* AddLocationModel.swift */,
+				66C14A592395963D00845B16 /* AddLocationService.swift */,
 				66C14A5B2395977B00845B16 /* WifiEntity.swift */,
 			);
 			name = Models;
@@ -244,7 +244,7 @@
 		66F5FEE62396425D00F2EBEB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				66F5FEEA2396432400F2EBEB /* WiFiViewModel.swift */,
+				66F5FEEA2396432400F2EBEB /* WiFiViewService.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -368,7 +368,7 @@
 				660EC8532397AA380051A575 /* DetailFavoritesVC.swift in Sources */,
 				660EC84323979ED10051A575 /* FavoritesVC.swift in Sources */,
 				66C14A6623959B1B00845B16 /* FavoritesCDStack.swift in Sources */,
-				66C14A5A2395963D00845B16 /* AddLocationModel.swift in Sources */,
+				66C14A5A2395963D00845B16 /* AddLocationService.swift in Sources */,
 				66C14A56239590DF00845B16 /* AddLocationViewModel.swift in Sources */,
 				66C14A5423958C9200845B16 /* AddLocationVC.swift in Sources */,
 				660EC85A2398FA210051A575 /* MOCity.swift in Sources */,
@@ -377,7 +377,7 @@
 				66F5FEE9239642BC00F2EBEB /* WiFiVC.swift in Sources */,
 				66C14A4C23958AB500845B16 /* TabBar.swift in Sources */,
 				66C14A6423959B1B00845B16 /* MOLocation.swift in Sources */,
-				66F5FEEB2396432400F2EBEB /* WiFiViewModel.swift in Sources */,
+				66F5FEEB2396432400F2EBEB /* WiFiViewService.swift in Sources */,
 				66C14A5C2395977B00845B16 /* WifiEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

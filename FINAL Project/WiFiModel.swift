@@ -13,8 +13,6 @@ import CoreData
 class WiFiModel {
 
     var coreDataStack: CoreDataStack
-    var dataLoaded = false
-    var dataDidLoad: (() -> ())?
     init(coreDataStack: CoreDataStack = CoreDataStack.shared) {
         self.coreDataStack = coreDataStack
     }
@@ -32,7 +30,6 @@ class WiFiModel {
                 let list =  try JSONSerialization.jsonObject(with: data,
                                                              options: .mutableContainers) as? [[String]]
                 completion(list ?? [])
-                print(list)
             } catch let error{
                 print(error)
             }

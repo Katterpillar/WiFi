@@ -10,7 +10,7 @@ import Foundation
 
 class AddLocationViewModel {
     
-    var model: AddLocationModel
+    var model: AddLocationService
     var locationFormData: WiFiEntity {
         get {
             return self.model.locationFormData
@@ -20,7 +20,7 @@ class AddLocationViewModel {
     var showAlert: ( (String) -> () )?
     var formDataDidChange: (() -> ())?
     
-    init(model: AddLocationModel = AddLocationModel()) {
+    init(model: AddLocationService = AddLocationService()) {
         self.model = model
     }
     
