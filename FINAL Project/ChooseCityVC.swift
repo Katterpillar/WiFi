@@ -20,7 +20,7 @@ class ChoiceCityVC :  UIViewController {
     
     var viewModel: WiFiViewModel
     
-    init(viewModel: WiFiViewModel = WiFiViewModel()) {
+    init(viewModel: WiFiViewModel = WiFiViewModel.shared) {
         self.viewModel = WiFiViewModel()
         
         defer {

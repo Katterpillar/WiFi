@@ -57,7 +57,7 @@ class WiFiVC :  UIViewController {
         return button
     }()
     
-    init(viewModel: WiFiViewModel = WiFiViewModel()) {
+    init(viewModel: WiFiViewModel = WiFiViewModel.shared) {
         self.viewModel = WiFiViewModel()
         defer {
             self.viewModel = viewModel
@@ -157,8 +157,8 @@ extension WiFiVC: UITableViewDelegate{
         location.city = itemsInSection[indexPath.row].city
         
         //передаются данные о выбранной ячейке для детального представление
-        viewModel.showDetail(with: location)
         let detailVC = DetailVC()
+        viewModel.showDetail(with: location)
         navigationController?.pushViewController(detailVC, animated: true)
        
     }

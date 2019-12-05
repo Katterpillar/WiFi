@@ -13,6 +13,7 @@
 		660EC8532397AA380051A575 /* DetailFavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EC8522397AA380051A575 /* DetailFavoritesVC.swift */; };
 		660EC85623980A6E0051A575 /* Wi_Fi_Map.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 660EC85423980A6E0051A575 /* Wi_Fi_Map.xcdatamodeld */; };
 		660EC85A2398FA210051A575 /* MOCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EC8592398FA210051A575 /* MOCity.swift */; };
+		660EC85E239928840051A575 /* CheckNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EC85D239928840051A575 /* CheckNetwork.swift */; };
 		66C14A2923958A5C00845B16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A2823958A5C00845B16 /* AppDelegate.swift */; };
 		66C14A2E23958A5C00845B16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66C14A2C23958A5C00845B16 /* Main.storyboard */; };
 		66C14A3323958A5E00845B16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66C14A3223958A5E00845B16 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		660EC8522397AA380051A575 /* DetailFavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFavoritesVC.swift; sourceTree = "<group>"; };
 		660EC85523980A6E0051A575 /* FINAL_Project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FINAL_Project.xcdatamodel; sourceTree = "<group>"; };
 		660EC8592398FA210051A575 /* MOCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOCity.swift; sourceTree = "<group>"; };
+		660EC85D239928840051A575 /* CheckNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNetwork.swift; sourceTree = "<group>"; };
 		66C14A2523958A5C00845B16 /* FINAL Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FINAL Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66C14A2823958A5C00845B16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66C14A2D23958A5C00845B16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				66C14A2823958A5C00845B16 /* AppDelegate.swift */,
 				66C14A4B23958AB500845B16 /* TabBar.swift */,
+				660EC85D239928840051A575 /* CheckNetwork.swift */,
 				66C14A6723959B2700845B16 /* CoreData */,
 				660EC84423979EEF0051A575 /* Favorites */,
 				66F5FEE42396423800F2EBEB /* WiFiList */,
@@ -355,6 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				660EC85E239928840051A575 /* CheckNetwork.swift in Sources */,
 				66F5FEED2396453500F2EBEB /* ChooseCityVC.swift in Sources */,
 				66C14A2923958A5C00845B16 /* AppDelegate.swift in Sources */,
 				66F5FEEF23968C9600F2EBEB /* WiFiModel.swift in Sources */,

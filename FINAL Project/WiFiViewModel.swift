@@ -13,7 +13,7 @@ class WiFiViewModel {
     
     var coreDataStack: CoreDataStack
     var predicate: NSPredicate?
-    
+    static let shared = WiFiViewModel()
     var location: WiFiEntity?
     var model: WiFiModel
     var dataDidChange: (() -> ())?
@@ -94,11 +94,7 @@ class WiFiViewModel {
     }
     
     func showDetail(with location: WiFiEntity){
-        self.location = location
-        
+        self.setupDetails?(location)
     }
     
-    func setupDetail()-> WiFiEntity{
-        return self.location ?? WiFiEntity()
-    }
 }
