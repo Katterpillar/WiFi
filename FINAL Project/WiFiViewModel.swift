@@ -14,23 +14,16 @@ class WiFiViewModel {
     var coreDataStack: CoreDataStack
     var predicate: NSPredicate?
     
-    var model: WiFiModel {
-        didSet {
-            self.model.dataDidLoad = {
-                self.dataDidChange?()
-            }
-        }
-    }
+    var location: WiFiEntity?
+    var model: WiFiModel
     var dataDidChange: (() -> ())?
     var setupDetails: ((WiFiEntity) -> ())?
     var cities: Set<String>?
     init(model: WiFiModel = WiFiModel(), coreDataStack: CoreDataStack = CoreDataStack.shared) {
-        
         self.model = WiFiModel()
         self.coreDataStack = coreDataStack
         defer{
             self.model = model
-            self.cities = model.cityList
         }
     }
     
@@ -53,6 +46,26 @@ class WiFiViewModel {
             print(error.localizedDescription)
         }
         self.dataDidChange?()
+    }
+    
+    var fetchResultCityController : NSFetchedResultsController<Cities> = {
+        //fetchRequest — запрос на извлечение объектов NSFetchRequest
+        let fetchRequest = NSFetchRequest<Cities>(entityName: "Cities")
+        let sortByIndex = NSSortDescriptor(key: "city", ascending: true)
+        fetchRequest.sortDescriptors = [sortByIndex]
+        fetchRequest.fetchBatchSize = 10
+        let context = CoreDataStack.shared.persistentContainer.viewContext
+        let fetchResultController = NSFetchedResultsController<Cities>(fetchRequest: fetchRequest, managedObjectContext: context , sectionNameKeyPath: nil, cacheName: nil)
+        return fetchResultController
+        
+    }()
+    
+    func loadCityList(){
+        do {
+            try fetchResultCityController.performFetch()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     func chooseCity(with city: String){
@@ -81,7 +94,11 @@ class WiFiViewModel {
     }
     
     func showDetail(with location: WiFiEntity){
-        self.setupDetails?(location)
+        self.location = location
+        
     }
     
+    func setupDetail()-> WiFiEntity{
+        return self.location ?? WiFiEntity()
+    }
 }

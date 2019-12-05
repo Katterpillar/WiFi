@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         wifiload = WiFiModel()
         wifiload?.refreshCoreData()
-        window  = UIWindow(frame: UIScreen.main.bounds)
+        window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
         window?.rootViewController = TabBarViewController()
         window?.makeKeyAndVisible()

@@ -15,7 +15,6 @@ protocol DetailViewControllerDelegate {
 
 class ChoiceCityVC :  UIViewController {
     
-    var data: [String] = []
     var detailDelegate: DetailViewControllerDelegate?
     var cityList = UITableView(frame: .zero)
     
@@ -37,18 +36,12 @@ class ChoiceCityVC :  UIViewController {
     override func viewDidLoad() {
         
         view.backgroundColor = UIColor(red:0.97, green:0.97, blue:0.96, alpha:1.0)
-        
+        viewModel.loadCityList()
         addSubview()
         setupConstraints()
-        loadData()
         
     }
     
-    func loadData(){
-        for city in self.viewModel.cities ?? [] {
-            data.append(city)
-        }
-    }
     
     func addSubview(){
         view.addSubview(cityList)
@@ -73,14 +66,20 @@ class ChoiceCityVC :  UIViewController {
 extension ChoiceCityVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        guard let sections = viewModel.fetchResultCityController.sections else { return 1 }
+        return sections[section].numberOfObjects
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = cityList.dequeueReusableCell(withIdentifier: "city") else {
             fatalError()
         }
-        cell.textLabel?.text = data[indexPath.row]
+        guard let sections = viewModel.fetchResultCityController.sections else { fatalError() }
+        let section = sections[indexPath.section]
+        guard let itemsInSection = section.objects as? [AnyObject] else {
+            fatalError("нет данных")
+        }
+        cell.textLabel?.text = itemsInSection[indexPath.row].city as? String
         return cell
     }
     

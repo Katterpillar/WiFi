@@ -15,27 +15,11 @@ class DetailVC : UIViewController {
     var id = UITextView(frame: .zero)
     var psw = UITextView(frame: .zero)
     var addToFavoritesList = UIButton(frame: .zero)
-    
-    var viewModel: WiFiViewModel {
-        didSet {
-            self.viewModel.setupDetails = { location in
-                DispatchQueue.main.async { 
-                    self.adress.text = location.adress
-                    self.id.text = location.id
-                    self.psw.text = location.psw
-                }
-            }
-            
-        }
-    }
+    var viewModel: WiFiViewModel
     
     
     init(viewModel: WiFiViewModel = WiFiViewModel()) {
-        self.viewModel = WiFiViewModel()
-        
-        defer {
-            self.viewModel = viewModel
-        }
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -46,11 +30,10 @@ class DetailVC : UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
         addSubviews()
         setupView()
         setupConstrains()
-        
+        setupText()
         navigationItem.title = "Описание"
     }
     
@@ -65,6 +48,13 @@ class DetailVC : UIViewController {
         view.addSubview(id)
         view.addSubview(psw)
         view.addSubview(addToFavoritesList)
+    }
+    
+    func setupText(){
+        let location = self.viewModel.setupDetail()
+        self.id.text = location.id
+        self.adress.text = location.adress
+        self.psw.text = location.psw
     }
     
     func setupConstrains() {

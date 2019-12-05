@@ -26,7 +26,7 @@ class WiFiVC :  UIViewController {
                   self.wiFiList.reloadData()
                 }
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: self.reloadDataWorkItem!)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: self.reloadDataWorkItem!)
                 
             }
         }
@@ -54,7 +54,6 @@ class WiFiVC :  UIViewController {
     
     init(viewModel: WiFiViewModel = WiFiViewModel()) {
         self.viewModel = WiFiViewModel()
-        
         defer {
             self.viewModel = viewModel
         }
@@ -152,8 +151,9 @@ extension WiFiVC: UITableViewDelegate{
         location.city = itemsInSection[indexPath.row].city
         
         viewModel.showDetail(with: location)
-        
-        navigationController?.pushViewController(DetailVC(), animated: true)
+        let detailVC = DetailVC()
+        navigationController?.pushViewController(detailVC, animated: true)
+       
     }
     
 }

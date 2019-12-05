@@ -12,6 +12,7 @@
 		660EC84F2397A2A70051A575 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EC84E2397A2A70051A575 /* DetailVC.swift */; };
 		660EC8532397AA380051A575 /* DetailFavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EC8522397AA380051A575 /* DetailFavoritesVC.swift */; };
 		660EC85623980A6E0051A575 /* Wi_Fi_Map.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 660EC85423980A6E0051A575 /* Wi_Fi_Map.xcdatamodeld */; };
+		660EC85A2398FA210051A575 /* MOCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EC8592398FA210051A575 /* MOCity.swift */; };
 		66C14A2923958A5C00845B16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A2823958A5C00845B16 /* AppDelegate.swift */; };
 		66C14A2E23958A5C00845B16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66C14A2C23958A5C00845B16 /* Main.storyboard */; };
 		66C14A3323958A5E00845B16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66C14A3223958A5E00845B16 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		660EC84E2397A2A70051A575 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		660EC8522397AA380051A575 /* DetailFavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFavoritesVC.swift; sourceTree = "<group>"; };
 		660EC85523980A6E0051A575 /* FINAL_Project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FINAL_Project.xcdatamodel; sourceTree = "<group>"; };
+		660EC8592398FA210051A575 /* MOCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOCity.swift; sourceTree = "<group>"; };
 		66C14A2523958A5C00845B16 /* FINAL Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FINAL Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66C14A2823958A5C00845B16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66C14A2D23958A5C00845B16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				66C14A6123959B1B00845B16 /* FavoritesCDStack.swift */,
 				66C14A5E23959B1B00845B16 /* MOFavorites.swift */,
 				66C14A5F23959B1B00845B16 /* MOLocation.swift */,
+				660EC8592398FA210051A575 /* MOCity.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				66C14A5A2395963D00845B16 /* AddLocationModel.swift in Sources */,
 				66C14A56239590DF00845B16 /* AddLocationViewModel.swift in Sources */,
 				66C14A5423958C9200845B16 /* AddLocationVC.swift in Sources */,
+				660EC85A2398FA210051A575 /* MOCity.swift in Sources */,
 				660EC85623980A6E0051A575 /* Wi_Fi_Map.xcdatamodeld in Sources */,
 				660EC84923979F440051A575 /* FavoritesViewModels.swift in Sources */,
 				66F5FEE9239642BC00F2EBEB /* WiFiVC.swift in Sources */,

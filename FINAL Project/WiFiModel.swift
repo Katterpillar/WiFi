@@ -9,10 +9,10 @@
 import Foundation
 import CoreData
 
-class WiFiModel{
+class WiFiModel {
     
     var coreDataStack: CoreDataStack
-    var cityList = Set<String>()
+    var dataLoaded = false
     var dataDidLoad: (() -> ())?
     init(coreDataStack: CoreDataStack = CoreDataStack.shared) {
         self.coreDataStack = coreDataStack
@@ -38,26 +38,28 @@ class WiFiModel{
             }.resume()
     }
     
-    
-    
-    
-    func refreshCoreData(){
-        DispatchQueue.main.async {
-            self.coreDataStack.refreshData()
-            self.loadList{(list) in
-                for i in 0..<list.count{
-                    var location = WiFiEntity()
-                    location.id = list[i][0]
-                    location.psw = list[i][1]
-                    location.city = list[i][2]
-                    location.adress = list[i][3]
-                    self.cityList.insert(list[i][2])
-                    self.coreDataStack.addToCoreData(location: location)
+   
+    func refreshCoreData(){        
+        self.coreDataStack.refreshData()
+        self.coreDataStack.refreshCity()
+        self.loadList{(list) in
+            var cityList = [String]()
+            for city in list{
+                var location = WiFiEntity()
+                location.id = city[0]
+                location.psw = city[1]
+                location.city = city[2]
+                location.adress = city[3]
+                self.coreDataStack.addToCoreData(location: location)
+                if cityList.contains(city[2]) {
+  
+                } else {
+                    cityList.append(city[2])
+                    self.coreDataStack.addCityToCoreData(city: cityList[cityList.endIndex - 1])
                 }
             }
-        }
     }
 }
 
-
+}
 

@@ -51,6 +51,21 @@ internal final class CoreDataStack {
         }
     }
     
+    func addCityToCoreData(city: String) {
+        
+        persistentContainer.performBackgroundTask { (context) in
+            let savedData = NSEntityDescription.insertNewObject(forEntityName: "Cities", into: context)
+            savedData.setValue(city, forKey: "city")
+            do {
+                try context.save()
+                print("SuccesfulCity")
+            } catch {
+                print("Can't save data")
+            }
+            
+        }
+    }
+    
     func refreshData(){
         let context = persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "WiFiLock")
@@ -73,4 +88,25 @@ internal final class CoreDataStack {
         catch { }
     }
     
+    func refreshCity(){
+        let context = persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Cities")
+        do
+        {
+            let results = try context.fetch(request)
+            if results.count > 0
+            {
+                for result in results as! [NSManagedObject]
+                {
+                    do
+                    {
+                        context.delete(result)
+                        print("success")
+                    }
+                }
+            }
+            try context.save()
+        }
+        catch { }
+    }
 }
