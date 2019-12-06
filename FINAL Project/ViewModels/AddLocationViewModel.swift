@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class AddLocationViewModel {
     
@@ -19,6 +20,7 @@ class AddLocationViewModel {
     
     var showAlert: ( (String) -> () )?
     var formDataDidChange: (() -> ())?
+    var formDataWillChange: ((UITextView) -> ())?
     
     init(model: AddLocationService = AddLocationService()) {
         self.model = model
@@ -47,6 +49,10 @@ class AddLocationViewModel {
         model.locationFormData.city = addCityText
         model.locationFormData.id = addIdText
         model.locationFormData.psw = addPswText
+    }
+    
+    func refreshNilLocation(addAdressText: String = "", addCityText: String = "", addIdText: String = "", addPswText: String = "", textView: UITextView) {
+        self.formDataWillChange?(textView)
     }
     
 }

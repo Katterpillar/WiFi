@@ -26,7 +26,7 @@ class WiFiVC :  UIViewController {
                     }
                     print(self.reloadDataWorkItem!.isCancelled)
                     if self.reloadDataWorkItem!.isCancelled { return  }
-                  self.wiFiList.reloadData()
+                    self.wiFiList.reloadData()
                 }
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: self.reloadDataWorkItem!)
@@ -53,7 +53,7 @@ class WiFiVC :  UIViewController {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.chooseCityBtn.setTitle(self.term, for: .normal)
+                self.chooseCityBtn.titleLabel?.text = self.term
             }
         }
     }
@@ -61,10 +61,22 @@ class WiFiVC :  UIViewController {
     /// по нажатию на эту кнопку открывается список городов
     lazy var chooseCityBtn: UIButton = {
         let button = UIButton(frame: .zero)
+        button.titleLabel?.text = term
         button.setTitle(term, for: .normal)
-        button.titleLabel?.font = UIFont(name: "System", size: 17.0)
-        button.setImage(UIImage(named: "247210-selection-cursors-1"), for: .normal)
+        button.titleLabel?.font = UIFont(name: "STHeitiSC-Medium", size: 25.0)
+        button.layer.cornerRadius = 10
+        button.setTitleColor(.black, for: .normal)
+        return button
+    }()
+    
+    lazy var choose: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.backgroundColor = UIColor(red:0.69, green:0.79, blue:0.50, alpha:0.5)
+        button.layer.cornerRadius = view.frame.width * 0.09 * 0.5
         button.addTarget(self, action: #selector(pushChooseCityVC), for: .touchDown)
+        button.layer.borderWidth = 0.5
+        button.layer.borderColor = UIColor.black.cgColor
+        button.setImage(UIImage(named: "smashicons"), for: .normal)
         button.setTitleColor(.black, for: .normal)
         return button
     }()
@@ -95,13 +107,16 @@ class WiFiVC :  UIViewController {
         setupConstraints()
         
         navigationItem.title = "Wi-Fi Map"
-        view.backgroundColor = UIColor(red:0.75, green:0.86, blue:0.87, alpha:1.0)
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "STHeitiSC-Light", size: 25)!]
+        self.navigationController?.navigationBar.titleTextAttributes = attributes
+        view.backgroundColor = UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
         wiFiList.dataSource = self
         wiFiList.delegate = self
         searchBar.delegate = self
         wiFiList.register(UITableViewCell.self, forCellReuseIdentifier: "cellFromCoreData")
-        searchBar.showsCancelButton = true
-        
+        searchBar.backgroundColor = .white
+        searchBar.barTintColor = UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
+        searchBar.tintColor = UIColor(red:0.79, green:0.79, blue:0.81, alpha:1.0)
         chooseCity(with: term)
         
     }
@@ -111,8 +126,9 @@ class WiFiVC :  UIViewController {
         view.addSubview(wiFiList)
         view.addSubview(searchBar)
         view.addSubview(chooseCityBtn)
+        view.addSubview(choose)
     }
-
+    
     
     func chooseCity(with city: String){
         viewModel.chooseCity(with: term)
@@ -121,20 +137,25 @@ class WiFiVC :  UIViewController {
     func setupConstraints(){
         
         chooseCityBtn.translatesAutoresizingMaskIntoConstraints = false
-        chooseCityBtn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
-        chooseCityBtn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
+        chooseCityBtn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height * 0.015).isActive = true
+        chooseCityBtn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
+        chooseCityBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        chooseCityBtn.heightAnchor.constraint(equalToConstant: view.frame.height * 0.07).isActive = true
         
-        chooseCityBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -15).isActive = true
-        chooseCityBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        choose.translatesAutoresizingMaskIntoConstraints = false
+        choose.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height * 0.028).isActive = true
+        choose.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1).isActive = true
+        choose.rightAnchor.constraint(equalTo: view.rightAnchor, constant:  -view.frame.width * 0.1).isActive = true
+        choose.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.09).isActive = true
         
         searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60).isActive = true
-        searchBar.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
+        searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height * 0.1).isActive = true
+        searchBar.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         searchBar.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        searchBar.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1).isActive = true
+        searchBar.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15).isActive = true
         
         wiFiList.translatesAutoresizingMaskIntoConstraints = false
-        wiFiList.topAnchor.constraint(equalTo:searchBar.bottomAnchor, constant: 30).isActive = true
+        wiFiList.topAnchor.constraint(equalTo:searchBar.bottomAnchor).isActive = true
         wiFiList.widthAnchor.constraint(equalTo: searchBar.widthAnchor).isActive = true
         wiFiList.centerXAnchor.constraint(equalTo: searchBar.centerXAnchor).isActive = true
         wiFiList.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
@@ -172,7 +193,7 @@ extension WiFiVC: UITableViewDelegate{
         let detailVC = DetailVC()
         viewModel.showDetail(with: location)
         navigationController?.pushViewController(detailVC, animated: true)
-       
+        
     }
     
 }
@@ -199,6 +220,8 @@ extension WiFiVC: UITableViewDataSource {
         guard let itemsInSection = section.objects as? [WiFiLock] else {
             fatalError("нет данных")
         }
+        cellFromCoreData.textLabel?.font = UIFont(name: "HelveticaNeue", size: 16.0)
+        cellFromCoreData.accessoryType = .disclosureIndicator
         cellFromCoreData.textLabel?.text = itemsInSection[indexPath.row].adress
         return cellFromCoreData
     }
@@ -213,5 +236,13 @@ extension WiFiVC: UISearchBarDelegate {
     }
 }
 
+extension UIButton {
+    func addRightImage(image: UIImage, offset: CGFloat) {
+        self.setImage(image, for: .normal)
+        self.imageView?.translatesAutoresizingMaskIntoConstraints = false
+        self.imageView?.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0.0).isActive = true
+        self.imageView?.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -offset).isActive = true
+    }
+}
 
 

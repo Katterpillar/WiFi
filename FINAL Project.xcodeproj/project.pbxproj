@@ -14,9 +14,9 @@
 		660EC85623980A6E0051A575 /* Wi_Fi_Map.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 660EC85423980A6E0051A575 /* Wi_Fi_Map.xcdatamodeld */; };
 		660EC85A2398FA210051A575 /* MOCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EC8592398FA210051A575 /* MOCity.swift */; };
 		660EC85E239928840051A575 /* CheckNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EC85D239928840051A575 /* CheckNetwork.swift */; };
+		660EC8602399873A0051A575 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 660EC85F2399873A0051A575 /* Media.xcassets */; };
 		66C14A2923958A5C00845B16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A2823958A5C00845B16 /* AppDelegate.swift */; };
 		66C14A2E23958A5C00845B16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66C14A2C23958A5C00845B16 /* Main.storyboard */; };
-		66C14A3323958A5E00845B16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66C14A3223958A5E00845B16 /* Assets.xcassets */; };
 		66C14A3623958A5E00845B16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66C14A3423958A5E00845B16 /* LaunchScreen.storyboard */; };
 		66C14A4123958A5E00845B16 /* FINAL_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A4023958A5E00845B16 /* FINAL_ProjectTests.swift */; };
 		66C14A4C23958AB500845B16 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A4B23958AB500845B16 /* TabBar.swift */; };
@@ -52,10 +52,10 @@
 		660EC85523980A6E0051A575 /* FINAL_Project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FINAL_Project.xcdatamodel; sourceTree = "<group>"; };
 		660EC8592398FA210051A575 /* MOCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOCity.swift; sourceTree = "<group>"; };
 		660EC85D239928840051A575 /* CheckNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNetwork.swift; sourceTree = "<group>"; };
+		660EC85F2399873A0051A575 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		66C14A2523958A5C00845B16 /* FINAL Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FINAL Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66C14A2823958A5C00845B16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66C14A2D23958A5C00845B16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		66C14A3223958A5E00845B16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66C14A3523958A5E00845B16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		66C14A3723958A5E00845B16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66C14A3C23958A5E00845B16 /* FINAL ProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FINAL ProjectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,9 +157,9 @@
 				66F5FEE42396423800F2EBEB /* WiFiList */,
 				66C14A4F23958C2200845B16 /* AddLocation */,
 				66C14A2C23958A5C00845B16 /* Main.storyboard */,
-				66C14A3223958A5E00845B16 /* Assets.xcassets */,
 				66C14A3423958A5E00845B16 /* LaunchScreen.storyboard */,
 				660EC85423980A6E0051A575 /* Wi_Fi_Map.xcdatamodeld */,
+				660EC85F2399873A0051A575 /* Media.xcassets */,
 				66C14A3723958A5E00845B16 /* Info.plist */,
 			);
 			path = "FINAL Project";
@@ -339,7 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66C14A3623958A5E00845B16 /* LaunchScreen.storyboard in Resources */,
-				66C14A3323958A5E00845B16 /* Assets.xcassets in Resources */,
+				660EC8602399873A0051A575 /* Media.xcassets in Resources */,
 				66C14A2E23958A5C00845B16 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -36,9 +36,11 @@ class FavoritesVC : UIViewController {
         wiFiList.delegate = self
         wiFiList.dataSource = self
         navigationItem.title = "Избранное"
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "STHeitiSC-Light", size: 25)!]
+        self.navigationController?.navigationBar.titleTextAttributes = attributes
+        view.backgroundColor =  UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
         wiFiList.register(UITableViewCell.self, forCellReuseIdentifier: "favoritesCell")
-        view.backgroundColor = UIColor(red:0.75, green:0.86, blue:0.87, alpha:1.0)
-        
+        view.backgroundColor = UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
         viewModel.loadFromCoreData()
         
     }
@@ -118,6 +120,7 @@ extension FavoritesVC: UITableViewDataSource {
             guard let itemsInSection = section.objects as? [Favorites] else {
                 fatalError()
             }
+            cellFromCoreData.textLabel?.font = UIFont(name: "HelveticaNeue", size: 16.0)            
             cellFromCoreData.textLabel?.text = itemsInSection[indexPath.row].adress
             return cellFromCoreData
             

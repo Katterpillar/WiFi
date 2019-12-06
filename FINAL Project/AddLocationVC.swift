@@ -34,6 +34,35 @@ class AddLocationVC: UIViewController {
             self.viewModel.formDataDidChange = {
                 self.refreshFormData()
             }
+            
+            self.viewModel.formDataWillChange = { textView in
+
+                if self.addIdTextView == textView{
+                    DispatchQueue.main.async {
+                           self.addIdTextView.text = ""
+                         self.addIdTextView.textColor = .black
+                    }
+                }
+                if self.addCityTextView == textView{
+                    DispatchQueue.main.async {
+                    self.addCityTextView.text = ""
+                        self.addCityTextView.textColor = .black
+                    }
+                }
+                if self.addPswTextView == textView{
+                    DispatchQueue.main.async {
+                    self.addPswTextView.text = ""
+                         self.addPswTextView.textColor = .black
+                    }
+                }
+                if self.addAdressTextView == textView{
+                    DispatchQueue.main.async {
+                    self.addAdressTextView.text = ""
+                         self.addAdressTextView.textColor = .black
+                        
+                    }
+                }
+            }
         }
     }    
     
@@ -58,7 +87,6 @@ class AddLocationVC: UIViewController {
         setupDetails()
         
         addButton.addTarget(self, action: #selector(addLocation), for: .touchUpInside)
-        
         addIdTextView.delegate = self
         addAdressTextView.delegate = self
         addPswTextView.delegate = self
@@ -79,71 +107,71 @@ class AddLocationVC: UIViewController {
     func setupConstraints() {
         
         idLbl.translatesAutoresizingMaskIntoConstraints = false
-        idLbl.bottomAnchor.constraint(equalTo: addIdTextView.topAnchor).isActive = true
+        idLbl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height * 0.01).isActive = true
         idLbl.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         idLbl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        idLbl.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1).isActive = true
+        idLbl.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.04).isActive = true
         
         
         addIdTextView.translatesAutoresizingMaskIntoConstraints = false
-        addIdTextView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60).isActive = true
+        addIdTextView.topAnchor.constraint(equalTo: idLbl.bottomAnchor, constant: view.frame.height * 0.01).isActive = true
         addIdTextView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         addIdTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        addIdTextView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2).isActive = true
+        addIdTextView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1).isActive = true
         
         
         pswLbl.translatesAutoresizingMaskIntoConstraints = false
-        pswLbl.topAnchor.constraint(equalTo: addIdTextView.bottomAnchor, constant: 10).isActive = true
+        pswLbl.topAnchor.constraint(equalTo: addIdTextView.bottomAnchor, constant: view.frame.height * 0.01).isActive = true
         pswLbl.widthAnchor.constraint(equalTo: addIdTextView.widthAnchor).isActive = true
         pswLbl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         pswLbl.heightAnchor.constraint(equalTo: idLbl.heightAnchor).isActive = true
         
         addPswTextView.translatesAutoresizingMaskIntoConstraints = false
-        addPswTextView.topAnchor.constraint(equalTo: pswLbl.bottomAnchor, constant: 10).isActive = true
+        addPswTextView.topAnchor.constraint(equalTo: pswLbl.bottomAnchor, constant: view.frame.height * 0.01).isActive = true
         addPswTextView.widthAnchor.constraint(equalTo: addIdTextView.widthAnchor).isActive = true
         addPswTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         addPswTextView.heightAnchor.constraint(equalTo: addIdTextView.heightAnchor).isActive = true
         
 
         cityLbl.translatesAutoresizingMaskIntoConstraints = false
-        cityLbl.topAnchor.constraint(equalTo: addPswTextView.bottomAnchor, constant: 10).isActive = true
+        cityLbl.topAnchor.constraint(equalTo: addPswTextView.bottomAnchor, constant: view.frame.height * 0.01).isActive = true
         cityLbl.widthAnchor.constraint(equalTo: addPswTextView.widthAnchor).isActive = true
         cityLbl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         cityLbl.heightAnchor.constraint(equalTo: idLbl.heightAnchor).isActive = true
         
         addCityTextView.translatesAutoresizingMaskIntoConstraints = false
-        addCityTextView.topAnchor.constraint(equalTo: cityLbl.bottomAnchor, constant: 10).isActive = true
+        addCityTextView.topAnchor.constraint(equalTo: cityLbl.bottomAnchor, constant: view.frame.height * 0.01).isActive = true
         addCityTextView.widthAnchor.constraint(equalTo: addPswTextView.widthAnchor).isActive = true
         addCityTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         addCityTextView.heightAnchor.constraint(equalTo: addPswTextView.heightAnchor).isActive = true
         
         
         adressLbl.translatesAutoresizingMaskIntoConstraints = false
-        adressLbl.topAnchor.constraint(equalTo: addCityTextView.bottomAnchor, constant: 10).isActive = true
+        adressLbl.topAnchor.constraint(equalTo: addCityTextView.bottomAnchor, constant: view.frame.height * 0.01).isActive = true
         adressLbl.widthAnchor.constraint(equalTo: addPswTextView.widthAnchor).isActive = true
         adressLbl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         adressLbl.heightAnchor.constraint(equalTo: idLbl.heightAnchor).isActive = true
         
         
         addAdressTextView.translatesAutoresizingMaskIntoConstraints = false
-        addAdressTextView.topAnchor.constraint(equalTo: adressLbl.bottomAnchor, constant: 10).isActive = true
+        addAdressTextView.topAnchor.constraint(equalTo: adressLbl.bottomAnchor, constant: view.frame.height * 0.01).isActive = true
         addAdressTextView.widthAnchor.constraint(equalTo: addPswTextView.widthAnchor).isActive = true
         addAdressTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         addAdressTextView.heightAnchor.constraint(equalTo: addPswTextView.heightAnchor).isActive = true
         
         
         addButton.translatesAutoresizingMaskIntoConstraints = false
-        addButton.topAnchor.constraint(equalTo: addAdressTextView.bottomAnchor, constant: 50).isActive = true
+        addButton.topAnchor.constraint(equalTo: addAdressTextView.bottomAnchor, constant:addAdressTextView.frame.height * 0.04).isActive = true
         addButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
         addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        addButton.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1).isActive = true
+        addButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
     }
     
     func setupDetails() {
         
         addButton.setTitle("ADD", for: .normal)
         
-        addButton.backgroundColor = UIColor(red:0.87, green:0.69, blue:0.40, alpha:1.0)
+        addButton.backgroundColor = UIColor(red:0.69, green:0.79, blue:0.50, alpha:1.0)
         addButton.layer.cornerRadius = 5
         
         addPswTextView.layer.cornerRadius = 10
@@ -151,28 +179,52 @@ class AddLocationVC: UIViewController {
         addAdressTextView.layer.cornerRadius = 10
         addCityTextView.layer.cornerRadius = 10
         
+        addPswTextView.textColor = .lightGray
+        addAdressTextView.textColor = .lightGray
+        addCityTextView.textColor = .lightGray
+        addIdTextView.textColor = .lightGray
+        
+        DispatchQueue.main.async {
+            self.addPswTextView.text = "кек"
+            self.addIdTextView.text = "лол"
+            self.addAdressTextView.text = "арби"
+            self.addCityTextView.text = "дооооооол"
+        }
+        
+        
+        addPswTextView.font = UIFont(name: "HelveticaNeue-Light", size: 18.0)
+        addIdTextView.font = UIFont(name: "HelveticaNeue-Light", size: 18.0)
+        addAdressTextView.font = UIFont(name: "HelveticaNeue-Light", size: 18.0)
+        addCityTextView.font = UIFont(name: "HelveticaNeue-Light", size: 18.0)
+        
         idLbl.backgroundColor = .clear
         idLbl.text = "Введите id роутера"
+        idLbl.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
         idLbl.textColor = .black
         idLbl.textAlignment = .natural
         
         pswLbl.backgroundColor = .clear
         pswLbl.textColor = .black
         pswLbl.text = "Введите пароль от роутера"
+        pswLbl.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
         pswLbl.textAlignment = .natural
         
         cityLbl.backgroundColor = .clear
         cityLbl.text = "Введите город"
+        cityLbl.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
         cityLbl.textColor = .black
         cityLbl.textAlignment = .natural
         
         adressLbl.backgroundColor = .clear
         adressLbl.textColor = .black
+        adressLbl.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
         adressLbl.text = "Введите адрес"
         adressLbl.textAlignment = .natural
         
-        view.backgroundColor = UIColor(red:0.75, green:0.86, blue:0.87, alpha:1.0)
+        view.backgroundColor = UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
         navigationItem.title = "Добавьте свою точку"
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "STHeitiSC-Light", size: 25)!]
+        self.navigationController?.navigationBar.titleTextAttributes = attributes
     }
     
     @objc func addLocation(){
@@ -197,6 +249,10 @@ extension AddLocationVC : UITextViewDelegate {
       
        viewModel.refreshLocation(addAdressText: addAdressTextView.text, addCityText:  addCityTextView.text, addIdText: addIdTextView.text, addPswText: addPswTextView.text)
         
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        viewModel.refreshNilLocation(textView: textView)
     }
     
 }

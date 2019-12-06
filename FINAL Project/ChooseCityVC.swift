@@ -35,7 +35,10 @@ class ChoiceCityVC :  UIViewController {
     
     override func viewDidLoad() {
         
-        view.backgroundColor = UIColor(red:0.97, green:0.97, blue:0.96, alpha:1.0)
+        view.backgroundColor = UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "STHeitiSC-Light", size: 25)!]
+        self.navigationController?.navigationBar.titleTextAttributes = attributes
+        navigationItem.title = "Выберите город"
         viewModel.loadCityList()
         addSubview()
         setupConstraints()
@@ -79,6 +82,7 @@ extension ChoiceCityVC: UITableViewDataSource {
         guard let itemsInSection = section.objects as [AnyObject]? else {
             fatalError("нет данных")
         }
+        cell.textLabel?.font = UIFont(name: "HelveticaNeue", size: 16.0)
         cell.textLabel?.text = itemsInSection[indexPath.row].city
         return cell
     }
