@@ -183,10 +183,10 @@ class AddLocationVC: UIViewController {
         addIdTextView.textColor = .lightGray
         
         DispatchQueue.main.async {
-            self.addPswTextView.text = "Введите пароль от сети"
-            self.addIdTextView.text = "Введит Id роутера"
-            self.addAdressTextView.text = "Введите адрес в формате: Улица, дом, корпус"
-            self.addCityTextView.text = "Введите город"
+            self.addPswTextView.text = "пароль"
+            self.addIdTextView.text = "id"
+            self.addAdressTextView.text = "yлица, дом, корпус"
+            self.addCityTextView.text = "город"
         }
         
         
@@ -194,6 +194,16 @@ class AddLocationVC: UIViewController {
         addIdTextView.font = UIFont(name: "HelveticaNeue-Light", size: 18.0)
         addAdressTextView.font = UIFont(name: "HelveticaNeue-Light", size: 18.0)
         addCityTextView.font = UIFont(name: "HelveticaNeue-Light", size: 18.0)
+        
+        addPswTextView.autocapitalizationType = .none
+        addIdTextView.autocapitalizationType = .none
+        addAdressTextView.autocapitalizationType = .none
+        
+        addPswTextView.autocorrectionType = .no
+        addIdTextView.autocorrectionType = .no
+        addAdressTextView.autocorrectionType = .no
+        addCityTextView.autocorrectionType = .no
+        
         
         idLbl.backgroundColor = .clear
         idLbl.text = "Введите id роутера"
