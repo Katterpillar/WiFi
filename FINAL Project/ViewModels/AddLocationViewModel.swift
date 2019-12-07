@@ -28,20 +28,32 @@ class AddLocationViewModel {
     
     func addLocation(){
         var filledBad = false
+        var textFildName = String()
         
         if locationFormData.id == "" {
             filledBad = true
+            textFildName = "id"
         }
-        
+        if locationFormData.psw == "" {
+            filledBad = true
+            textFildName = "пароль"
+        }
+        if locationFormData.adress == "" {
+            filledBad = true
+            textFildName = "адрес"
+        }
+        if locationFormData.city == "" {
+            filledBad = true
+            textFildName = "город"
+        }
         if !filledBad {
             model.addToCoreData()
             refreshLocation()
             formDataDidChange?()
         } else {
-            self.showAlert?("Введите айди")
-            print("1")
+            self.showAlert?("Введите \(textFildName)")
+            
         }
-        // FIXME: проверить все поля и показать алерт, если не все поля заполнены
     }
     
     func refreshLocation(addAdressText: String = "", addCityText: String = "", addIdText: String = "", addPswText: String = "") {

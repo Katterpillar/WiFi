@@ -86,8 +86,6 @@ extension ChoiceCityVC: UITableViewDataSource {
         cell.textLabel?.text = itemsInSection[indexPath.row].city
         return cell
     }
-    
-    
 }
 
 extension ChoiceCityVC: UITableViewDelegate {

@@ -36,7 +36,7 @@ class FavoritesVC : UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     override func viewWillAppear(_ animated: Bool) {
-         self.viewModel.loadFromCoreData()
+        self.viewModel.loadFromCoreData()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,9 +49,9 @@ class FavoritesVC : UIViewController {
         wiFiList.dataSource = self
         wiFiList.register(UITableViewCell.self, forCellReuseIdentifier: "favoritesCell")
         view.backgroundColor = UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
-//        DispatchQueue.main.async {
-//            self.viewModel.loadFromCoreData()
-//        }
+        //        DispatchQueue.main.async {
+        //            self.viewModel.loadFromCoreData()
+        //        }
     }
     
     /// добавляет объекты на вью
@@ -143,7 +143,27 @@ extension FavoritesVC: UITableViewDataSource {
         } else { return UITableViewCell()  }
     }
     
-    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Удалить") {
+            _, indexPath in
+            
+            guard let sections = self.viewModel.fetchResultController.sections else {
+                fatalError()
+            }
+            let section = sections[indexPath.section]
+            guard let itemsInSection = section.objects as? [Favorites] else {
+                fatalError()
+            }
+            let location = itemsInSection[indexPath.row].adress
+            DispatchQueue.main.async {
+                self.viewModel.deleteItem(with: location)
+                self.viewModel.loadFromCoreData()
+                self.wiFiList.deleteRows(at: [indexPath], with: .automatic)
+                self.wiFiList.reloadData()
+            }
+        }
+        return [deleteAction]
+    }    
 }
 
 

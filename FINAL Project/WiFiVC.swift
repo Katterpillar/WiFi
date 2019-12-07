@@ -73,9 +73,9 @@ class WiFiVC :  UIViewController {
     lazy var choose: UIButton = {
         let button = UIButton(frame: .zero)
         button.backgroundColor = UIColor(red:0.69, green:0.79, blue:0.50, alpha:0.5)
-        button.layer.cornerRadius = view.frame.width * 0.09 * 0.5
+        button.layer.cornerRadius = view.frame.width * 0.1 * 0.5
         button.addTarget(self, action: #selector(pushChooseCityVC), for: .touchDown)
-        button.layer.borderWidth = 0.5
+        button.layer.borderWidth = 0.8
         button.layer.borderColor = UIColor.black.cgColor
         button.setImage(UIImage(named: "smashicons"), for: .normal)
         button.setTitleColor(.black, for: .normal)
@@ -143,10 +143,10 @@ class WiFiVC :  UIViewController {
         cityLbl.heightAnchor.constraint(equalToConstant: view.frame.height * 0.07).isActive = true
         
         choose.translatesAutoresizingMaskIntoConstraints = false
-        choose.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height * 0.028).isActive = true
+        choose.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height * 0.025).isActive = true
         choose.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1).isActive = true
         choose.rightAnchor.constraint(equalTo: view.rightAnchor, constant:  -view.frame.width * 0.1).isActive = true
-        choose.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.09).isActive = true
+        choose.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.1).isActive = true
         
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height * 0.1).isActive = true
@@ -203,7 +203,6 @@ extension WiFiVC: UITableViewDelegate{
 }
 
 extension WiFiVC: UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         guard let section =  viewModel.fetchResultController.sections else { return 1 }
         return section.count
@@ -213,8 +212,7 @@ extension WiFiVC: UITableViewDataSource {
         guard let sections = viewModel.fetchResultController.sections else { return 1 }
         return sections[section].numberOfObjects
     }
-    
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellFromCoreData = tableView.dequeueReusableCell(withIdentifier: "cellFromCoreData", for: indexPath)

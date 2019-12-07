@@ -15,6 +15,8 @@ class FavoritesViewModels {
     
     var setupDetails: ((WiFiEntity) -> ())?
     var dataDidChange: (() -> ())?
+    var deleteRow:(()->())?
+    var favoritesCD: FavoritesCDStack
     static let shared = FavoritesViewModels()
     ///  загружает данные из core data не поднимая все данные, удобно при использовании table view
     var fetchResultController : NSFetchedResultsController<Favorites> = {
@@ -28,16 +30,12 @@ class FavoritesViewModels {
         
     }()
     
-    var cityList : NSFetchedResultsController<Cities> = {
-    //fetchRequest — запрос на извлечение объектов NSFetchRequest
-    let fetchRequest = NSFetchRequest<Cities>(entityName: "Cities")
-    let sortByIndex = NSSortDescriptor(key: "city", ascending: true)
-    fetchRequest.sortDescriptors = [sortByIndex]
-    let context = CoreDataStack.shared.persistentContainer.viewContext
-    let fetchResultController = NSFetchedResultsController<Cities>(fetchRequest: fetchRequest, managedObjectContext: context , sectionNameKeyPath: nil, cacheName: nil)
-    return fetchResultController
-    
-    }()
+    init(favoritesCD: FavoritesCDStack = FavoritesCDStack.shared) {
+        self.favoritesCD = FavoritesCDStack.shared
+        defer{
+            self.favoritesCD = favoritesCD
+        }
+    }
     
     /// загружает данные по точкам из coredata
     func loadFromCoreData() {
@@ -48,16 +46,7 @@ class FavoritesViewModels {
             print(error.localizedDescription)
         }
     }
-    /// загружает данные по city из coredata
-    func loadCityFromCoreData() {
-        do {
-            try cityList.performFetch()
-            self.dataDidChange?()
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
+ 
     /// показывает детальную информацию
     ///
     /// - Parameter location: содержит все необходимые пользователю параметры для подключения к сети
@@ -65,4 +54,8 @@ class FavoritesViewModels {
         self.setupDetails?(location)
     }
     
+    func deleteItem(with location: String){
+        favoritesCD.deleteItem(adress: location)
+        self.dataDidChange?()
+    }
 }

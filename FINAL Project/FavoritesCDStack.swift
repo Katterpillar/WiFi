@@ -52,5 +52,27 @@ internal final class FavoritesCDStack {
         }
     }
     
+    func deleteItem(adress: String){
+        let context = persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Favorites")
+        request.predicate = NSPredicate(format: "adress CONTAINS[c] %@", adress)
+        do
+        {
+            let results = try context.fetch(request)
+            if results.count > 0
+            {
+                for result in results as! [NSManagedObject]
+                {
+                    do
+                    {
+                        context.delete(result)
+                        print("success")
+                    }
+                }
+            }
+            try context.save()
+        }
+        catch { }
+    }
     
 }
