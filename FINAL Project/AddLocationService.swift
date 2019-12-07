@@ -20,5 +20,6 @@ class AddLocationService {
     
     func addToCoreData(){
        coreDataStack.addToCoreData(location: locationFormData)
+        coreDataStack.addCity(locationFormData.city)
     }
 }

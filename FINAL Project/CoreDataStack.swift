@@ -114,4 +114,29 @@ internal final class CoreDataStack {
         }
         catch { }
     }
+    
+    /// функция очищения списка городов перед обновлением
+    func addCity(_ city: String){
+        let context = persistentContainer.viewContext
+        //let usersCity = Cities()
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Cities")
+        request.predicate = NSPredicate(format: "city CONTAINS[c] %@", city)
+        do
+        {
+            let results = try context.fetch(request)
+            if results.count == 0
+            {
+                do
+                {
+                    let entity =  NSEntityDescription.entity(forEntityName: "Cities", in: context)
+                    let testEntity = NSManagedObject(entity: entity!, insertInto: context)
+                    testEntity.setValue(city, forKey: "city")
+                    print("success")
+                }
+            }
+            try context.save()
+        }
+        catch { }
+    }
+    
 }
