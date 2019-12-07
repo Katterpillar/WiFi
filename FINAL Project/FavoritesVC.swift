@@ -13,7 +13,16 @@ import UIKit
 class FavoritesVC : UIViewController {
     
     var wiFiList = UITableView(frame: .zero)
-    var viewModel: FavoritesViewModels
+    var viewModel: FavoritesViewModels {
+        didSet {
+            self.viewModel.dataDidChange = {
+                DispatchQueue.main.async {
+                    self.wiFiList.reloadData()
+                }
+            }
+        }
+        
+    }
     
     init(viewModel: FavoritesViewModels = FavoritesViewModels.shared) {
         self.viewModel = FavoritesViewModels()
@@ -26,23 +35,23 @@ class FavoritesVC : UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+         self.viewModel.loadFromCoreData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         addSubview()
         setupConstraints()
+        setupView()
         
         wiFiList.delegate = self
         wiFiList.dataSource = self
-        navigationItem.title = "Избранное"
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "STHeitiSC-Light", size: 25)!]
-        self.navigationController?.navigationBar.titleTextAttributes = attributes
-        view.backgroundColor =  UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
         wiFiList.register(UITableViewCell.self, forCellReuseIdentifier: "favoritesCell")
         view.backgroundColor = UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
-        viewModel.loadFromCoreData()
-        
+//        DispatchQueue.main.async {
+//            self.viewModel.loadFromCoreData()
+//        }
     }
     
     /// добавляет объекты на вью
@@ -59,7 +68,14 @@ class FavoritesVC : UIViewController {
         wiFiList.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         wiFiList.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         wiFiList.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+    }
+    
+    func setupView() {
         
+        navigationItem.title = "Избранное"
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "STHeitiSC-Light", size: 25)!]
+        self.navigationController?.navigationBar.titleTextAttributes = attributes
+        view.backgroundColor =  UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
         
     }
 }
@@ -97,7 +113,7 @@ extension FavoritesVC: UITableViewDataSource {
             return 1
         }
         return sections.count
-    }
+    }  
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let sections = viewModel.fetchResultController.sections else {

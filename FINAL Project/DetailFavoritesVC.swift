@@ -111,6 +111,8 @@ class DetailFavoritesVC : UIViewController {
         city.widthAnchor.constraint(equalTo: psw.widthAnchor).isActive = true
         city.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         city.heightAnchor.constraint(equalTo: psw.heightAnchor).isActive = true
+        city.sizeToFit()
+        city.numberOfLines = 4
         
         
         adressLbl.translatesAutoresizingMaskIntoConstraints = false
@@ -125,6 +127,8 @@ class DetailFavoritesVC : UIViewController {
         adress.widthAnchor.constraint(equalTo: psw.widthAnchor).isActive = true
         adress.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         adress.heightAnchor.constraint(equalTo: psw.heightAnchor).isActive = true
+        adress.sizeToFit()
+        adress.numberOfLines = 4
         
     }
     
@@ -143,10 +147,10 @@ class DetailFavoritesVC : UIViewController {
         self.psw.layer.masksToBounds = true
         self.psw.layer.cornerRadius = 10
         
-        city.font = UIFont(name: "Helvetica", size: 18.0)
-        adress.font = UIFont(name: "Helvetica", size: 18.0)
-        id.font = UIFont(name: "Helvetica", size: 18.0)
-        psw.font = UIFont(name: "Helvetica", size: 18.0)
+        city.font = UIFont(name: "Helvetica", size: 16.0)
+        adress.font = UIFont(name: "Helvetica", size: 16.0)
+        id.font = UIFont(name: "Helvetica", size: 16.0)
+        psw.font = UIFont(name: "Helvetica", size: 16.0)
         
         
         self.city.backgroundColor = .white

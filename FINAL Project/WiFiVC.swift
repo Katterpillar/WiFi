@@ -40,7 +40,7 @@ class WiFiVC :  UIViewController {
             }
             self.viewModel.cityChange = { city in
                 DispatchQueue.main.async {
-                    self.chooseCityBtn.setTitle(city, for: .normal)
+                    self.cityLbl.text = city
                 }
             }
         }
@@ -53,22 +53,23 @@ class WiFiVC :  UIViewController {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.chooseCityBtn.titleLabel?.text = self.term
+                self.cityLbl.text = self.term
             }
         }
     }
     
-    /// по нажатию на эту кнопку открывается список городов
-    lazy var chooseCityBtn: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.titleLabel?.text = term
-        button.setTitle(term, for: .normal)
-        button.titleLabel?.font = UIFont(name: "STHeitiSC-Medium", size: 25.0)
-        button.layer.cornerRadius = 10
-        button.setTitleColor(.black, for: .normal)
+    lazy var cityLbl: UILabel = {
+        let button = UILabel(frame: .zero)
+        button.text = term
+        button.numberOfLines = 1
+        button.minimumScaleFactor = 0.5
+        button.textAlignment = .center
+        button.adjustsFontSizeToFitWidth = true
+        button.font = UIFont(name: "STHeitiSC-Medium", size: 25.0)
         return button
     }()
     
+    /// по нажатию на эту кнопку открывается список городов
     lazy var choose: UIButton = {
         let button = UIButton(frame: .zero)
         button.backgroundColor = UIColor(red:0.69, green:0.79, blue:0.50, alpha:0.5)
@@ -121,11 +122,10 @@ class WiFiVC :  UIViewController {
         
     }
     
-    
     func addSubview(){
         view.addSubview(wiFiList)
         view.addSubview(searchBar)
-        view.addSubview(chooseCityBtn)
+        view.addSubview(cityLbl)
         view.addSubview(choose)
     }
     
@@ -136,11 +136,11 @@ class WiFiVC :  UIViewController {
     
     func setupConstraints(){
         
-        chooseCityBtn.translatesAutoresizingMaskIntoConstraints = false
-        chooseCityBtn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height * 0.015).isActive = true
-        chooseCityBtn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
-        chooseCityBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        chooseCityBtn.heightAnchor.constraint(equalToConstant: view.frame.height * 0.07).isActive = true
+        cityLbl.translatesAutoresizingMaskIntoConstraints = false
+        cityLbl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height * 0.015).isActive = true
+        cityLbl.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
+        cityLbl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        cityLbl.heightAnchor.constraint(equalToConstant: view.frame.height * 0.07).isActive = true
         
         choose.translatesAutoresizingMaskIntoConstraints = false
         choose.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height * 0.028).isActive = true
@@ -160,7 +160,6 @@ class WiFiVC :  UIViewController {
         wiFiList.centerXAnchor.constraint(equalTo: searchBar.centerXAnchor).isActive = true
         wiFiList.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
-        
     }
     
     /// показывется список городов
@@ -168,7 +167,12 @@ class WiFiVC :  UIViewController {
         navigationController?.pushViewController(ChoiceCityVC(), animated: true)
     }
     
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if touches.first != nil {
+            view.endEditing(true)
+        }
+        super.touchesBegan(touches, with: event)
+    }
 }
 
 extension WiFiVC: UITableViewDelegate{

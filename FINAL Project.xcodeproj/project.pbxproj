@@ -28,6 +28,7 @@
 		66C14A6323959B1B00845B16 /* MOFavorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A5E23959B1B00845B16 /* MOFavorites.swift */; };
 		66C14A6423959B1B00845B16 /* MOLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A5F23959B1B00845B16 /* MOLocation.swift */; };
 		66C14A6623959B1B00845B16 /* FavoritesCDStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A6123959B1B00845B16 /* FavoritesCDStack.swift */; };
+		66F520C9239BE1F9004EA799 /* ButtoBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F520C8239BE1F9004EA799 /* ButtoBuilder.swift */; };
 		66F5FEE9239642BC00F2EBEB /* WiFiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F5FEE8239642BC00F2EBEB /* WiFiVC.swift */; };
 		66F5FEEB2396432400F2EBEB /* WiFiViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F5FEEA2396432400F2EBEB /* WiFiViewService.swift */; };
 		66F5FEED2396453500F2EBEB /* ChooseCityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F5FEEC2396453500F2EBEB /* ChooseCityVC.swift */; };
@@ -70,6 +71,7 @@
 		66C14A5E23959B1B00845B16 /* MOFavorites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOFavorites.swift; sourceTree = "<group>"; };
 		66C14A5F23959B1B00845B16 /* MOLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOLocation.swift; sourceTree = "<group>"; };
 		66C14A6123959B1B00845B16 /* FavoritesCDStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesCDStack.swift; sourceTree = "<group>"; };
+		66F520C8239BE1F9004EA799 /* ButtoBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtoBuilder.swift; sourceTree = "<group>"; };
 		66F5FEE8239642BC00F2EBEB /* WiFiVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiVC.swift; sourceTree = "<group>"; };
 		66F5FEEA2396432400F2EBEB /* WiFiViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiViewService.swift; sourceTree = "<group>"; };
 		66F5FEEC2396453500F2EBEB /* ChooseCityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCityVC.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				66C14A2823958A5C00845B16 /* AppDelegate.swift */,
 				66C14A4B23958AB500845B16 /* TabBar.swift */,
 				660EC85D239928840051A575 /* CheckNetwork.swift */,
+				66F520C8239BE1F9004EA799 /* ButtoBuilder.swift */,
 				66C14A6723959B2700845B16 /* CoreData */,
 				660EC84423979EEF0051A575 /* Favorites */,
 				66F5FEE42396423800F2EBEB /* WiFiList */,
@@ -358,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66F520C9239BE1F9004EA799 /* ButtoBuilder.swift in Sources */,
 				660EC85E239928840051A575 /* CheckNetwork.swift in Sources */,
 				66F5FEED2396453500F2EBEB /* ChooseCityVC.swift in Sources */,
 				66C14A2923958A5C00845B16 /* AppDelegate.swift in Sources */,
@@ -471,7 +475,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -526,7 +530,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -543,6 +547,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VS8BQPMRV4;
 				INFOPLIST_FILE = "FINAL Project/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -550,7 +555,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "kathrine.FINAL-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -561,6 +566,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VS8BQPMRV4;
 				INFOPLIST_FILE = "FINAL Project/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -568,7 +574,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "kathrine.FINAL-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -580,6 +586,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VS8BQPMRV4;
 				INFOPLIST_FILE = "FINAL ProjectTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -601,6 +608,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VS8BQPMRV4;
 				INFOPLIST_FILE = "FINAL ProjectTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

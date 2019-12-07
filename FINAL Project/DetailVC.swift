@@ -20,7 +20,7 @@ class DetailVC : UIViewController {
     var pswLbl = UILabel(frame: .zero)
     var adressLbl = UILabel(frame: .zero)
     var cityLbl = UILabel(frame: .zero)
-    var addToFavoritesList = UIButton(frame: .zero)
+    var addToFavoritesList = CustomButton(color: UIColor(red:0.69, green:0.79, blue:0.50, alpha:1.0), title: "В избранное")
     /// экземпляр view model
     var viewModel: WiFiViewService {
         didSet{
@@ -125,6 +125,8 @@ class DetailVC : UIViewController {
         adress.widthAnchor.constraint(equalTo: psw.widthAnchor).isActive = true
         adress.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         adress.heightAnchor.constraint(equalTo: psw.heightAnchor).isActive = true
+        adress.sizeToFit()
+        adress.numberOfLines = 4
         
         
         addToFavoritesList.translatesAutoresizingMaskIntoConstraints = false
@@ -136,15 +138,12 @@ class DetailVC : UIViewController {
     }
     
     func setupView() {
-         navigationItem.title = "Описание"
+        navigationItem.title = "Описание"
         let attributes = [NSAttributedString.Key.font: UIFont(name: "STHeitiSC-Light", size: 25)!]
         self.navigationController?.navigationBar.titleTextAttributes = attributes
         view.backgroundColor = UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
         
-        addToFavoritesList.setTitle("В избранное", for: .normal)
         addToFavoritesList.addTarget(self, action: #selector(addToFavoritesCoreData), for: .touchUpInside)
-        addToFavoritesList.backgroundColor = UIColor(red:0.69, green:0.79, blue:0.50, alpha:1.0)
-        addToFavoritesList.layer.cornerRadius = 5
         
         self.city.layer.masksToBounds = true
         self.city.layer.cornerRadius = 10

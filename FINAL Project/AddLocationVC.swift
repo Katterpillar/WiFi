@@ -15,7 +15,7 @@ class AddLocationVC: UIViewController {
     var addIdTextView = UITextView(frame: .zero)
     var addCityTextView = UITextView(frame: .zero)
     var addPswTextView = UITextView(frame: .zero)
-    var addButton = UIButton(frame: .zero)
+    var addButton = CustomButton(color: UIColor(red:0.69, green:0.79, blue:0.50, alpha:1.0), title: "Добавить")
     var cityLbl = UILabel(frame: .zero)
     var adressLbl = UILabel(frame: .zero)
     var idLbl = UILabel(frame: .zero)
@@ -46,7 +46,7 @@ class AddLocationVC: UIViewController {
                 if self.addCityTextView == textView{
                     DispatchQueue.main.async {
                     self.addCityTextView.text = ""
-                        self.addCityTextView.textColor = .black
+                    self.addCityTextView.textColor = .black
                     }
                 }
                 if self.addPswTextView == textView{
@@ -86,10 +86,6 @@ class AddLocationVC: UIViewController {
         setupConstraints()
         setupDetails()
         
-        addButton.addTarget(self, action: #selector(addLocation), for: .touchUpInside)
-        addIdTextView.delegate = self
-        addAdressTextView.delegate = self
-        addPswTextView.delegate = self
     }
     
     func addSubviews(){
@@ -161,7 +157,7 @@ class AddLocationVC: UIViewController {
         
         
         addButton.translatesAutoresizingMaskIntoConstraints = false
-        addButton.topAnchor.constraint(equalTo: addAdressTextView.bottomAnchor, constant:addAdressTextView.frame.height * 0.04).isActive = true
+        addButton.topAnchor.constraint(equalTo: addAdressTextView.bottomAnchor, constant: view.frame.height * 0.04).isActive = true
         addButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
         addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         addButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
@@ -169,10 +165,12 @@ class AddLocationVC: UIViewController {
     
     func setupDetails() {
         
-        addButton.setTitle("ADD", for: .normal)
+        addButton.addTarget(self, action: #selector(addLocation), for: .touchUpInside)
         
-        addButton.backgroundColor = UIColor(red:0.69, green:0.79, blue:0.50, alpha:1.0)
-        addButton.layer.cornerRadius = 5
+        addIdTextView.delegate = self
+        addAdressTextView.delegate = self
+        addPswTextView.delegate = self
+        addCityTextView.delegate = self
         
         addPswTextView.layer.cornerRadius = 10
         addIdTextView.layer.cornerRadius = 10
@@ -185,10 +183,10 @@ class AddLocationVC: UIViewController {
         addIdTextView.textColor = .lightGray
         
         DispatchQueue.main.async {
-            self.addPswTextView.text = "кек"
-            self.addIdTextView.text = "лол"
-            self.addAdressTextView.text = "арби"
-            self.addCityTextView.text = "дооооооол"
+            self.addPswTextView.text = "Введите пароль от сети"
+            self.addIdTextView.text = "Введит Id роутера"
+            self.addAdressTextView.text = "Введите адрес в формате: Улица, дом, корпус"
+            self.addCityTextView.text = "Введите город"
         }
         
         
@@ -241,6 +239,13 @@ class AddLocationVC: UIViewController {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if touches.first != nil {
+            view.endEditing(true)
+        }
+        super.touchesBegan(touches, with: event)
+    }
+    
 }
 
 extension AddLocationVC : UITextViewDelegate {
@@ -252,7 +257,9 @@ extension AddLocationVC : UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        viewModel.refreshNilLocation(textView: textView)
+        DispatchQueue.main.async {
+            self.viewModel.refreshNilLocation(textView: textView)
+        }
     }
     
 }
