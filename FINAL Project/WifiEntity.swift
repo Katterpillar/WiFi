@@ -13,4 +13,6 @@ struct WiFiEntity {
     var city: String = ""
     var id: String = ""
     var psw: String = ""
+    var longtitude: String = ""
+    var latitude: String = ""
 }

@@ -41,6 +41,8 @@ internal final class CoreDataStack {
             savedData.setValue(location.psw, forKey: "psw")
             savedData.setValue(location.city, forKey: "city")
             savedData.setValue(location.adress, forKey: "adress")
+            savedData.setValue(location.longtitude, forKey: "longtitude")
+            savedData.setValue(location.latitude, forKey: "latitude")
             
             do {
                 try context.save()

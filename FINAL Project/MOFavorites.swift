@@ -16,5 +16,7 @@ internal class Favorites: NSManagedObject {
     @NSManaged public var id: String
     @NSManaged public var psw: String
     @NSManaged public var city: String
+    @NSManaged public var longtitude: String
+    @NSManaged public var latitude: String
     
 }

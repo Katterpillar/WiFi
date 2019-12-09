@@ -50,6 +50,8 @@ class WiFiModel {
                 location.psw = city[1]
                 location.city = city[2]
                 location.adress = city[3]
+                location.longtitude = city[4]
+                location.latitude = city [5]
                 self.coreDataStack.addToCoreData(location: location)
                 if cityList.contains(city[2]) {
   

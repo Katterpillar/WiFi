@@ -7,17 +7,21 @@
         <attribute name="adress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longtitude" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="psw" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="WiFiLock" representedClassName="WiFiLock" syncable="YES">
         <attribute name="adress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longtitude" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="psw" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Favorites" positionX="-54" positionY="18" width="128" height="105"/>
-        <element name="WiFiLock" positionX="-54" positionY="-9" width="128" height="105"/>
         <element name="Cities" positionX="-27" positionY="63" width="128" height="60"/>
+        <element name="Favorites" positionX="-54" positionY="18" width="128" height="135"/>
+        <element name="WiFiLock" positionX="-54" positionY="-9" width="128" height="135"/>
     </elements>
 </model>

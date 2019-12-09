@@ -27,10 +27,13 @@ class TabBarViewController : UITabBarController {
         
         let favoritesVC = UINavigationController(rootViewController: FavoritesVC())
         favoritesVC.tabBarItem = UITabBarItem.init(title: "избранное", image: UIImage(named: "favorites"), tag: 3)
+        
+        let mapVC = UINavigationController(rootViewController: MapVC())
+        mapVC.tabBarItem = UITabBarItem.init(title: "карта", image: UIImage(named: "map"), tag: 4)
 
         
         tabBar.tintColor =  UIColor(red:0.69, green:0.79, blue:0.50, alpha:1.0)
-        self.viewControllers = [addLocationVC, wiFiListVC, favoritesVC]
+        self.viewControllers = [addLocationVC, wiFiListVC, favoritesVC, mapVC]
     }
     
 }

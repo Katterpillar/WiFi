@@ -204,7 +204,7 @@ class DetailVC : UIViewController {
     
     /// добавляет точку в избранное
     @objc func addToFavoritesCoreData(){
-        let location = WiFiEntity(adress: self.adress.text ?? "", city: self.city.text ?? "", id: self.id.text ?? "", psw: self.psw.text ?? "")
+        let location = WiFiEntity(adress: self.adress.text ?? "", city: self.city.text ?? "", id: self.id.text ?? "", psw: self.psw.text ?? "", longtitude: "", latitude: "")
         viewModel.addToFavorites(location)
     }
     
