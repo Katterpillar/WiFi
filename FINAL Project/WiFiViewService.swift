@@ -82,11 +82,6 @@ class WiFiViewService {
         self.favoritesCD.save(location: location)
     }
     
-    func pushChoiseVC(){
-        //            let vc = ChoiceCityVC()
-        //            vc.wifiTableDelegate = self
-    }
-    
     func searchActivate(with searchBarText: String, and label: String){
         if searchBarText == "" {
             fetchResultController.fetchRequest.predicate = NSPredicate(format: "city CONTAINS[c] %@", label)

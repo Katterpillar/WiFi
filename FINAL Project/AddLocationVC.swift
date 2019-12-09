@@ -240,8 +240,7 @@ class AddLocationVC: UIViewController {
     }
     
     func refreshFormData() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
+        DispatchQueue.main.async {
             self.addAdressTextView.text = self.viewModel.locationFormData.adress
             self.addCityTextView.text = self.viewModel.locationFormData.city
             self.addIdTextView.text = self.viewModel.locationFormData.adress
@@ -267,9 +266,7 @@ extension AddLocationVC : UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        DispatchQueue.main.async {
             self.viewModel.refreshNilLocation(textView: textView)
         }
-    }
     
 }

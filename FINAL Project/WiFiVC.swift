@@ -118,7 +118,6 @@ class WiFiVC :  UIViewController {
         searchBar.backgroundColor = .white
         searchBar.barTintColor = UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
         searchBar.tintColor = UIColor(red:0.79, green:0.79, blue:0.81, alpha:1.0)
-        chooseCity(with: term)
         
     }
     
@@ -127,11 +126,6 @@ class WiFiVC :  UIViewController {
         view.addSubview(searchBar)
         view.addSubview(cityLbl)
         view.addSubview(choose)
-    }
-    
-    
-    func chooseCity(with city: String){
-        viewModel.chooseCity(with: term)
     }
     
     func setupConstraints(){
@@ -174,77 +168,4 @@ class WiFiVC :  UIViewController {
         super.touchesBegan(touches, with: event)
     }
 }
-
-extension WiFiVC: UITableViewDelegate{
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        guard let sections = viewModel.fetchResultController.sections else {
-            fatalError()
-        }
-        let section = sections[indexPath.section]
-        guard let itemsInSection = section.objects as? [WiFiLock] else {
-            fatalError()
-        }
-        
-        var location = WiFiEntity()
-        location.id = itemsInSection[indexPath.row].id
-        location.psw = itemsInSection[indexPath.row].psw
-        location.adress = itemsInSection[indexPath.row].adress
-        location.city = itemsInSection[indexPath.row].city
-        
-        //передаются данные о выбранной ячейке для детального представление
-        let detailVC = DetailVC()
-        viewModel.showDetail(with: location)
-        navigationController?.pushViewController(detailVC, animated: true)
-        
-    }
-    
-}
-
-extension WiFiVC: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        guard let section =  viewModel.fetchResultController.sections else { return 1 }
-        return section.count
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let sections = viewModel.fetchResultController.sections else { return 1 }
-        return sections[section].numberOfObjects
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cellFromCoreData = tableView.dequeueReusableCell(withIdentifier: "cellFromCoreData", for: indexPath)
-        
-        guard let sections = viewModel.fetchResultController.sections else { fatalError() }
-        let section = sections[indexPath.section]
-        guard let itemsInSection = section.objects as? [WiFiLock] else {
-            fatalError("нет данных")
-        }
-        cellFromCoreData.textLabel?.font = UIFont(name: "HelveticaNeue", size: 16.0)
-        cellFromCoreData.accessoryType = .disclosureIndicator
-        cellFromCoreData.textLabel?.text = itemsInSection[indexPath.row].adress
-        return cellFromCoreData
-    }
-    
-}
-
-
-extension WiFiVC: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
-        guard let searchBarText = searchBar.text else { return }
-        viewModel.searchActivate(with: searchBarText, and: term)
-    }
-}
-
-extension UIButton {
-    func addRightImage(image: UIImage, offset: CGFloat) {
-        self.setImage(image, for: .normal)
-        self.imageView?.translatesAutoresizingMaskIntoConstraints = false
-        self.imageView?.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0.0).isActive = true
-        self.imageView?.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -offset).isActive = true
-    }
-}
-
 

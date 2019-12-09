@@ -21,15 +21,13 @@
       "scale" : "3x"
     },
     {
-      "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "Wi-Fi-Map-Logo.png",
+      "size" : "40x40",
       "scale" : "2x"
     },
     {
-      "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "Wi-Fi-Map-Logo-1.png",
+      "size" : "40x40",
       "scale" : "3x"
     },
     {
@@ -73,27 +71,23 @@
       "scale" : "2x"
     },
     {
-      "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "Wi-Fi-Map-Logo-8.png",
+      "size" : "76x76",
       "scale" : "1x"
     },
     {
-      "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "Wi-Fi-Map-Logo-7.png",
+      "size" : "76x76",
       "scale" : "2x"
     },
     {
+      "idiom" : "ipad",
       "size" : "83.5x83.5",
-      "idiom" : "ipad",
-      "filename" : "Wi-Fi-Map-Logo-6.png",
       "scale" : "2x"
     },
     {
-      "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "Wi-Fi-Map-Logo-9.png",
+      "size" : "1024x1024",
       "scale" : "1x"
     }
   ],

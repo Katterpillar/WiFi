@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-/// "умная" и самстоятельная модель: ходит в интернет и получает данные, парсит их и записывает в core data
+/// "умная" и самостоятельная модель: ходит в интернет и получает данные, парсит их и записывает в core data
 class WiFiModel {
 
     var coreDataStack: CoreDataStack

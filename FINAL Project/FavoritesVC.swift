@@ -49,9 +49,6 @@ class FavoritesVC : UIViewController {
         wiFiList.dataSource = self
         wiFiList.register(UITableViewCell.self, forCellReuseIdentifier: "favoritesCell")
         view.backgroundColor = UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
-        //        DispatchQueue.main.async {
-        //            self.viewModel.loadFromCoreData()
-        //        }
     }
     
     /// добавляет объекты на вью

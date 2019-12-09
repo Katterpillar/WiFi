@@ -115,10 +115,9 @@ internal final class CoreDataStack {
         catch { }
     }
     
-    /// функция очищения списка городов перед обновлением
+    /// функция добавления пользовательского города, если он отсутствует в кастомном списке
     func addCity(_ city: String){
         let context = persistentContainer.viewContext
-        //let usersCity = Cities()
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Cities")
         request.predicate = NSPredicate(format: "city CONTAINS[c] %@", city)
         do

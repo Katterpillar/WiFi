@@ -66,39 +66,6 @@ class ChoiceCityVC :  UIViewController {
     
 }
 
-extension ChoiceCityVC: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let sections = viewModel.fetchResultCityController.sections else { return 1 }
-        return sections[section].numberOfObjects
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = cityList.dequeueReusableCell(withIdentifier: "city") else {
-            fatalError()
-        }
-        guard let sections = viewModel.fetchResultCityController.sections else { fatalError() }
-        let section = sections[indexPath.section]
-        guard let itemsInSection = section.objects as [AnyObject]? else {
-            fatalError("нет данных")
-        }
-        cell.textLabel?.font = UIFont(name: "HelveticaNeue", size: 16.0)
-        cell.textLabel?.text = itemsInSection[indexPath.row].city
-        return cell
-    }
-}
 
-extension ChoiceCityVC: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let sections = viewModel.fetchResultCityController.sections else { fatalError() }
-        let section = sections[indexPath.section]
-        guard let itemsInSection = section.objects as [AnyObject]? else {
-            fatalError("нет данных")
-        }
-        let city = itemsInSection[indexPath.row].city
-        viewModel.chooseCity(with: city ?? "")
-        navigationController?.popViewController(animated: true)
-    }
-}
+
 
