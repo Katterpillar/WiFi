@@ -38,7 +38,10 @@
 		66F520DE239D1E2E004EA799 /* WiFiViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F520DD239D1E2E004EA799 /* WiFiViewService.swift */; };
 		66F520E0239D5752004EA799 /* AddLocationViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F520DF239D5752004EA799 /* AddLocationViewModelMock.swift */; };
 		66F520E2239D5CEA004EA799 /* AddLocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F520E1239D5CEA004EA799 /* AddLocationTests.swift */; };
-		66F520E4239E41EA004EA799 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F520E3239E41EA004EA799 /* Map.swift */; };
+		66F520E4239E41EA004EA799 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F520E3239E41EA004EA799 /* MapVC.swift */; };
+		66F52116239E8963004EA799 /* MapViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F52115239E8963004EA799 /* MapViewService.swift */; };
+		66F52119239E95DA004EA799 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F52118239E95DA004EA799 /* CoreLocation.framework */; };
+		66F5211B239EA519004EA799 /* MapVC+ CLLocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F5211A239EA519004EA799 /* MapVC+ CLLocationManagerDelegate.swift */; };
 		66F5FEE9239642BC00F2EBEB /* WiFiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F5FEE8239642BC00F2EBEB /* WiFiVC.swift */; };
 		66F5FEEB2396432400F2EBEB /* WiFiViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F5FEEA2396432400F2EBEB /* WiFiViewService.swift */; };
 		66F5FEED2396453500F2EBEB /* ChooseCityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F5FEEC2396453500F2EBEB /* ChooseCityVC.swift */; };
@@ -91,7 +94,10 @@
 		66F520DD239D1E2E004EA799 /* WiFiViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiViewService.swift; sourceTree = "<group>"; };
 		66F520DF239D5752004EA799 /* AddLocationViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewModelMock.swift; sourceTree = "<group>"; };
 		66F520E1239D5CEA004EA799 /* AddLocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationTests.swift; sourceTree = "<group>"; };
-		66F520E3239E41EA004EA799 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		66F520E3239E41EA004EA799 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		66F52115239E8963004EA799 /* MapViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewService.swift; sourceTree = "<group>"; };
+		66F52118239E95DA004EA799 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		66F5211A239EA519004EA799 /* MapVC+ CLLocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapVC+ CLLocationManagerDelegate.swift"; sourceTree = "<group>"; };
 		66F5FEE8239642BC00F2EBEB /* WiFiVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiVC.swift; sourceTree = "<group>"; };
 		66F5FEEA2396432400F2EBEB /* WiFiViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiViewService.swift; sourceTree = "<group>"; };
 		66F5FEEC2396453500F2EBEB /* ChooseCityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCityVC.swift; sourceTree = "<group>"; };
@@ -103,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66F52119239E95DA004EA799 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +163,7 @@
 				66C14A2723958A5C00845B16 /* FINAL Project */,
 				66C14A3F23958A5E00845B16 /* FINAL ProjectTests */,
 				66C14A2623958A5C00845B16 /* Products */,
+				66F52117239E95DA004EA799 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -175,7 +183,7 @@
 				66C14A4B23958AB500845B16 /* TabBar.swift */,
 				660EC85D239928840051A575 /* Reachability.swift */,
 				66F520C8239BE1F9004EA799 /* ButtonBuilder.swift */,
-				66F520E3239E41EA004EA799 /* Map.swift */,
+				66F52114239E8943004EA799 /* Map */,
 				66C14A6723959B2700845B16 /* CoreData */,
 				660EC84423979EEF0051A575 /* Favorites */,
 				66F5FEE42396423800F2EBEB /* WiFiList */,
@@ -259,6 +267,24 @@
 				66F520CF239D0365004EA799 /* WiFiVC+ searchDelegate.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		66F52114239E8943004EA799 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				66F520E3239E41EA004EA799 /* MapVC.swift */,
+				66F5211A239EA519004EA799 /* MapVC+ CLLocationManagerDelegate.swift */,
+				66F52115239E8963004EA799 /* MapViewService.swift */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		66F52117239E95DA004EA799 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				66F52118239E95DA004EA799 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		66F5FEE42396423800F2EBEB /* WiFiList */ = {
@@ -401,7 +427,7 @@
 			files = (
 				66F520C9239BE1F9004EA799 /* ButtonBuilder.swift in Sources */,
 				660EC85E239928840051A575 /* Reachability.swift in Sources */,
-				66F520E4239E41EA004EA799 /* Map.swift in Sources */,
+				66F520E4239E41EA004EA799 /* MapVC.swift in Sources */,
 				66F5FEED2396453500F2EBEB /* ChooseCityVC.swift in Sources */,
 				66C14A2923958A5C00845B16 /* AppDelegate.swift in Sources */,
 				66F5FEEF23968C9600F2EBEB /* WiFiModel.swift in Sources */,
@@ -412,11 +438,13 @@
 				660EC84323979ED10051A575 /* FavoritesVC.swift in Sources */,
 				66C14A6623959B1B00845B16 /* FavoritesCDStack.swift in Sources */,
 				66C14A5A2395963D00845B16 /* AddLocationService.swift in Sources */,
+				66F5211B239EA519004EA799 /* MapVC+ CLLocationManagerDelegate.swift in Sources */,
 				66C14A56239590DF00845B16 /* AddLocationViewModel.swift in Sources */,
 				66F520D0239D0365004EA799 /* WiFiVC+ searchDelegate.swift in Sources */,
 				66C14A5423958C9200845B16 /* AddLocationVC.swift in Sources */,
 				660EC85A2398FA210051A575 /* MOCity.swift in Sources */,
 				660EC85623980A6E0051A575 /* Wi_Fi_Map.xcdatamodeld in Sources */,
+				66F52116239E8963004EA799 /* MapViewService.swift in Sources */,
 				660EC84923979F440051A575 /* FavoritesViewModels.swift in Sources */,
 				66F520CC239D02A8004EA799 /* VC's+dataSource.swift in Sources */,
 				66F520CE239D02F2004EA799 /* VC's+TableViewDelegate.swift in Sources */,
