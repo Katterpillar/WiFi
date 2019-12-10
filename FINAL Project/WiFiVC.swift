@@ -14,24 +14,17 @@ class WiFiVC :  UIViewController {
     
     var wiFiList = UITableView(frame: .zero)
     var searchBar = UISearchBar(frame: .zero)
-    var reloadDataWorkItem : DispatchWorkItem?
     //view model экземпляр
     var viewModel: WiFiViewService {
         didSet {
             // оповещате о том, что список был изменен и необходимо обновить таблицу
-            self.viewModel.dataDidLoad = {
-                self.reloadDataWorkItem = DispatchWorkItem { [weak self] in
+            self.viewModel.dataDidLoad = { [weak self] in
                     guard let self = self else{
                         return
                     }
-                    print(self.reloadDataWorkItem!.isCancelled)
-                    if self.reloadDataWorkItem!.isCancelled { return  }
                     self.wiFiList.reloadData()
                 }
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: self.reloadDataWorkItem!)
-                
-            }
+            
             self.viewModel.dataDidChange = {
                 DispatchQueue.main.async {
                     self.viewModel.loadList()
@@ -108,7 +101,7 @@ class WiFiVC :  UIViewController {
         setupConstraints()
         
         navigationItem.title = "Wi-Fi Map"
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "STHeitiSC-Light", size: 25)!]
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "STHeitiSC-Light", size: 25) ?? UIFont.systemFont(ofSize: 25.0)]
         self.navigationController?.navigationBar.titleTextAttributes = attributes
         view.backgroundColor = UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
         wiFiList.dataSource = self

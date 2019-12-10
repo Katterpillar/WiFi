@@ -21,7 +21,7 @@ class AddLocationVC: UIViewController {
     var idLbl = UILabel(frame: .zero)
     var pswLbl = UILabel(frame: .zero)
     
-    /// жкземпляр viewmodel
+    /// экземпляр viewmodel
     var viewModel: AddLocationViewModel {
         didSet {
             //показывает сообщение, если какое-либо поле не записано
@@ -85,6 +85,7 @@ class AddLocationVC: UIViewController {
         addSubviews()
         setupConstraints()
         setupDetails()
+        setupFont()
         
     }
     
@@ -163,33 +164,7 @@ class AddLocationVC: UIViewController {
         addButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
     }
     
-    func setupDetails() {
-        
-        addButton.addTarget(self, action: #selector(addLocation), for: .touchUpInside)
-        
-        addIdTextView.delegate = self
-        addAdressTextView.delegate = self
-        addPswTextView.delegate = self
-        addCityTextView.delegate = self
-        
-        addPswTextView.layer.cornerRadius = 10
-        addIdTextView.layer.cornerRadius = 10
-        addAdressTextView.layer.cornerRadius = 10
-        addCityTextView.layer.cornerRadius = 10
-        
-        addPswTextView.textColor = .lightGray
-        addAdressTextView.textColor = .lightGray
-        addCityTextView.textColor = .lightGray
-        addIdTextView.textColor = .lightGray
-        
-        DispatchQueue.main.async {
-            self.addPswTextView.text = "пароль"
-            self.addIdTextView.text = "id"
-            self.addAdressTextView.text = "yлица, дом, корпус"
-            self.addCityTextView.text = "город"
-        }
-        
-        
+    func setupFont(){
         addPswTextView.font = UIFont(name: "HelveticaNeue-Light", size: 18.0)
         addIdTextView.font = UIFont(name: "HelveticaNeue-Light", size: 18.0)
         addAdressTextView.font = UIFont(name: "HelveticaNeue-Light", size: 18.0)
@@ -228,10 +203,36 @@ class AddLocationVC: UIViewController {
         adressLbl.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
         adressLbl.text = "Введите адрес"
         adressLbl.textAlignment = .natural
+    }
+    func setupDetails() {
+        
+        addButton.addTarget(self, action: #selector(addLocation), for: .touchUpInside)
+        
+        addIdTextView.delegate = self
+        addAdressTextView.delegate = self
+        addPswTextView.delegate = self
+        addCityTextView.delegate = self
+        
+        addPswTextView.layer.cornerRadius = 10
+        addIdTextView.layer.cornerRadius = 10
+        addAdressTextView.layer.cornerRadius = 10
+        addCityTextView.layer.cornerRadius = 10
+        
+        addPswTextView.textColor = .lightGray
+        addAdressTextView.textColor = .lightGray
+        addCityTextView.textColor = .lightGray
+        addIdTextView.textColor = .lightGray
+        
+        DispatchQueue.main.async {
+            self.addPswTextView.text = "пароль"
+            self.addIdTextView.text = "id"
+            self.addAdressTextView.text = "yлица, дом, корпус"
+            self.addCityTextView.text = "город"
+        }
         
         view.backgroundColor = UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
         navigationItem.title = "Добавьте свою точку"
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "STHeitiSC-Light", size: 25)!]
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "STHeitiSC-Light", size: 25) ?? UIFont.systemFont(ofSize: 25.0)]
         self.navigationController?.navigationBar.titleTextAttributes = attributes
     }
     

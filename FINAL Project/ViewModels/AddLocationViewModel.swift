@@ -68,3 +68,4 @@ class AddLocationViewModel {
     }
     
 }
+protocol AddLocationViewModelProtocol{}

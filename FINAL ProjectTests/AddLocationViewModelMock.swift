@@ -9,36 +9,36 @@
 import Foundation
 @testable import FINAL_Project
 
-class AddLocationViewModelMock: AddLocationViewModel {
+class AddLocationViewModelMock: AddLocationViewModel{
     
     var alert = String()
    
-    func showAllert(state: Bool, textView: String) -> String{
-        if state {
-            alert = "введите \(textView)"
-        } else {
-            alert = "добавлено"
-        }
-        return alert
-    }
+    var locationMock = WiFiEntity(adress: "", city: "", id: "", psw: "", longtitude: "", latitude: "")
     
-     func addLocation(adress: String, city: String, id: String, psw: String){
-        let adress = adress
-        let city = city
-        let id = id
-        let psw = psw
+    override func addLocation(){
+        let adress = "mfkd"
+        let city = "dk"
+        let id = ""
+        let psw = "dsdfn,mcx"
     
         if adress == "" {
-            alert = "введите адрес"
+          self.alert =  "введите адрес"
         }
         if city == ""{
-           alert = "введите город"
+          self.alert =  "введите город"
         }
         if id == ""{
-            alert = "введите id"
+          self.alert =   "введите id"
         }
         if psw == ""{
-        alert = "введите пароль"
+           self.alert =  "введите пароль"
     }
-}
-}
+    }
+    
+    override func refreshLocation(addAdressText: String = "", addCityText: String = "", addIdText: String = "", addPswText: String = "") {
+        self.locationMock.adress = addAdressText
+        self.locationMock.city = addCityText
+        self.locationMock.id = addIdText
+        self.locationMock.psw = addPswText
+    }
+    }

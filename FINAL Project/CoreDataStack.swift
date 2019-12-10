@@ -79,11 +79,17 @@ internal final class CoreDataStack {
             let results = try context.fetch(request)
             if results.count > 0
             {
-                for result in results as! [NSManagedObject]
+                guard ((results as? [NSManagedObject]) != nil) else {
+                    return
+                }
+                for result in results
                 {
                     do
                     {
-                        context.delete(result)
+                        guard ((result as? [NSManagedObject]) != nil) else {
+                            return
+                        }
+                        context.delete(result as! NSManagedObject)
                         print("success")
                     }
                 }
@@ -129,8 +135,10 @@ internal final class CoreDataStack {
             {
                 do
                 {
-                    let entity =  NSEntityDescription.entity(forEntityName: "Cities", in: context)
-                    let testEntity = NSManagedObject(entity: entity!, insertInto: context)
+                    guard  let entity =  NSEntityDescription.entity(forEntityName: "Cities", in: context) else {
+                        return
+                    }
+                    let testEntity = NSManagedObject(entity: entity, insertInto: context)
                     testEntity.setValue(city, forKey: "city")
                     print("success")
                 }

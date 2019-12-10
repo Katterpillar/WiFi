@@ -13,10 +13,11 @@ class AddLocationTests: XCTestCase {
     
     var addLocationVC: AddLocationVC!
     var addLocationMockModel: AddLocationViewModelMock!
+    var model: AddLocationViewModel!
 
     override func setUp() {
-        addLocationVC = AddLocationVC(viewModel: AddLocationViewModelMock())
         addLocationMockModel = AddLocationViewModelMock()
+        addLocationVC = AddLocationVC(viewModel: addLocationMockModel)
         super.setUp()
     }
 
@@ -27,14 +28,25 @@ class AddLocationTests: XCTestCase {
 
     func testThatChangeAlertMessage() {
         // arrange
-        var realmessage = ""
+        let message = "введите id"
         
         //act
-        addLocationMockModel.addLocation(adress: "Smth", city: "LA", id: "", psw: "1234ffu")
-        realmessage = addLocationMockModel.showAllert(state: true, textView: "id")
+        addLocationVC.viewModel.addLocation()        
         //assert
-        XCTAssertEqual(addLocationMockModel.alert, realmessage)
+        XCTAssertEqual(message, addLocationMockModel.alert )
     }
 
+    func testThatCheckRefreshingLocation(){
+        //arrange
+        let locationCheck = WiFiEntity(adress: "Kazarmennaya", city: "Moscow", id:  "id123", psw: "psw", longtitude: "", latitude: "")
+        //act
+        addLocationVC.viewModel.refreshLocation(addAdressText: "Kazarmennaya", addCityText: "Moscow", addIdText: "id123", addPswText: "psw")
+        //assert
+        XCTAssertEqual(locationCheck.adress, addLocationMockModel.locationMock.adress)
+        XCTAssertEqual(locationCheck.city, addLocationMockModel.locationMock.city)
+        XCTAssertEqual(locationCheck.id, addLocationMockModel.locationMock.id)
+        XCTAssertEqual(locationCheck.psw, addLocationMockModel.locationMock.psw)
+        
+    }
 
 }

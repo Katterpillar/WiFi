@@ -56,7 +56,8 @@ class DetailFavoritesVC : UIViewController {
         addSubviews()
         setupView()
         setupConstrains()
-        navigationItem.title = "Описание"
+        setupFont()
+        
     }
     
     func addSubviews() {
@@ -134,9 +135,9 @@ class DetailFavoritesVC : UIViewController {
     
     func setupView() {
         navigationItem.title = "Описание"
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "STHeitiSC-Light", size: 25)!]
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "STHeitiSC-Light", size: 25) ?? UIFont.systemFont(ofSize: 25.0)]
         self.navigationController?.navigationBar.titleTextAttributes = attributes
-       view.backgroundColor =  UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
+        view.backgroundColor =  UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
         
         self.city.layer.masksToBounds = true
         self.city.layer.cornerRadius = 10
@@ -146,12 +147,6 @@ class DetailFavoritesVC : UIViewController {
         self.id.layer.cornerRadius = 10
         self.psw.layer.masksToBounds = true
         self.psw.layer.cornerRadius = 10
-        
-        city.font = UIFont(name: "Helvetica", size: 16.0)
-        adress.font = UIFont(name: "Helvetica", size: 16.0)
-        id.font = UIFont(name: "Helvetica", size: 16.0)
-        psw.font = UIFont(name: "Helvetica", size: 16.0)
-        
         
         self.city.backgroundColor = .white
         self.adress.backgroundColor = .white
@@ -170,27 +165,35 @@ class DetailFavoritesVC : UIViewController {
         
         idLbl.backgroundColor = .clear
         idLbl.text = "Id роутера"
-        idLbl.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
         idLbl.textColor = .black
         idLbl.textAlignment = .natural
         
         pswLbl.backgroundColor = .clear
         pswLbl.textColor = .black
         pswLbl.text = "Пароль: "
-        pswLbl.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
         pswLbl.textAlignment = .natural
         
         cityLbl.backgroundColor = .clear
         cityLbl.text = "Город"
-        cityLbl.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
         cityLbl.textColor = .black
         cityLbl.textAlignment = .natural
         
         adressLbl.backgroundColor = .clear
         adressLbl.textColor = .black
-        adressLbl.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
         adressLbl.text = "Адрес"
         adressLbl.textAlignment = .natural
+    }
+    
+    func setupFont(){
+        city.font = UIFont(name: "Helvetica", size: 16.0)
+        adress.font = UIFont(name: "Helvetica", size: 16.0)
+        id.font = UIFont(name: "Helvetica", size: 16.0)
+        psw.font = UIFont(name: "Helvetica", size: 16.0)
+        
+        idLbl.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
+        pswLbl.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
+        cityLbl.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
+        adressLbl.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
     }
     
 }

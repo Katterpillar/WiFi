@@ -10,7 +10,7 @@ import Foundation
 import SystemConfiguration
 
 
-/// проверяет наличие интернетаы
+/// проверяет наличие интернета
 class Reachability {
     
     class func isConnectedToNetwork() -> Bool {
