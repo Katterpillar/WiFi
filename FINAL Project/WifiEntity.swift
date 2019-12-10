@@ -8,11 +8,12 @@
 
 import Foundation
 
+///структура, описывающая точку 
 struct WiFiEntity {
-    var adress: String = ""
-    var city: String = ""
-    var id: String = ""
-    var psw: String = ""
-    var longtitude: String = ""
-    var latitude: String = ""
+    internal var adress: String = ""
+    internal var city: String = ""
+    internal var id: String = ""
+    internal var psw: String = ""
+    internal var longtitude: String = ""
+    internal var latitude: String = ""
 }

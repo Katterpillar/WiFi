@@ -11,22 +11,23 @@ import UIKit
 
 class AddLocationViewModel {
     
-    var model: AddLocationService
-    var locationFormData: WiFiEntity {
+    private var model: AddLocationService
+    internal var locationFormData: WiFiEntity {
         get {
             return self.model.locationFormData
         }
     }
     
-    var showAlert: ( (String) -> () )?
-    var formDataDidChange: (() -> ())?
-    var formDataWillChange: ((UITextView) -> ())?
+   internal var showAlert: ( (String) -> () )?
+   internal var formDataDidChange: (() -> ())?
+   internal var formDataWillChange: ((UITextView) -> ())?
     
     init(model: AddLocationService = AddLocationService()) {
         self.model = model
     }
     
-    func addLocation(){
+    ///функция добавления локации с проверкой на незаполненные поля
+    internal func addLocation(){
         var filledBad = false
         var textFildName = String()
         
@@ -56,16 +57,17 @@ class AddLocationViewModel {
         }
     }
     
-    func refreshLocation(addAdressText: String = "", addCityText: String = "", addIdText: String = "", addPswText: String = "") {
+    ///обновляет данные о локации в текстовом поле
+   internal func refreshLocation(addAdressText: String = "", addCityText: String = "", addIdText: String = "", addPswText: String = "") {
         model.locationFormData.adress = addAdressText
         model.locationFormData.city = addCityText
         model.locationFormData.id = addIdText
         model.locationFormData.psw = addPswText
     }
     
-    func refreshNilLocation(addAdressText: String = "", addCityText: String = "", addIdText: String = "", addPswText: String = "", textView: UITextView) {
+    ///обновляет поле ввода(очищает его)
+   internal func refreshNilLocation(addAdressText: String = "", addCityText: String = "", addIdText: String = "", addPswText: String = "", textView: UITextView) {
         self.formDataWillChange?(textView)
     }
     
 }
-protocol AddLocationViewModelProtocol{}

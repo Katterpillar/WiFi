@@ -12,10 +12,10 @@ import UIKit
 /// вью для избранного
 class FavoritesVC : UIViewController {
     
-    var wiFiList = UITableView(frame: .zero)
-    var viewModel: FavoritesViewModels {
+    internal var wiFiList = UITableView(frame: .zero)
+    internal var viewService: FavoritesViewService {
         didSet {
-            self.viewModel.dataDidChange = {
+            self.viewService.dataDidChange = {
                 DispatchQueue.main.async {
                     self.wiFiList.reloadData()
                 }
@@ -24,10 +24,10 @@ class FavoritesVC : UIViewController {
         
     }
     
-    init(viewModel: FavoritesViewModels = FavoritesViewModels.shared) {
-        self.viewModel = FavoritesViewModels()
+    init(viewModel: FavoritesViewService = FavoritesViewService.shared) {
+        self.viewService = FavoritesViewService()
         defer {
-            self.viewModel = viewModel
+            self.viewService = viewModel
         }
         super.init(nibName: nil, bundle: nil)
     }
@@ -35,9 +35,12 @@ class FavoritesVC : UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    ///загружает данные для представления их в таблице
     override func viewWillAppear(_ animated: Bool) {
-        self.viewModel.loadFromCoreData()
+        self.viewService.loadFromCoreData()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,14 +55,12 @@ class FavoritesVC : UIViewController {
     }
     
     /// добавляет объекты на вью
-    func addSubview(){
+    private func addSubview(){
         view.addSubview(wiFiList)
-        
     }
     
     /// настараивает Constraints
-    func setupConstraints(){
-        
+    private func setupConstraints(){
         wiFiList.translatesAutoresizingMaskIntoConstraints = false
         wiFiList.topAnchor.constraint(equalTo:view.topAnchor, constant: 30).isActive = true
         wiFiList.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
@@ -67,103 +68,12 @@ class FavoritesVC : UIViewController {
         wiFiList.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
-    func setupView() {
-        
+    ///настраивает атрибуты представления: шрифт заголовка, название окна, цвет
+    private func setupView() {
         navigationItem.title = "Избранное"
         let attributes = [NSAttributedString.Key.font: UIFont(name: "STHeitiSC-Light", size: 25) ?? UIFont.systemFont(ofSize: 25.0)]
         self.navigationController?.navigationBar.titleTextAttributes = attributes
         view.backgroundColor =  UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
-        
     }
 }
-
-extension FavoritesVC: UITableViewDelegate{
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        guard let sections = viewModel.fetchResultController.sections else {
-            fatalError()
-        }
-        let section = sections[indexPath.section]
-        guard let itemsInSection = section.objects as? [Favorites] else {
-            fatalError()
-        }
-        
-        var location = WiFiEntity()
-        location.id = itemsInSection[indexPath.row].id
-        location.psw = itemsInSection[indexPath.row].psw
-        location.adress = itemsInSection[indexPath.row].adress
-        location.city = itemsInSection[indexPath.row].city
-        
-        let detailVC = DetailFavoritesVC()
-        viewModel.showDetail(with: location)
-        navigationController?.pushViewController( detailVC, animated: true)
-    }
-    
-}
-
-extension FavoritesVC: UITableViewDataSource {
-    
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        guard let sections = viewModel.fetchResultController.sections else {
-            return 1
-        }
-        return sections.count
-    }  
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let sections = viewModel.fetchResultController.sections else {
-            return 1
-        }
-        return sections[section].numberOfObjects
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if ( viewModel.fetchResultController.sections?.count != nil ) {
-            
-            let cellFromCoreData = tableView.dequeueReusableCell(withIdentifier: "favoritesCell", for: indexPath)
-            
-            guard let sections = viewModel.fetchResultController.sections else {
-                fatalError()
-            }
-            let section = sections[indexPath.section]
-            guard let itemsInSection = section.objects as? [Favorites] else {
-                fatalError()
-            }
-            cellFromCoreData.textLabel?.font = UIFont(name: "HelveticaNeue", size: 16.0)            
-            cellFromCoreData.textLabel?.text = itemsInSection[indexPath.row].adress
-            return cellFromCoreData
-            
-        } else { return UITableViewCell()  }
-    }
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "Удалить") {
-            _, indexPath in
-            
-            guard let sections = self.viewModel.fetchResultController.sections else {
-                fatalError()
-            }
-            let section = sections[indexPath.section]
-            guard let itemsInSection = section.objects as? [Favorites] else {
-                fatalError()
-            }
-            let location = itemsInSection[indexPath.row].adress
-            DispatchQueue.main.async {
-                self.viewModel.deleteItem(with: location)
-                self.viewModel.loadFromCoreData()
-                self.wiFiList.deleteRows(at: [indexPath], with: .automatic)
-                self.wiFiList.reloadData()
-            }
-        }
-        return [deleteAction]
-    }    
-}
-
-
-
-
 

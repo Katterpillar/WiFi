@@ -14,18 +14,18 @@ class AddLocationTests: XCTestCase {
     var addLocationVC: AddLocationVC!
     var addLocationMockModel: AddLocationViewModelMock!
     var model: AddLocationViewModel!
-
+    
     override func setUp() {
         addLocationMockModel = AddLocationViewModelMock()
         addLocationVC = AddLocationVC(viewModel: addLocationMockModel)
         super.setUp()
     }
-
+    
     override func tearDown() {
-       addLocationVC = nil
-       super.tearDown()
+        addLocationVC = nil
+        super.tearDown()
     }
-
+    
     func testThatChangeAlertMessage() {
         // arrange
         let message = "введите id"
@@ -35,7 +35,7 @@ class AddLocationTests: XCTestCase {
         //assert
         XCTAssertEqual(message, addLocationMockModel.alert )
     }
-
+    
     func testThatCheckRefreshingLocation(){
         //arrange
         let locationCheck = WiFiEntity(adress: "Kazarmennaya", city: "Moscow", id:  "id123", psw: "psw", longtitude: "", latitude: "")
@@ -48,5 +48,5 @@ class AddLocationTests: XCTestCase {
         XCTAssertEqual(locationCheck.psw, addLocationMockModel.locationMock.psw)
         
     }
-
+    
 }

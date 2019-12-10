@@ -11,14 +11,14 @@ import CoreData
 
 /// "умная" и самостоятельная модель: ходит в интернет и получает данные, парсит их и записывает в core data
 class WiFiModel {
-
-    var coreDataStack: CoreDataStack
+    
+    private var coreDataStack: CoreDataStack
     init(coreDataStack: CoreDataStack = CoreDataStack.shared) {
         self.coreDataStack = coreDataStack
     }
     
     /// подгружает данные в формате JSON из интернета
-    func loadList(completion: @escaping ([[String]]) -> Void) {
+    private func loadList(completion: @escaping ([[String]]) -> Void) {
         let urlString = "https://script.google.com/macros/s/AKfycbxTPwuAjoWkqcq-Da9iFCQMkKT90l6m2TTIiNWU0M3GaLl-sUA/exec"
         guard let url  = URL(string: urlString) else { return }
         
@@ -37,9 +37,9 @@ class WiFiModel {
             }.resume()
     }
     
-   
-    /// обновляет данные в core data
-    func refreshCoreData(){
+    
+    /// обновляет данные в core data при их загрузке из интернета
+    internal func refreshCoreData(){
         self.coreDataStack.refreshData()
         self.coreDataStack.refreshCity()
         self.loadList{(list) in
@@ -54,14 +54,14 @@ class WiFiModel {
                 location.latitude = city [5]
                 self.coreDataStack.addToCoreData(location: location)
                 if cityList.contains(city[2]) {
-  
+                    
                 } else {
                     cityList.append(city[2])
                     self.coreDataStack.addCityToCoreData(city: cityList[cityList.endIndex - 1])
                 }
             }
+        }
     }
-}
-
+    
 }
 

@@ -11,54 +11,54 @@ import UIKit
 
 /// вью для добавления пользовательской точки
 class AddLocationVC: UIViewController {
-    var addAdressTextView = UITextView(frame: .zero)
-    var addIdTextView = UITextView(frame: .zero)
-    var addCityTextView = UITextView(frame: .zero)
-    var addPswTextView = UITextView(frame: .zero)
-    var addButton = CustomButton(color: UIColor(red:0.69, green:0.79, blue:0.50, alpha:1.0), title: "Добавить")
-    var cityLbl = UILabel(frame: .zero)
-    var adressLbl = UILabel(frame: .zero)
-    var idLbl = UILabel(frame: .zero)
-    var pswLbl = UILabel(frame: .zero)
+    internal var addAdressTextView = UITextView(frame: .zero)
+    internal var addIdTextView = UITextView(frame: .zero)
+    internal var addCityTextView = UITextView(frame: .zero)
+    internal var addPswTextView = UITextView(frame: .zero)
+    private var addButton = CustomButton(color: UIColor(red:0.69, green:0.79, blue:0.50, alpha:1.0), title: "Добавить")
+    private var cityLbl = UILabel(frame: .zero)
+    private var adressLbl = UILabel(frame: .zero)
+    private var idLbl = UILabel(frame: .zero)
+    private var pswLbl = UILabel(frame: .zero)
     
     /// экземпляр viewmodel
-    var viewModel: AddLocationViewModel {
+    internal var viewModel: AddLocationViewModel {
         didSet {
-            //показывает сообщение, если какое-либо поле не записано
+            ///показывает сообщение, если какое-либо поле не записано
             self.viewModel.showAlert = { alertText in
                 let alert = UIAlertController(title: "Ошибка", message: alertText, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { _ in }))
                 self.navigationController?.present(alert, animated: true, completion: nil)
             }
-            //оповещает о том, что в окошко что-то записали
+            ///оповещает о том, что в окошко что-то записали
             self.viewModel.formDataDidChange = {
                 self.refreshFormData()
             }
-            
+            ///высвечивает алерт при неправильном заполнении окон
             self.viewModel.formDataWillChange = { textView in
-
+                
                 if self.addIdTextView == textView{
                     DispatchQueue.main.async {
-                           self.addIdTextView.text = ""
-                         self.addIdTextView.textColor = .black
+                        self.addIdTextView.text = ""
+                        self.addIdTextView.textColor = .black
                     }
                 }
                 if self.addCityTextView == textView{
                     DispatchQueue.main.async {
-                    self.addCityTextView.text = ""
-                    self.addCityTextView.textColor = .black
+                        self.addCityTextView.text = ""
+                        self.addCityTextView.textColor = .black
                     }
                 }
                 if self.addPswTextView == textView{
                     DispatchQueue.main.async {
-                    self.addPswTextView.text = ""
-                         self.addPswTextView.textColor = .black
+                        self.addPswTextView.text = ""
+                        self.addPswTextView.textColor = .black
                     }
                 }
                 if self.addAdressTextView == textView{
                     DispatchQueue.main.async {
-                    self.addAdressTextView.text = ""
-                         self.addAdressTextView.textColor = .black
+                        self.addAdressTextView.text = ""
+                        self.addAdressTextView.textColor = .black
                         
                     }
                 }
@@ -68,7 +68,6 @@ class AddLocationVC: UIViewController {
     
     init(viewModel: AddLocationViewModel = AddLocationViewModel()) {
         self.viewModel = AddLocationViewModel()
-        
         defer {
             self.viewModel = viewModel
         }
@@ -81,15 +80,17 @@ class AddLocationVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         addSubviews()
-        setupConstraints()
+        setupIdConstrains()
+        setupAdressConstrains()
+        setupCityConstrains()
+        setupPswConstrains()
+        setupButtonConstrains()
         setupDetails()
-        setupFont()
-        
+        setupTextDetail()
     }
     
-    func addSubviews(){
+    private func addSubviews(){
         view.addSubview(addIdTextView)
         view.addSubview(addAdressTextView)
         view.addSubview(addCityTextView)
@@ -101,22 +102,23 @@ class AddLocationVC: UIViewController {
         view.addSubview(adressLbl)
     }
     
-    func setupConstraints() {
-        
+    ///
+    private func setupIdConstrains() {
         idLbl.translatesAutoresizingMaskIntoConstraints = false
         idLbl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height * 0.01).isActive = true
         idLbl.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         idLbl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         idLbl.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.04).isActive = true
         
-        
         addIdTextView.translatesAutoresizingMaskIntoConstraints = false
         addIdTextView.topAnchor.constraint(equalTo: idLbl.bottomAnchor, constant: view.frame.height * 0.01).isActive = true
         addIdTextView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         addIdTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         addIdTextView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1).isActive = true
-        
-        
+    }
+    
+    ///
+    private func setupPswConstrains() {
         pswLbl.translatesAutoresizingMaskIntoConstraints = false
         pswLbl.topAnchor.constraint(equalTo: addIdTextView.bottomAnchor, constant: view.frame.height * 0.01).isActive = true
         pswLbl.widthAnchor.constraint(equalTo: addIdTextView.widthAnchor).isActive = true
@@ -128,8 +130,10 @@ class AddLocationVC: UIViewController {
         addPswTextView.widthAnchor.constraint(equalTo: addIdTextView.widthAnchor).isActive = true
         addPswTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         addPswTextView.heightAnchor.constraint(equalTo: addIdTextView.heightAnchor).isActive = true
-        
-
+    }
+    
+    ///
+    private func setupCityConstrains() {
         cityLbl.translatesAutoresizingMaskIntoConstraints = false
         cityLbl.topAnchor.constraint(equalTo: addPswTextView.bottomAnchor, constant: view.frame.height * 0.01).isActive = true
         cityLbl.widthAnchor.constraint(equalTo: addPswTextView.widthAnchor).isActive = true
@@ -141,22 +145,24 @@ class AddLocationVC: UIViewController {
         addCityTextView.widthAnchor.constraint(equalTo: addPswTextView.widthAnchor).isActive = true
         addCityTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         addCityTextView.heightAnchor.constraint(equalTo: addPswTextView.heightAnchor).isActive = true
-        
-        
+    }
+    
+    ///
+    private func setupAdressConstrains() {
         adressLbl.translatesAutoresizingMaskIntoConstraints = false
         adressLbl.topAnchor.constraint(equalTo: addCityTextView.bottomAnchor, constant: view.frame.height * 0.01).isActive = true
         adressLbl.widthAnchor.constraint(equalTo: addPswTextView.widthAnchor).isActive = true
         adressLbl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         adressLbl.heightAnchor.constraint(equalTo: idLbl.heightAnchor).isActive = true
-        
-        
         addAdressTextView.translatesAutoresizingMaskIntoConstraints = false
         addAdressTextView.topAnchor.constraint(equalTo: adressLbl.bottomAnchor, constant: view.frame.height * 0.01).isActive = true
         addAdressTextView.widthAnchor.constraint(equalTo: addPswTextView.widthAnchor).isActive = true
         addAdressTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         addAdressTextView.heightAnchor.constraint(equalTo: addPswTextView.heightAnchor).isActive = true
-        
-        
+    }
+    
+    ///
+    private func setupButtonConstrains() {
         addButton.translatesAutoresizingMaskIntoConstraints = false
         addButton.topAnchor.constraint(equalTo: addAdressTextView.bottomAnchor, constant: view.frame.height * 0.04).isActive = true
         addButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
@@ -164,7 +170,8 @@ class AddLocationVC: UIViewController {
         addButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05).isActive = true
     }
     
-    func setupFont(){
+    /// устанавливает атрибуты отображения для текстовых полей: шрифт, название поля
+    private func setupTextDetail(){
         addPswTextView.font = UIFont(name: "HelveticaNeue-Light", size: 18.0)
         addIdTextView.font = UIFont(name: "HelveticaNeue-Light", size: 18.0)
         addAdressTextView.font = UIFont(name: "HelveticaNeue-Light", size: 18.0)
@@ -204,8 +211,9 @@ class AddLocationVC: UIViewController {
         adressLbl.text = "Введите адрес"
         adressLbl.textAlignment = .natural
     }
-    func setupDetails() {
-        
+    
+    ///устанавливает детали отображения: закругление, заголовок, а так же добавляет Target  для кнопки
+    private func setupDetails() {
         addButton.addTarget(self, action: #selector(addLocation), for: .touchUpInside)
         
         addIdTextView.delegate = self
@@ -236,11 +244,13 @@ class AddLocationVC: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = attributes
     }
     
+    ///добавляет пользовательскую локацию в список
     @objc func addLocation(){
         viewModel.addLocation()
     }
     
-    func refreshFormData() {
+    ///оюбновляет данные в полях ввода текста по мере его введения пользователем
+    private func refreshFormData() {
         DispatchQueue.main.async {
             self.addAdressTextView.text = self.viewModel.locationFormData.adress
             self.addCityTextView.text = self.viewModel.locationFormData.city
@@ -249,6 +259,7 @@ class AddLocationVC: UIViewController {
         }
     }
     
+    ///инициализирует нажатие на любое свободное место на вью для отмены ввода
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if touches.first != nil {
             view.endEditing(true)
@@ -258,16 +269,3 @@ class AddLocationVC: UIViewController {
     
 }
 
-extension AddLocationVC : UITextViewDelegate {
-    
-    func textViewDidChange(_ textView: UITextView) {
-      
-       viewModel.refreshLocation(addAdressText: addAdressTextView.text, addCityText:  addCityTextView.text, addIdText: addIdTextView.text, addPswText: addPswTextView.text)
-        
-    }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-            self.viewModel.refreshNilLocation(textView: textView)
-        }
-    
-}

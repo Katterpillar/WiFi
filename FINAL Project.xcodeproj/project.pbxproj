@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		660EC84323979ED10051A575 /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EC84223979ED10051A575 /* FavoritesVC.swift */; };
-		660EC84923979F440051A575 /* FavoritesViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EC84823979F440051A575 /* FavoritesViewModels.swift */; };
+		660EC84923979F440051A575 /* FavoritesViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EC84823979F440051A575 /* FavoritesViewService.swift */; };
 		660EC84F2397A2A70051A575 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EC84E2397A2A70051A575 /* DetailVC.swift */; };
 		660EC8532397AA380051A575 /* DetailFavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EC8522397AA380051A575 /* DetailFavoritesVC.swift */; };
 		660EC85623980A6E0051A575 /* Wi_Fi_Map.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 660EC85423980A6E0051A575 /* Wi_Fi_Map.xcdatamodeld */; };
@@ -16,6 +16,9 @@
 		660EC85E239928840051A575 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EC85D239928840051A575 /* Reachability.swift */; };
 		660EC8602399873A0051A575 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 660EC85F2399873A0051A575 /* Media.xcassets */; };
 		6611B384239FD9F2000A9FA3 /* Wi_Fi_Map.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 660EC85423980A6E0051A575 /* Wi_Fi_Map.xcdatamodeld */; };
+		6611B38623A015D8000A9FA3 /* Favorites + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6611B38523A015D7000A9FA3 /* Favorites + DataSource.swift */; };
+		6611B38823A015F0000A9FA3 /* Favorites + Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6611B38723A015F0000A9FA3 /* Favorites + Delegate.swift */; };
+		6611B38A23A021E4000A9FA3 /* AddLocation + Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6611B38923A021E4000A9FA3 /* AddLocation + Delegate.swift */; };
 		6659105C239FC04C0097BB12 /* ReachabilityMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6659105B239FC04C0097BB12 /* ReachabilityMock.swift */; };
 		66591062239FCE890097BB12 /* ReachabilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6659105D239FC28E0097BB12 /* ReachabilityTests.swift */; };
 		66C14A2923958A5C00845B16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A2823958A5C00845B16 /* AppDelegate.swift */; };
@@ -59,13 +62,16 @@
 
 /* Begin PBXFileReference section */
 		660EC84223979ED10051A575 /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
-		660EC84823979F440051A575 /* FavoritesViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModels.swift; sourceTree = "<group>"; };
+		660EC84823979F440051A575 /* FavoritesViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewService.swift; sourceTree = "<group>"; };
 		660EC84E2397A2A70051A575 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		660EC8522397AA380051A575 /* DetailFavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFavoritesVC.swift; sourceTree = "<group>"; };
 		660EC85523980A6E0051A575 /* FINAL_Project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FINAL_Project.xcdatamodel; sourceTree = "<group>"; };
 		660EC8592398FA210051A575 /* MOCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOCity.swift; sourceTree = "<group>"; };
 		660EC85D239928840051A575 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		660EC85F2399873A0051A575 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		6611B38523A015D7000A9FA3 /* Favorites + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorites + DataSource.swift"; sourceTree = "<group>"; };
+		6611B38723A015F0000A9FA3 /* Favorites + Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorites + Delegate.swift"; sourceTree = "<group>"; };
+		6611B38923A021E4000A9FA3 /* AddLocation + Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddLocation + Delegate.swift"; sourceTree = "<group>"; };
 		6659105B239FC04C0097BB12 /* ReachabilityMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityMock.swift; sourceTree = "<group>"; };
 		6659105D239FC28E0097BB12 /* ReachabilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityTests.swift; sourceTree = "<group>"; };
 		66C14A2523958A5C00845B16 /* FINAL Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FINAL Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,7 +139,7 @@
 		660EC84523979EF80051A575 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				660EC84823979F440051A575 /* FavoritesViewModels.swift */,
+				660EC84823979F440051A575 /* FavoritesViewService.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -142,6 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				660EC84223979ED10051A575 /* FavoritesVC.swift */,
+				6611B38523A015D7000A9FA3 /* Favorites + DataSource.swift */,
+				6611B38723A015F0000A9FA3 /* Favorites + Delegate.swift */,
 				660EC8522397AA380051A575 /* DetailFavoritesVC.swift */,
 			);
 			name = Views;
@@ -229,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				66C14A5323958C9200845B16 /* AddLocationVC.swift */,
+				6611B38923A021E4000A9FA3 /* AddLocation + Delegate.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -434,19 +443,22 @@
 				66C14A6623959B1B00845B16 /* FavoritesCDStack.swift in Sources */,
 				66C14A5A2395963D00845B16 /* AddLocationService.swift in Sources */,
 				66F5211B239EA519004EA799 /* MapVC+ CLLocationManagerDelegate.swift in Sources */,
+				6611B38823A015F0000A9FA3 /* Favorites + Delegate.swift in Sources */,
 				66C14A56239590DF00845B16 /* AddLocationViewModel.swift in Sources */,
 				66F520D0239D0365004EA799 /* WiFiVC+ searchDelegate.swift in Sources */,
 				66C14A5423958C9200845B16 /* AddLocationVC.swift in Sources */,
 				660EC85A2398FA210051A575 /* MOCity.swift in Sources */,
 				660EC85623980A6E0051A575 /* Wi_Fi_Map.xcdatamodeld in Sources */,
 				66F52116239E8963004EA799 /* MapViewService.swift in Sources */,
-				660EC84923979F440051A575 /* FavoritesViewModels.swift in Sources */,
+				660EC84923979F440051A575 /* FavoritesViewService.swift in Sources */,
 				66F520CC239D02A8004EA799 /* VC's+dataSource.swift in Sources */,
 				66F520CE239D02F2004EA799 /* VC's+TableViewDelegate.swift in Sources */,
 				66F5FEE9239642BC00F2EBEB /* WiFiVC.swift in Sources */,
+				6611B38A23A021E4000A9FA3 /* AddLocation + Delegate.swift in Sources */,
 				66C14A4C23958AB500845B16 /* TabBar.swift in Sources */,
 				66C14A6423959B1B00845B16 /* MOLocation.swift in Sources */,
 				66F5FEEB2396432400F2EBEB /* WiFiViewService.swift in Sources */,
+				6611B38623A015D8000A9FA3 /* Favorites + DataSource.swift in Sources */,
 				66C14A5C2395977B00845B16 /* WifiEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

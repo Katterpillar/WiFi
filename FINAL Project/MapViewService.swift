@@ -17,8 +17,8 @@ class MapService {
         self.coreDataStack = coreDataStack
     }
     
-    func addAllLocation() -> [MKPointAnnotation]{
-        
+    ///достает данные о точках из core data
+    internal func addAllLocation() -> [MKPointAnnotation]{
         let context = coreDataStack.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "WiFiLock")
         var locations = [MKPointAnnotation]()
@@ -27,7 +27,10 @@ class MapService {
             let results = try context.fetch(request)
             if results.count > 0
             {
-                for result in results as! [WiFiLock]
+                guard let results = (results as? [WiFiLock]) else {
+                    fatalError()
+                }
+                for result in results
                 {
                     do
                     {

@@ -10,16 +10,16 @@ import XCTest
 @testable import FINAL_Project
 
 class ReachabilityTests: XCTestCase {
-
-     var reachability = ReachabilityMock()
+    
+    var reachability = ReachabilityMock()
     override func setUp() {
         
     }
-
+    
     override func tearDown() {
-       
+        
     }
-
+    
     func testExample() {
         //arrange
         var result = Bool()
@@ -29,7 +29,7 @@ class ReachabilityTests: XCTestCase {
         XCTAssertEqual(reachability.callCountConnectedToNetwork, 1)
         XCTAssertEqual(result, true)
     }
-
-
-
+    
+    
+    
 }

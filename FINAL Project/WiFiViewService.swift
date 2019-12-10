@@ -11,17 +11,17 @@ import CoreData
 
 class WiFiViewService {
     
-    var coreDataStack: CoreDataStack
-    var favoritesCD: FavoritesCDStack
-    var predicate: NSPredicate?
+    private var coreDataStack: CoreDataStack
+    private var favoritesCD: FavoritesCDStack
+    private var predicate: NSPredicate?
     static let shared = WiFiViewService()
-    var location: WiFiEntity?
-    var model: WiFiModel
-    var dataDidLoad: (() -> ())?
-    var dataDidChange: (() -> ())?
-    var cityChange: ((String) -> ())?
+    private var location: WiFiEntity?
+    private var model: WiFiModel
+    internal var dataDidLoad: (() -> ())?
+    internal var dataDidChange: (() -> ())?
+    internal var cityChange: ((String) -> ())?
     var setupDetails: ((WiFiEntity) -> ())?
-    var cities: Set<String>?
+    internal var cities: Set<String>?
     init(model: WiFiModel = WiFiModel(), coreDataStack: CoreDataStack = CoreDataStack.shared, favoritesCD: FavoritesCDStack = FavoritesCDStack.shared) {
         self.model = WiFiModel()
         self.coreDataStack = coreDataStack
@@ -31,7 +31,7 @@ class WiFiViewService {
         }
     }
     
-    var fetchResultController : NSFetchedResultsController<WiFiLock> = {
+    internal var fetchResultController : NSFetchedResultsController<WiFiLock> = {
         //fetchRequest — запрос на извлечение объектов NSFetchRequest
         let fetchRequest = NSFetchRequest<WiFiLock>(entityName: "WiFiLock")
         let sortByIndex = NSSortDescriptor(key: "id", ascending: true)
@@ -43,7 +43,8 @@ class WiFiViewService {
         
     }()
     
-    func loadList(){
+    ///загружает данные для их дальнейшего представления
+    internal func loadList(){
         do {
             try fetchResultController.performFetch()
         } catch {
@@ -52,7 +53,7 @@ class WiFiViewService {
         self.dataDidLoad?()
     }
     
-    var fetchResultCityController : NSFetchedResultsController<Cities> = {
+    internal var fetchResultCityController : NSFetchedResultsController<Cities> = {
         //fetchRequest — запрос на извлечение объектов NSFetchRequest
         let fetchRequest = NSFetchRequest<Cities>(entityName: "Cities")
         let sortByIndex = NSSortDescriptor(key: "city", ascending: true)
@@ -64,7 +65,8 @@ class WiFiViewService {
         
     }()
     
-    func loadCityList(){
+    ///загружает список городов
+    internal func loadCityList(){
         do {
             try fetchResultCityController.performFetch()
         } catch {
@@ -72,17 +74,20 @@ class WiFiViewService {
         }
     }
     
-    func chooseCity(with city: String){
+    ///осуществляет фильтрацию данных для выбранного города
+    internal func chooseCity(with city: String){
         fetchResultController.fetchRequest.predicate = NSPredicate(format: "city CONTAINS[c] %@", city)
         self.cityChange?(city)
         self.dataDidChange?()
     }
     
-    func addToFavorites(_ location: WiFiEntity) {
+    ///добавляет выранную локацию в избранное
+    internal func addToFavorites(_ location: WiFiEntity) {
         self.favoritesCD.save(location: location)
     }
     
-    func searchActivate(with searchBarText: String, and label: String){
+    ///фильтует представленные данные в зависимости от пользовательского запроса
+    internal func searchActivate(with searchBarText: String, and label: String){
         if searchBarText == "" {
             fetchResultController.fetchRequest.predicate = NSPredicate(format: "city CONTAINS[c] %@", label)
             self.dataDidChange?()
@@ -98,7 +103,8 @@ class WiFiViewService {
         
     }
     
-    func showDetail(with location: WiFiEntity){
+    ///показывает детали точки по выбранному адресу
+    internal  func showDetail(with location: WiFiEntity){
         self.setupDetails?(location)
     }
     

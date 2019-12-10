@@ -11,11 +11,11 @@ import CoreData
 /// класс, реализущий основную работу с Core data в приложении
 internal final class CoreDataStack {
     
+    ///singltone coreData
     static var shared : CoreDataStack {
         let shared = CoreDataStack()
         return shared
     }
-    
     var  persistentContainer : NSPersistentContainer
     
     init(){
@@ -33,7 +33,7 @@ internal final class CoreDataStack {
     }
     
     ///  функция добавления Данных о вай-фай точках в core data
-    func addToCoreData(location: WiFiEntity ){
+    internal func addToCoreData(location: WiFiEntity ){
         
         persistentContainer.performBackgroundTask { (context) in
             let savedData = NSEntityDescription.insertNewObject(forEntityName: "WiFiLock", into: context)
@@ -46,32 +46,32 @@ internal final class CoreDataStack {
             
             do {
                 try context.save()
-                print("Succesful")
+                print("пользовательская локация успешно сохранена")
             } catch {
-                print("Can't save data")
+                print("невозможно сохранить пользовательскую локацию")
             }
             
         }
     }
     
     /// функция добавления списка городов
-    func addCityToCoreData(city: String) {
+    internal func addCityToCoreData(city: String) {
         
         persistentContainer.performBackgroundTask { (context) in
             let savedData = NSEntityDescription.insertNewObject(forEntityName: "Cities", into: context)
             savedData.setValue(city, forKey: "city")
             do {
                 try context.save()
-                print("SuccesfulCity")
+                print("новый город сохранен")
             } catch {
-                print("Can't save data")
+                print("не удалось сохранить город")
             }
             
         }
     }
     
     /// очищение core data перед загрузкой новых данных из сети
-    func refreshData(){
+    internal func refreshData(){
         let context = persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "WiFiLock")
         do
@@ -79,18 +79,13 @@ internal final class CoreDataStack {
             let results = try context.fetch(request)
             if results.count > 0
             {
-                guard ((results as? [NSManagedObject]) != nil) else {
-                    return
-                }
+                guard let results = (results as? [NSManagedObject]) else { return }
                 for result in results
                 {
                     do
                     {
-                        guard ((result as? [NSManagedObject]) != nil) else {
-                            return
-                        }
-                        context.delete(result as! NSManagedObject)
-                        print("success")
+                        context.delete(result)
+                        print("обновляем")
                     }
                 }
             }
@@ -99,9 +94,8 @@ internal final class CoreDataStack {
         catch { }
     }
     
-    
     /// функция очищения списка городов перед обновлением
-    func refreshCity(){
+    internal func refreshCity(){
         let context = persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Cities")
         do
@@ -109,12 +103,13 @@ internal final class CoreDataStack {
             let results = try context.fetch(request)
             if results.count > 0
             {
-                for result in results as! [NSManagedObject]
+                guard let results = (results as? [NSManagedObject]) else { return }
+                for result in results 
                 {
                     do
                     {
                         context.delete(result)
-                        print("success")
+                        print("обновляем города")
                     }
                 }
             }
@@ -124,7 +119,7 @@ internal final class CoreDataStack {
     }
     
     /// функция добавления пользовательского города, если он отсутствует в кастомном списке
-    func addCity(_ city: String){
+    internal func addCity(_ city: String){
         let context = persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Cities")
         request.predicate = NSPredicate(format: "city CONTAINS[c] %@", city)
@@ -140,7 +135,7 @@ internal final class CoreDataStack {
                     }
                     let testEntity = NSManagedObject(entity: entity, insertInto: context)
                     testEntity.setValue(city, forKey: "city")
-                    print("success")
+                    print("пользовательский город добавлен")
                 }
             }
             try context.save()

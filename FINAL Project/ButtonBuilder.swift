@@ -9,11 +9,12 @@
 import Foundation
 import UIKit
 
+///класс для создания кнопки
 class CustomButton: UIButton {
     
-    let timerStep: TimeInterval = 0.01
-    let animateTime: TimeInterval = 0.4
-    let touchDownAlpha: CGFloat = 0.3
+    private let timerStep: TimeInterval = 0.01
+    private let animateTime: TimeInterval = 0.4
+    private let touchDownAlpha: CGFloat = 0.3
     var color: UIColor = .black
     override var isHighlighted: Bool {
         didSet {
@@ -28,21 +29,22 @@ class CustomButton: UIButton {
     
     weak var timer: Timer?
     
-    lazy var alphaStep: CGFloat = {
+    private lazy var alphaStep: CGFloat = {
         return (1 - touchDownAlpha) / CGFloat(animateTime / timerStep)
     }()
     
-    func stopTimer() {
+    ///останавливает таймер
+    private func stopTimer() {
         timer?.invalidate()
     }
     deinit {
         stopTimer()
     }
     
-    func setup() {
+    ///устанавливает атрибуты для кновки: цвет фона, закругление
+    private func setup() {
         backgroundColor = .clear
         layer.backgroundColor = color.cgColor
-        
         layer.cornerRadius = 6
         clipsToBounds = true
     }
@@ -58,12 +60,14 @@ class CustomButton: UIButton {
         setup()
     }
     
-    func touchDown() {
+    ///действие при нажатии кнопки
+    private func touchDown() {
         stopTimer()
         layer.backgroundColor = color.withAlphaComponent(touchDownAlpha).cgColor
     }
     
-    func touchUp() {
+    ///действие при отпускании кнопки
+    private func touchUp() {
         timer = Timer.scheduledTimer(timeInterval: timerStep,
                                      target: self,
                                      selector: #selector(animation),
@@ -71,15 +75,13 @@ class CustomButton: UIButton {
                                      repeats: true)
     }
     
+    ///добавление к кнопке анимации
     @objc func animation() {
         guard let backgroundAlpha = layer.backgroundColor?.alpha else {
             stopTimer()
-            
             return
-        }
-        
+        }        
         let newAlpha = backgroundAlpha + alphaStep
-        
         if newAlpha < 1 {
             layer.backgroundColor = color.withAlphaComponent(newAlpha).cgColor
         } else {

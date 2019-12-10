@@ -12,26 +12,26 @@ import UIKit
 /// основная вью, на которой распологается список доступных вай-фай точек
 class WiFiVC :  UIViewController {
     
-    var wiFiList = UITableView(frame: .zero)
-    var searchBar = UISearchBar(frame: .zero)
+    internal var wiFiList = UITableView(frame: .zero)
+    internal var searchBar = UISearchBar(frame: .zero)
     //view model экземпляр
-    var viewModel: WiFiViewService {
+    var viewService: WiFiViewService {
         didSet {
             // оповещате о том, что список был изменен и необходимо обновить таблицу
-            self.viewModel.dataDidLoad = { [weak self] in
-                    guard let self = self else{
-                        return
-                    }
-                    self.wiFiList.reloadData()
+            self.viewService.dataDidLoad = { [weak self] in
+                guard let self = self else{
+                    return
                 }
+                self.wiFiList.reloadData()
+            }
             
-            self.viewModel.dataDidChange = {
+            self.viewService.dataDidChange = {
                 DispatchQueue.main.async {
-                    self.viewModel.loadList()
+                    self.viewService.loadList()
                     self.wiFiList.reloadData()
                 }
             }
-            self.viewModel.cityChange = { city in
+            self.viewService.cityChange = { city in
                 DispatchQueue.main.async {
                     self.cityLbl.text = city
                 }
@@ -40,9 +40,8 @@ class WiFiVC :  UIViewController {
         
     }
     
-    
     /// название города
-    var term = "Москва" {
+    internal var term = "Москва" {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
@@ -50,20 +49,20 @@ class WiFiVC :  UIViewController {
             }
         }
     }
-    
-    lazy var cityLbl: UILabel = {
-        let button = UILabel(frame: .zero)
-        button.text = term
-        button.numberOfLines = 1
-        button.minimumScaleFactor = 0.5
-        button.textAlignment = .center
-        button.adjustsFontSizeToFitWidth = true
-        button.font = UIFont(name: "STHeitiSC-Medium", size: 25.0)
-        return button
+    /// Окно, покаыввающее название города
+    private lazy var cityLbl: UILabel = {
+        let lbl = UILabel(frame: .zero)
+        lbl.text = term
+        lbl.numberOfLines = 1
+        lbl.minimumScaleFactor = 0.5
+        lbl.textAlignment = .center
+        lbl.adjustsFontSizeToFitWidth = true
+        lbl.font = UIFont(name: "STHeitiSC-Medium", size: 25.0)
+        return lbl
     }()
     
     /// по нажатию на эту кнопку открывается список городов
-    lazy var choose: UIButton = {
+    private lazy var choose: UIButton = {
         let button = UIButton(frame: .zero)
         button.backgroundColor = UIColor(red:0.69, green:0.79, blue:0.50, alpha:0.5)
         button.layer.cornerRadius = view.frame.width * 0.1 * 0.5
@@ -76,9 +75,9 @@ class WiFiVC :  UIViewController {
     }()
     
     init(viewModel: WiFiViewService = WiFiViewService.shared) {
-        self.viewModel = WiFiViewService()
+        self.viewService = WiFiViewService()
         defer {
-            self.viewModel = viewModel
+            self.viewService = viewModel
         }
         super.init(nibName: nil, bundle: nil)
     }
@@ -89,12 +88,10 @@ class WiFiVC :  UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        viewModel.loadList()
+        viewService.loadList()
     }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
         addSubview()
@@ -111,18 +108,17 @@ class WiFiVC :  UIViewController {
         searchBar.backgroundColor = .white
         searchBar.barTintColor = UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
         searchBar.tintColor = UIColor(red:0.79, green:0.79, blue:0.81, alpha:1.0)
-        
     }
     
-    func addSubview(){
+    private func addSubview(){
         view.addSubview(wiFiList)
         view.addSubview(searchBar)
         view.addSubview(cityLbl)
         view.addSubview(choose)
     }
     
-    func setupConstraints(){
-        
+    ///устанавливает Constraints для всех subviews 
+    private func setupConstraints(){
         cityLbl.translatesAutoresizingMaskIntoConstraints = false
         cityLbl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height * 0.015).isActive = true
         cityLbl.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
@@ -146,7 +142,6 @@ class WiFiVC :  UIViewController {
         wiFiList.widthAnchor.constraint(equalTo: searchBar.widthAnchor).isActive = true
         wiFiList.centerXAnchor.constraint(equalTo: searchBar.centerXAnchor).isActive = true
         wiFiList.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
     }
     
     /// показывется список городов

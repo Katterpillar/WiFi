@@ -12,17 +12,18 @@ import UIKit
 /// вью, показывающее детальную информацию о выбранной вай-фай точке
 class DetailFavoritesVC : UIViewController {
     
-    var adress =  UILabel(frame: .zero)
-    var id =  UILabel(frame: .zero)
-    var psw = UILabel(frame: .zero)
-    var city = UILabel(frame: .zero)
-    var idLbl = UILabel(frame: .zero)
-    var pswLbl = UILabel(frame: .zero)
-    var adressLbl = UILabel(frame: .zero)
-    var cityLbl = UILabel(frame: .zero)
-    var addToFavoritesList = UIButton(frame: .zero)
+    private var adress =  UILabel(frame: .zero)
+    private var id =  UILabel(frame: .zero)
+    private var psw = UILabel(frame: .zero)
+    private var city = UILabel(frame: .zero)
+    private var idLbl = UILabel(frame: .zero)
+    private var pswLbl = UILabel(frame: .zero)
+    private var adressLbl = UILabel(frame: .zero)
+    private var cityLbl = UILabel(frame: .zero)
+    private var addToFavoritesList = UIButton(frame: .zero)
+    
     /// экземпляр view model
-    var viewModel: FavoritesViewModels {
+    var viewModel: FavoritesViewService {
         didSet{
             // устанавливает значение соответствующих полей
             self.viewModel.setupDetails = { details in
@@ -37,9 +38,8 @@ class DetailFavoritesVC : UIViewController {
     }
     
     
-    init(viewModel: FavoritesViewModels = FavoritesViewModels.shared) {
-        self.viewModel = FavoritesViewModels()
-        
+    init(viewModel: FavoritesViewService = FavoritesViewService.shared) {
+        self.viewModel = FavoritesViewService()
         defer {
             self.viewModel = viewModel
         }
@@ -51,16 +51,18 @@ class DetailFavoritesVC : UIViewController {
     }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         addSubviews()
         setupView()
-        setupConstrains()
+        setupIdConstrains()
+        setupAdressConstrains()
+        setupCityConstrains()
+        setupPswConstrains()
         setupFont()
-        
     }
     
-    func addSubviews() {
+    /// добавляет элементы на view
+    private func addSubviews() {
         view.addSubview(adress)
         view.addSubview(id)
         view.addSubview(psw)
@@ -72,21 +74,40 @@ class DetailFavoritesVC : UIViewController {
         view.addSubview(addToFavoritesList)
     }
     
-    func setupConstrains() {
-        
+    /// настраивает Constrains для полей причастных к id
+    private func setupIdConstrains() {
         idLbl.translatesAutoresizingMaskIntoConstraints = false
         idLbl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height * 0.01).isActive = true
         idLbl.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         idLbl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         idLbl.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.04).isActive = true
         
-        
         id.translatesAutoresizingMaskIntoConstraints = false
         id.topAnchor.constraint(equalTo: idLbl.bottomAnchor, constant: view.frame.height * 0.01).isActive = true
         id.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         id.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         id.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.07).isActive = true
+    }
+    
+    /// настраивает Constrains для полей причастных к адресу
+    private func  setupAdressConstrains(){
+        adressLbl.translatesAutoresizingMaskIntoConstraints = false
+        adressLbl.topAnchor.constraint(equalTo: city.bottomAnchor, constant: view.frame.height * 0.01).isActive = true
+        adressLbl.widthAnchor.constraint(equalTo: psw.widthAnchor).isActive = true
+        adressLbl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        adressLbl.heightAnchor.constraint(equalTo: idLbl.heightAnchor).isActive = true
         
+        adress.translatesAutoresizingMaskIntoConstraints = false
+        adress.topAnchor.constraint(equalTo: adressLbl.bottomAnchor, constant: view.frame.height * 0.01).isActive = true
+        adress.widthAnchor.constraint(equalTo: psw.widthAnchor).isActive = true
+        adress.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        adress.heightAnchor.constraint(equalTo: psw.heightAnchor).isActive = true
+        adress.sizeToFit()
+        adress.numberOfLines = 4
+    }
+    
+    /// настраивает Constrains для полей причастных к паролю
+    private func setupPswConstrains(){
         
         pswLbl.translatesAutoresizingMaskIntoConstraints = false
         pswLbl.topAnchor.constraint(equalTo: id.bottomAnchor, constant: view.frame.height * 0.01).isActive = true
@@ -100,6 +121,10 @@ class DetailFavoritesVC : UIViewController {
         psw.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         psw.heightAnchor.constraint(equalTo: id.heightAnchor).isActive = true
         
+    }
+    
+    /// настраивает Constrains для полей причастных к городу
+    private func setupCityConstrains(){
         
         cityLbl.translatesAutoresizingMaskIntoConstraints = false
         cityLbl.topAnchor.constraint(equalTo: psw.bottomAnchor, constant: view.frame.height * 0.01).isActive = true
@@ -115,28 +140,11 @@ class DetailFavoritesVC : UIViewController {
         city.sizeToFit()
         city.numberOfLines = 4
         
-        
-        adressLbl.translatesAutoresizingMaskIntoConstraints = false
-        adressLbl.topAnchor.constraint(equalTo: city.bottomAnchor, constant: view.frame.height * 0.01).isActive = true
-        adressLbl.widthAnchor.constraint(equalTo: psw.widthAnchor).isActive = true
-        adressLbl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        adressLbl.heightAnchor.constraint(equalTo: idLbl.heightAnchor).isActive = true
-        
-        
-        adress.translatesAutoresizingMaskIntoConstraints = false
-        adress.topAnchor.constraint(equalTo: adressLbl.bottomAnchor, constant: view.frame.height * 0.01).isActive = true
-        adress.widthAnchor.constraint(equalTo: psw.widthAnchor).isActive = true
-        adress.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        adress.heightAnchor.constraint(equalTo: psw.heightAnchor).isActive = true
-        adress.sizeToFit()
-        adress.numberOfLines = 4
-        
     }
     
-    func setupView() {
+    ///настраивает детали представления элементов: скругление, шрифт, названия
+    private func setupView() {
         navigationItem.title = "Описание"
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "STHeitiSC-Light", size: 25) ?? UIFont.systemFont(ofSize: 25.0)]
-        self.navigationController?.navigationBar.titleTextAttributes = attributes
         view.backgroundColor =  UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
         
         self.city.layer.masksToBounds = true
@@ -184,7 +192,11 @@ class DetailFavoritesVC : UIViewController {
         adressLbl.textAlignment = .natural
     }
     
-    func setupFont(){
+    ///настраивает шрифты
+    private func setupFont(){
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "STHeitiSC-Light", size: 25) ?? UIFont.systemFont(ofSize: 25.0)]
+        self.navigationController?.navigationBar.titleTextAttributes = attributes
+        
         city.font = UIFont(name: "Helvetica", size: 16.0)
         adress.font = UIFont(name: "Helvetica", size: 16.0)
         id.font = UIFont(name: "Helvetica", size: 16.0)

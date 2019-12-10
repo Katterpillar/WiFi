@@ -15,16 +15,16 @@ protocol DetailViewControllerDelegate {
 
 class ChoiceCityVC :  UIViewController {
     
-    var detailDelegate: DetailViewControllerDelegate?
-    var cityList = UITableView(frame: .zero)
+    internal var detailDelegate: DetailViewControllerDelegate?
+    internal var cityList = UITableView(frame: .zero)
     
-    var viewModel: WiFiViewService
+    internal var viewService: WiFiViewService
     
     init(viewModel: WiFiViewService = WiFiViewService.shared) {
-        self.viewModel = WiFiViewService()
+        self.viewService = WiFiViewService()
         
         defer {
-            self.viewModel = viewModel
+            self.viewService = viewModel
         }
         super.init(nibName: nil, bundle: nil)
     }
@@ -34,34 +34,30 @@ class ChoiceCityVC :  UIViewController {
     }
     
     override func viewDidLoad() {
-        
         view.backgroundColor = UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
         let attributes = [NSAttributedString.Key.font: UIFont(name: "STHeitiSC-Light", size: 25) ?? UIFont.systemFont(ofSize: 25.0)]
         self.navigationController?.navigationBar.titleTextAttributes = attributes
         navigationItem.title = "Выберите город"
-        viewModel.loadCityList()
+        viewService.loadCityList()
         addSubview()
         setupConstraints()
-        
     }
     
-    
-    func addSubview(){
+    ///  добавляет все объекты на view
+    private func addSubview(){
         view.addSubview(cityList)
         cityList.dataSource = self
         cityList.delegate = self
         cityList.register(UITableViewCell.self, forCellReuseIdentifier: "city")
-        
     }
     
-    func setupConstraints(){
-        
+    /// устанавливает Constraints для объектов, добавленных на view
+    private func setupConstraints(){
         cityList.translatesAutoresizingMaskIntoConstraints = false
         cityList.topAnchor.constraint(equalTo:view.topAnchor, constant: 30).isActive = true
         cityList.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         cityList.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         cityList.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
     }
     
 }

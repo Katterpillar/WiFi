@@ -12,7 +12,7 @@ import SystemConfiguration
 
 /// проверяет наличие интернета
 class Reachability {
-    
+    ///проверяет наличие интернет подключения
     class func isConnectedToNetwork() -> Bool {
         var zeroAddress = sockaddr_in()
         zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
@@ -29,5 +29,5 @@ class Reachability {
         let isReachable = flags.contains(.reachable)
         let needsConnection = flags.contains(.connectionRequired)
         return (isReachable && !needsConnection)
-    } // isConnectedToNetwork
-} // class Reachabilit`
+    }
+} 

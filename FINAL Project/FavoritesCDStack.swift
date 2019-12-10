@@ -12,6 +12,7 @@ import CoreData
 /// класс, работающий с core data, для сохранения избранного
 internal final class FavoritesCDStack {
     
+    ///singltone coreData
     static var shared : FavoritesCDStack {
         let shared = FavoritesCDStack()
         return shared
@@ -33,7 +34,7 @@ internal final class FavoritesCDStack {
     }
     
     /// функция сохранения в список избранного 
-    func save(location: WiFiEntity) {
+    internal func save(location: WiFiEntity) {
         
         persistentContainer.performBackgroundTask { (context) in
             //создаем новый  managed-object
@@ -47,15 +48,16 @@ internal final class FavoritesCDStack {
             
             do {
                 try context.save()
-                print("Succesful Favorites")
+                print("успешно сохранено в избранное")
             } catch {
-                print("WTF")
+                print("не удалось сохранить геопозицию")
             }
             
         }
     }
     
-    func deleteItem(adress: String){
+    ///удаляет из изранного
+    internal func deleteItem(adress: String){
         let context = persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Favorites")
         request.predicate = NSPredicate(format: "adress CONTAINS[c] %@", adress)
@@ -64,12 +66,13 @@ internal final class FavoritesCDStack {
             let results = try context.fetch(request)
             if results.count > 0
             {
-                for result in results as! [NSManagedObject]
+                guard let results = (results as? [NSManagedObject]) else { return }
+                for result in results
                 {
                     do
                     {
                         context.delete(result)
-                        print("success")
+                        print("удалено из избранного")
                     }
                 }
             }

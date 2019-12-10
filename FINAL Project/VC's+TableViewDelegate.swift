@@ -12,8 +12,7 @@ import UIKit
 extension WiFiVC: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        guard let sections = viewModel.fetchResultController.sections else {
+        guard let sections = viewService.fetchResultController.sections else {
             fatalError()
         }
         let section = sections[indexPath.section]
@@ -29,9 +28,8 @@ extension WiFiVC: UITableViewDelegate{
         
         //передаются данные о выбранной ячейке для детального представление
         let detailVC = DetailVC()
-        viewModel.showDetail(with: location)
+        viewService.showDetail(with: location)
         navigationController?.pushViewController(detailVC, animated: true)
-        
     }
     
 }
@@ -39,14 +37,15 @@ extension WiFiVC: UITableViewDelegate{
 
 extension ChoiceCityVC: UITableViewDelegate {
     
+    ///возвращает название выбранного города
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let sections = viewModel.fetchResultCityController.sections else { fatalError() }
+        guard let sections = viewService.fetchResultCityController.sections else { fatalError() }
         let section = sections[indexPath.section]
         guard let itemsInSection = section.objects as [AnyObject]? else {
             fatalError("нет данных")
         }
         let city = itemsInSection[indexPath.row].city
-        viewModel.chooseCity(with: city ?? "")
+        viewService.chooseCity(with: city ?? "")
         navigationController?.popViewController(animated: true)
     }
 }

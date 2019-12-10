@@ -12,13 +12,12 @@ import MapKit
 
 
 extension MapVC: CLLocationManagerDelegate{
-    
+    ///возвращиает пользоваательскую геолокацию
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         let location = CLLocationCoordinate2DMake(locValue.latitude, locValue.longitude)
         let span = MKCoordinateSpan(latitudeDelta: 0.01,longitudeDelta: 0.01 )
         let region = MKCoordinateRegion(center: location, span: span)
-        
         self.mapView.setRegion(region, animated: true)
     }
     

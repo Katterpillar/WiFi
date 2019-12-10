@@ -10,16 +10,16 @@ import Foundation
 
 class AddLocationService {
     
-    var locationFormData = WiFiEntity()
-    var coreDataStack: CoreDataStack
+    internal var locationFormData = WiFiEntity()
+    private var coreDataStack: CoreDataStack
     
     init(coreDataStack: CoreDataStack = CoreDataStack.shared) {
-       self.coreDataStack = coreDataStack
-        
+        self.coreDataStack = coreDataStack
     }
     
-    func addToCoreData(){
-       coreDataStack.addToCoreData(location: locationFormData)
+    ///добавляет пользовательскую локацию в список точек
+    internal func addToCoreData(){
+        coreDataStack.addToCoreData(location: locationFormData)
         coreDataStack.addCity(locationFormData.city)
     }
 }

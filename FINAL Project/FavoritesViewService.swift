@@ -10,14 +10,13 @@ import Foundation
 import CoreData
 
 ///  view model, осуществляет все операции не касающиеся UI
-class FavoritesViewModels {
-    
+class FavoritesViewService {
     
     var setupDetails: ((WiFiEntity) -> ())?
     var dataDidChange: (() -> ())?
     var deleteRow:(()->())?
     var favoritesCD: FavoritesCDStack
-    static let shared = FavoritesViewModels()
+    static let shared = FavoritesViewService()
     ///  загружает данные из core data не поднимая все данные, удобно при использовании table view
     var fetchResultController : NSFetchedResultsController<Favorites> = {
         //fetchRequest — запрос на извлечение объектов NSFetchRequest
@@ -38,7 +37,7 @@ class FavoritesViewModels {
     }
     
     /// загружает данные по точкам из coredata
-    func loadFromCoreData() {
+    internal func loadFromCoreData() {
         do {
             try fetchResultController.performFetch()
             self.dataDidChange?()
@@ -46,15 +45,16 @@ class FavoritesViewModels {
             print(error.localizedDescription)
         }
     }
- 
+    
     /// показывает детальную информацию
     ///
     /// - Parameter location: содержит все необходимые пользователю параметры для подключения к сети
-    func showDetail(with location: WiFiEntity){
+    internal func showDetail(with location: WiFiEntity){
         self.setupDetails?(location)
     }
     
-    func deleteItem(with location: String){
+    ///удаляет выбранный элемент
+    internal func deleteItem(with location: String){
         favoritesCD.deleteItem(adress: location)
         self.dataDidChange?()
     }

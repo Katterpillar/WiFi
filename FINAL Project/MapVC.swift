@@ -11,23 +11,21 @@ import UIKit
 import MapKit
 import CoreLocation
 
-
-
+///класс для отображения карты
 class MapVC: UIViewController {
     
-    var mapView = MKMapView(frame: .zero)
-    var mapService: MapService
-    var mapLocation: MKPlacemark
-    var locationManager = CLLocationManager()
-   
+    internal var mapView = MKMapView(frame: .zero)
+    private var mapService: MapService
+    internal var mapLocation: MKPlacemark
+    private var locationManager = CLLocationManager()
+    
     init(mapService: MapService  = MapService()) {
         self.mapService = mapService
         self.mapLocation = MKPlacemark()
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
         
@@ -35,26 +33,27 @@ class MapVC: UIViewController {
         setupConstraint()
         setupView()
         addLocation()
-
+        
         locationManager.delegate = self;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
-    
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupView() {        
+    ///настраивает детали отображения окна
+    private func setupView() {
         navigationItem.title = "Карта"
         let attributes = [NSAttributedString.Key.font: UIFont(name: "STHeitiSC-Light", size: 25) ?? UIFont.systemFont(ofSize: 25.0)]
         self.navigationController?.navigationBar.titleTextAttributes = attributes
         view.backgroundColor =  UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
     }
     
-    func setupConstraint(){
+    ///настраивает Constraint отображения карты
+    private func setupConstraint(){
         mapView.translatesAutoresizingMaskIntoConstraints = false
         mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         mapView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -62,7 +61,8 @@ class MapVC: UIViewController {
         mapView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
     }
     
-    func addLocation(){
+    ///добавляет точки на карту
+    private func addLocation(){
         for location in self.mapService.addAllLocation(){
             mapView.addAnnotation(location)
             
