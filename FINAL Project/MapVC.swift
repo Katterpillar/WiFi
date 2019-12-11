@@ -50,6 +50,9 @@ class MapVC: UIViewController {
         let attributes = [NSAttributedString.Key.font: UIFont(name: "STHeitiSC-Light", size: 25) ?? UIFont.systemFont(ofSize: 25.0)]
         self.navigationController?.navigationBar.titleTextAttributes = attributes
         view.backgroundColor =  UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
+        self.mapView.showsUserLocation = true
+        self.mapView.showsScale = true
+        self.mapView.isZoomEnabled = true
     }
     
     ///настраивает Constraint отображения карты

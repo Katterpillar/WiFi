@@ -85,7 +85,7 @@ class AddLocationModelTests: XCTestCase {
     }
 }
 
-public func assertEqualLocation(actual: (_: WiFiEntity),
+internal func assertEqualLocation(actual: (_: WiFiEntity),
                                 expected: (_: WiFiEntity)) {
     if actual.adress != expected.adress ||  actual.id != expected.id || actual.psw != expected.psw || actual.city != expected.city || actual.longtitude != expected.longtitude || actual.latitude != expected.latitude{
         XCTFail("локации не идентичны!")

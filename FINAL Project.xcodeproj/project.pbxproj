@@ -15,7 +15,6 @@
 		660EC85A2398FA210051A575 /* MOCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EC8592398FA210051A575 /* MOCity.swift */; };
 		660EC85E239928840051A575 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EC85D239928840051A575 /* Reachability.swift */; };
 		660EC8602399873A0051A575 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 660EC85F2399873A0051A575 /* Media.xcassets */; };
-		6611B384239FD9F2000A9FA3 /* Wi_Fi_Map.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 660EC85423980A6E0051A575 /* Wi_Fi_Map.xcdatamodeld */; };
 		6611B38623A015D8000A9FA3 /* Favorites + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6611B38523A015D7000A9FA3 /* Favorites + DataSource.swift */; };
 		6611B38823A015F0000A9FA3 /* Favorites + Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6611B38723A015F0000A9FA3 /* Favorites + Delegate.swift */; };
 		6611B38A23A021E4000A9FA3 /* AddLocation + Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6611B38923A021E4000A9FA3 /* AddLocation + Delegate.swift */; };
@@ -47,13 +46,20 @@
 		6611B3C923A14A26000A9FA3 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660EC85D239928840051A575 /* Reachability.swift */; };
 		6611B3CA23A14A26000A9FA3 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6611B39E23A12713000A9FA3 /* Protocols.swift */; };
 		6611B3CB23A14A26000A9FA3 /* ButtonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F520C8239BE1F9004EA799 /* ButtonBuilder.swift */; };
-		6611B3CC23A14A36000A9FA3 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 660EC85F2399873A0051A575 /* Media.xcassets */; };
-		6611B3CD23A14A3B000A9FA3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66C14A3723958A5E00845B16 /* Info.plist */; };
 		6611B3D423A14AC3000A9FA3 /* AddLocationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6611B38F23A10EC7000A9FA3 /* AddLocationModelTests.swift */; };
 		6611B3D523A14AC3000A9FA3 /* AppDelegateTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6611B3AC23A13F5D000A9FA3 /* AppDelegateTest.swift */; };
 		6611B3D623A14AC3000A9FA3 /* ReachabilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6659105D239FC28E0097BB12 /* ReachabilityTests.swift */; };
 		6611B3D723A14AC3000A9FA3 /* WiFiServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6611B3A223A127E4000A9FA3 /* WiFiServiceTests.swift */; };
 		6611B3D823A14AC3000A9FA3 /* WiFiVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6611B3AA23A1323D000A9FA3 /* WiFiVCTests.swift */; };
+		6611B3E323A14CCB000A9FA3 /* WifiEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A5B2395977B00845B16 /* WifiEntity.swift */; };
+		6611B3E423A14CCE000A9FA3 /* AddLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A592395963D00845B16 /* AddLocationService.swift */; };
+		6611B3E523A14CD3000A9FA3 /* AddLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A55239590DF00845B16 /* AddLocationViewModel.swift */; };
+		6611B3E623A14CD6000A9FA3 /* AddLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A5323958C9200845B16 /* AddLocationVC.swift */; };
+		6611B3E723A14CD9000A9FA3 /* AddLocation + Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6611B38923A021E4000A9FA3 /* AddLocation + Delegate.swift */; };
+		6611B3E823A14E09000A9FA3 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F520E3239E41EA004EA799 /* MapVC.swift */; };
+		6611B3E923A14E0C000A9FA3 /* MapVC+ CLLocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F5211A239EA519004EA799 /* MapVC+ CLLocationManagerDelegate.swift */; };
+		6611B3EA23A14E0F000A9FA3 /* MapViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F52115239E8963004EA799 /* MapViewService.swift */; };
+		6611B3ED23A1538F000A9FA3 /* FavoritesViewServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6611B3EC23A1538F000A9FA3 /* FavoritesViewServiceTest.swift */; };
 		6659105C239FC04C0097BB12 /* ReachabilityMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6659105B239FC04C0097BB12 /* ReachabilityMock.swift */; };
 		66C14A2923958A5C00845B16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C14A2823958A5C00845B16 /* AppDelegate.swift */; };
 		66C14A2E23958A5C00845B16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66C14A2C23958A5C00845B16 /* Main.storyboard */; };
@@ -112,6 +118,7 @@
 		6611B3A823A12E4D000A9FA3 /* WiFiViewmodelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiViewmodelMock.swift; sourceTree = "<group>"; };
 		6611B3AA23A1323D000A9FA3 /* WiFiVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiVCTests.swift; sourceTree = "<group>"; };
 		6611B3AC23A13F5D000A9FA3 /* AppDelegateTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateTest.swift; sourceTree = "<group>"; };
+		6611B3EC23A1538F000A9FA3 /* FavoritesViewServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewServiceTest.swift; sourceTree = "<group>"; };
 		6659105B239FC04C0097BB12 /* ReachabilityMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityMock.swift; sourceTree = "<group>"; };
 		6659105D239FC28E0097BB12 /* ReachabilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityTests.swift; sourceTree = "<group>"; };
 		66C14A2523958A5C00845B16 /* FINAL Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FINAL Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -240,12 +247,12 @@
 		6611B3B123A14010000A9FA3 /* TetstsClass */ = {
 			isa = PBXGroup;
 			children = (
-				6611B3B023A13FF4000A9FA3 /* Mocks */,
 				6611B38F23A10EC7000A9FA3 /* AddLocationModelTests.swift */,
 				6611B3AC23A13F5D000A9FA3 /* AppDelegateTest.swift */,
 				6659105D239FC28E0097BB12 /* ReachabilityTests.swift */,
 				6611B3A223A127E4000A9FA3 /* WiFiServiceTests.swift */,
 				6611B3AA23A1323D000A9FA3 /* WiFiVCTests.swift */,
+				6611B3EC23A1538F000A9FA3 /* FavoritesViewServiceTest.swift */,
 			);
 			name = TetstsClass;
 			sourceTree = "<group>";
@@ -294,6 +301,7 @@
 		66C14A3F23958A5E00845B16 /* FINAL ProjectTests */ = {
 			isa = PBXGroup;
 			children = (
+				6611B3B023A13FF4000A9FA3 /* Mocks */,
 				6611B3B123A14010000A9FA3 /* TetstsClass */,
 				66C14A4223958A5E00845B16 /* Info.plist */,
 			);
@@ -477,8 +485,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6611B3CD23A14A3B000A9FA3 /* Info.plist in Resources */,
-				6611B3CC23A14A36000A9FA3 /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,11 +539,15 @@
 				6611B39D23A1109F000A9FA3 /* ModelMock.swift in Sources */,
 				6611B3CA23A14A26000A9FA3 /* Protocols.swift in Sources */,
 				6611B3C323A14A1D000A9FA3 /* FavoritesCDStack.swift in Sources */,
+				6611B3E823A14E09000A9FA3 /* MapVC.swift in Sources */,
 				6611B3BD23A14A0B000A9FA3 /* FavoritesViewService.swift in Sources */,
+				6611B3E723A14CD9000A9FA3 /* AddLocation + Delegate.swift in Sources */,
+				6611B3E423A14CCE000A9FA3 /* AddLocationService.swift in Sources */,
 				6611B3BA23A14A04000A9FA3 /* DetailVC.swift in Sources */,
 				6611B3C623A14A1D000A9FA3 /* MOCity.swift in Sources */,
-				6611B384239FD9F2000A9FA3 /* Wi_Fi_Map.xcdatamodeld in Sources */,
 				6611B3BE23A14A0E000A9FA3 /* DetailFavoritesVC.swift in Sources */,
+				6611B3E323A14CCB000A9FA3 /* WifiEntity.swift in Sources */,
+				6611B3ED23A1538F000A9FA3 /* FavoritesViewServiceTest.swift in Sources */,
 				6611B3BB23A14A06000A9FA3 /* ChooseCityVC.swift in Sources */,
 				6611B3C023A14A13000A9FA3 /* Favorites + DataSource.swift in Sources */,
 				6611B3B823A149FE000A9FA3 /* VC's+TableViewDelegate.swift in Sources */,
@@ -551,15 +561,19 @@
 				6611B3B923A14A00000A9FA3 /* VC's+dataSource.swift in Sources */,
 				6611B3BC23A14A08000A9FA3 /* WiFiVC.swift in Sources */,
 				6611B3B523A149F6000A9FA3 /* WiFiViewService.swift in Sources */,
+				6611B3E623A14CD6000A9FA3 /* AddLocationVC.swift in Sources */,
 				6611B3D723A14AC3000A9FA3 /* WiFiServiceTests.swift in Sources */,
 				6611B3D623A14AC3000A9FA3 /* ReachabilityTests.swift in Sources */,
+				6611B3E523A14CD3000A9FA3 /* AddLocationViewModel.swift in Sources */,
 				6611B3D423A14AC3000A9FA3 /* AddLocationModelTests.swift in Sources */,
 				6611B3B623A149F9000A9FA3 /* WiFiModel.swift in Sources */,
 				6611B3C223A14A1D000A9FA3 /* CoreDataStack.swift in Sources */,
 				6611B3A723A129C2000A9FA3 /* FavoritesCDMock.swift in Sources */,
 				6611B3D523A14AC3000A9FA3 /* AppDelegateTest.swift in Sources */,
+				6611B3E923A14E0C000A9FA3 /* MapVC+ CLLocationManagerDelegate.swift in Sources */,
 				6611B3A923A12E4D000A9FA3 /* WiFiViewmodelMock.swift in Sources */,
 				6611B3A523A127FE000A9FA3 /* WiFModelMock.swift in Sources */,
+				6611B3EA23A14E0F000A9FA3 /* MapViewService.swift in Sources */,
 				6611B3C923A14A26000A9FA3 /* Reachability.swift in Sources */,
 				6611B3C823A14A26000A9FA3 /* TabBar.swift in Sources */,
 			);

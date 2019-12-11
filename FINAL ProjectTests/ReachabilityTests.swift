@@ -11,13 +11,15 @@ import XCTest
 
 class ReachabilityTests: XCTestCase {
     
-    var reachability = ReachabilityMock()
+    var reachability : ReachabilityMock!
     override func setUp() {
-        
+        reachability = ReachabilityMock()
+        super.setUp()
     }
     
     override func tearDown() {
-        
+        reachability = nil
+        super.tearDown()
     }
     
     func testExample() {

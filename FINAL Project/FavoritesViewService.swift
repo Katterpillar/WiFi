@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 ///  view model, осуществляет все операции не касающиеся UI
-class FavoritesViewService {
+class FavoritesViewService: FavoritesViewServiceProtocol {
     
     var setupDetails: ((WiFiEntity) -> ())?
     var dataDidChange: (() -> ())?
@@ -58,4 +58,10 @@ class FavoritesViewService {
         favoritesCD.deleteItem(adress: location)
         self.dataDidChange?()
     }
+}
+
+
+protocol FavoritesViewServiceProtocol {
+    func showDetail(with location: WiFiEntity)
+    func initDeleteItem(with location: String)
 }

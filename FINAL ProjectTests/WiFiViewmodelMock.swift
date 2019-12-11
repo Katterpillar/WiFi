@@ -11,6 +11,8 @@ import CoreData
 @testable import FINAL_Project
 
 class WiFiViewServiceMock: WiFiViewServiceProtocol{
+
+    
     
     var location = WiFiEntity()
     var favorites = WiFiEntity()
@@ -58,28 +60,12 @@ class WiFiViewServiceMock: WiFiViewServiceProtocol{
     
     var setupDetails: ((WiFiEntity) -> ())?
     
-    var fetchResultCityController: NSFetchedResultsController<Cities> = {
-    //fetchRequest — запрос на извлечение объектов NSFetchRequest
-    let fetchRequest = NSFetchRequest<Cities>(entityName: "Cities")
-    let sortByIndex = NSSortDescriptor(key: "city", ascending: true)
-    fetchRequest.sortDescriptors = [sortByIndex]
-    fetchRequest.fetchBatchSize = 10
-    let context = CoreDataStack.shared.persistentContainer.viewContext
-    let fetchResultController = NSFetchedResultsController<Cities>(fetchRequest: fetchRequest, managedObjectContext: context , sectionNameKeyPath: nil, cacheName: nil)
-    return fetchResultController
+    var fetchResultCityController: NSFetchedResultsController<Cities>
+    var fetchResultController: NSFetchedResultsController<WiFiLock>
     
-    }()
-    
-    var fetchResultController: NSFetchedResultsController<WiFiLock> = {
-        //fetchRequest — запрос на извлечение объектов NSFetchRequest
-        let fetchRequest = NSFetchRequest<WiFiLock>(entityName: "WiFiLock")
-        let sortByIndex = NSSortDescriptor(key: "id", ascending: true)
-        fetchRequest.sortDescriptors = [sortByIndex]
-        fetchRequest.fetchBatchSize = 20
-        let context = CoreDataStack.shared.persistentContainer.viewContext
-        let fetchResultController = NSFetchedResultsController<WiFiLock>(fetchRequest: fetchRequest, managedObjectContext: context , sectionNameKeyPath: nil, cacheName: nil)
-        return fetchResultController
-        
-    }()
+    init(){
+        fetchResultCityController = NSFetchedResultsController<Cities>()
+        fetchResultController = NSFetchedResultsController<WiFiLock>()
+    }
     
 }

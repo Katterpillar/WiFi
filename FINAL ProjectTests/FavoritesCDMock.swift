@@ -16,6 +16,7 @@ class FavoritesCDMock: FavoritesCDProtocol{
   var  persistentContainer : NSPersistentContainer
     
     var location = WiFiEntity()
+    var locationDelete = WiFiEntity()
     var message = ""
     
     func save(location: WiFiEntity) {
@@ -23,11 +24,12 @@ class FavoritesCDMock: FavoritesCDProtocol{
     }
     
     func deleteItem(adress: String) {
+        self.locationDelete.adress = adress
         self.message = "удалено"
     }
     
     init(){
-    persistentContainer = NSPersistentContainer(name: "Wi_Fi_Map")
+        persistentContainer = NSPersistentContainer()
         
     }
 

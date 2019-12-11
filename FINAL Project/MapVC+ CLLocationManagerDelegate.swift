@@ -18,7 +18,9 @@ extension MapVC: CLLocationManagerDelegate{
         let location = CLLocationCoordinate2DMake(locValue.latitude, locValue.longitude)
         let span = MKCoordinateSpan(latitudeDelta: 0.01,longitudeDelta: 0.01 )
         let region = MKCoordinateRegion(center: location, span: span)
+        self.mapView.showsUserLocation = true
         self.mapView.setRegion(region, animated: true)
     }
     
 }
+
