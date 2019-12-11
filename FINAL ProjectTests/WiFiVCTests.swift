@@ -40,10 +40,11 @@ class WiFiVCTests: XCTestCase {
 
     func testThatCheckCallCountCityListLoad() {
         //arrange
+        
         //act
         chooseCityVC?.viewDidLoad()
         //assert
-        XCTAssertEqual(1, wifiService?.callCountLoadCityList)
+        XCTAssertEqual(2, wifiService?.callCountLoadCityList)
     }
     
     func testThatCheckSearchTextAreEqual () {

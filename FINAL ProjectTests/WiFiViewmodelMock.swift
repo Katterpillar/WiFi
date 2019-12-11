@@ -49,7 +49,7 @@ class WiFiViewServiceMock: WiFiViewServiceProtocol{
     }
     
     func loadCityList() {
-       callCountLoadCityList = 1
+       callCountLoadCityList += 1
     }
     
     var dataDidLoad: (() -> ())?

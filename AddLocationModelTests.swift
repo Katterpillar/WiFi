@@ -11,16 +11,18 @@ import XCTest
 
 class AddLocationModelTests: XCTestCase {
     
-    var model = AddLocationMock()
+    var model : AddLocationMock!
     var viewModel : AddLocationViewModel!
     
     override func setUp() {
-        viewModel = AddLocationViewModel(model: model as AddLocationServiceProtocol)
+        model = AddLocationMock()
+        viewModel = AddLocationViewModel(model: model)
         super.setUp()
     }
     
     override func tearDown() {
         viewModel = nil
+        model = nil
         super.tearDown()
     }
     

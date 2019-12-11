@@ -26,7 +26,7 @@
                   moduleName = "FINAL Project"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/f6/Desktop/Sber/FINAL%20Project/FINAL%20Project/VC&apos;s+TableViewDelegate.swift"
-                  timestampString = "597778525.473622"
+                  timestampString = "597779825.395398"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "24"
@@ -41,7 +41,7 @@
                   moduleName = "FINAL ProjectTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/f6/Desktop/Sber/FINAL%20Project/FINAL%20Project/VC&apos;s+TableViewDelegate.swift"
-                  timestampString = "597778526.580402"
+                  timestampString = "597779826.916394"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "24"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FINAL ProjectTests/WiFiViewmodelMock.swift"
-            timestampString = "597778525.458302"
+            timestampString = "597779825.382632"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13"
@@ -74,7 +74,7 @@
                   moduleName = "FINAL ProjectTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/f6/Desktop/Sber/FINAL%20Project/FINAL%20ProjectTests/WiFiViewmodelMock.swift"
-                  timestampString = "597778526.595597"
+                  timestampString = "597779826.967209"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -89,7 +89,7 @@
                   moduleName = "FINAL ProjectTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/f6/Desktop/Sber/FINAL%20Project/FINAL%20ProjectTests/WiFiViewmodelMock.swift"
-                  timestampString = "597778526.600776"
+                  timestampString = "597779826.970372"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
@@ -113,6 +113,70 @@
             endingLineNumber = "46"
             landmarkName = "AddLocationServiceProtocol"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FINAL ProjectTests/WiFiViewmodelMock.swift"
+            timestampString = "597779825.382726"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "loadCityList()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FINAL Project/ChooseCityVC.swift"
+            timestampString = "597779825.382785"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FINAL_Project.ChoiceCityVC.viewDidLoad() -&gt; ()"
+                  moduleName = "FINAL Project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/f6/Desktop/Sber/FINAL%20Project/FINAL%20Project/ChooseCityVC.swift"
+                  timestampString = "597779825.463015"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "57">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FINAL_ProjectTests.ChoiceCityVC.viewDidLoad() -&gt; ()"
+                  moduleName = "FINAL ProjectTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/f6/Desktop/Sber/FINAL%20Project/FINAL%20Project/ChooseCityVC.swift"
+                  timestampString = "597779827.028913"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "57">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
