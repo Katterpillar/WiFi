@@ -34,6 +34,7 @@ class ChoiceCityVC :  UIViewController {
        viewService.loadCityList()
         addSubview()
         setupConstraints()
+        setupComponents()
     }
     
     ///  добавляет все объекты на view
