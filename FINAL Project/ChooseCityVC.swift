@@ -31,9 +31,9 @@ class ChoiceCityVC :  UIViewController {
     }
     
     override func viewDidLoad() {
+       viewService.loadCityList()
         addSubview()
         setupConstraints()
-        viewService.loadCityList()
     }
     
     ///  добавляет все объекты на view
