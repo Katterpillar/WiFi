@@ -41,7 +41,7 @@ class WiFiVC :  UIViewController {
     }
     
     /// название города
-    internal var term = "Москва" {
+    internal var term = "Все города" {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
