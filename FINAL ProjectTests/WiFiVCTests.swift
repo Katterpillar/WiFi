@@ -46,7 +46,7 @@ class WiFiVCTests: XCTestCase {
         XCTAssertEqual(1, wifiService?.callCountLoadCityList)
     }
     
-    func testThatCheckSearchTextAre () {
+    func testThatCheckSearchTextAreEqual () {
         //arrange
         let searchBar = wifiVC?.searchBar
         //act

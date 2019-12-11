@@ -31,10 +31,6 @@ class ChoiceCityVC :  UIViewController {
     }
     
     override func viewDidLoad() {
-        view.backgroundColor = UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "STHeitiSC-Light", size: 25) ?? UIFont.systemFont(ofSize: 25.0)]
-        self.navigationController?.navigationBar.titleTextAttributes = attributes
-        navigationItem.title = "Выберите город"
         addSubview()
         setupConstraints()
         viewService.loadCityList()
@@ -43,6 +39,15 @@ class ChoiceCityVC :  UIViewController {
     ///  добавляет все объекты на view
     private func addSubview(){
         view.addSubview(cityList)
+ 
+    }
+    
+    ///устанавливает некоторые атрибуты для корректного отображения  
+    private func setupComponents(){
+        view.backgroundColor = UIColor(red:0.98, green:0.86, blue:0.82, alpha:1.0)
+        let attributes = [NSAttributedString.Key.font: UIFont(name: "STHeitiSC-Light", size: 25) ?? UIFont.systemFont(ofSize: 25.0)]
+        self.navigationController?.navigationBar.titleTextAttributes = attributes
+        navigationItem.title = "Выберите город"
         cityList.dataSource = self
         cityList.delegate = self
         cityList.register(UITableViewCell.self, forCellReuseIdentifier: "city")
