@@ -448,6 +448,7 @@
 					};
 					66C14A3B23958A5E00845B16 = {
 						CreatedOnToolsVersion = 10.3;
+						TestTargetID = 66C14A2423958A5C00845B16;
 					};
 				};
 			};
@@ -780,6 +781,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FINAL Project.app/FINAL Project";
 			};
 			name = Debug;
 		};
@@ -800,6 +802,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FINAL Project.app/FINAL Project";
 			};
 			name = Release;
 		};

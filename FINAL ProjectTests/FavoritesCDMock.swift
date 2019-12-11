@@ -29,7 +29,7 @@ class FavoritesCDMock: FavoritesCDProtocol{
     }
     
     init(){
-        persistentContainer = NSPersistentContainer()
+    persistentContainer = NSPersistentContainer(name: "Wi_Fi_Map")
         
     }
 

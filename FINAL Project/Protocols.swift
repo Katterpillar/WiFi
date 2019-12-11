@@ -46,7 +46,7 @@ protocol AddLocationServiceProtocol {
     func addToCoreData()
 }
 
-
 protocol ReachabilityProtocol{
-      func isConnectedToNetwork() -> Bool
+    func isConnectedToNetwork() -> Bool
 }
+

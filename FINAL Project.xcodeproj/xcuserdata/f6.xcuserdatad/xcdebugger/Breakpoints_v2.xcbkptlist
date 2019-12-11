@@ -17,6 +17,38 @@
             endingLineNumber = "24"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FINAL_Project.WiFiVC.tableView(_: __C.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "FINAL Project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/f6/Desktop/Sber/FINAL%20Project/FINAL%20Project/VC&apos;s+TableViewDelegate.swift"
+                  timestampString = "597778525.473622"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "2612">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FINAL_ProjectTests.WiFiVC.tableView(_: __C.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "FINAL ProjectTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/f6/Desktop/Sber/FINAL%20Project/FINAL%20Project/VC&apos;s+TableViewDelegate.swift"
+                  timestampString = "597778526.580402"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "2612">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,13 +58,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FINAL ProjectTests/WiFiViewmodelMock.swift"
-            timestampString = "597778190.353534"
+            timestampString = "597778525.458302"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13"
             endingLineNumber = "13"
             landmarkName = "WiFiViewServiceMock"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FINAL_ProjectTests.WiFiViewServiceMock.deinit"
+                  moduleName = "FINAL ProjectTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/f6/Desktop/Sber/FINAL%20Project/FINAL%20ProjectTests/WiFiViewmodelMock.swift"
+                  timestampString = "597778526.595597"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FINAL_ProjectTests.WiFiViewServiceMock.__deallocating_deinit"
+                  moduleName = "FINAL ProjectTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/f6/Desktop/Sber/FINAL%20Project/FINAL%20ProjectTests/WiFiViewmodelMock.swift"
+                  timestampString = "597778526.600776"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "47">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FINAL Project/Protocols.swift"
+            timestampString = "597778565.766143"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "AddLocationServiceProtocol"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
