@@ -9,7 +9,7 @@
 import Foundation
 @testable import FINAL_Project
 
-class ReachabilityMock: Reachability {
+class ReachabilityMock: ReachabilityProtocol {
     
     var callCountConnectedToNetwork = 0
     

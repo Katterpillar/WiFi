@@ -9,18 +9,15 @@
 import Foundation
 import UIKit
 
-protocol DetailViewControllerDelegate {
-    func updateWiFiList(with myData: String)
-}
 
 class ChoiceCityVC :  UIViewController {
     
     internal var detailDelegate: DetailViewControllerDelegate?
     internal var cityList = UITableView(frame: .zero)
     
-    internal var viewService: WiFiViewService
+    internal var viewService: WiFiViewServiceProtocol
     
-    init(viewModel: WiFiViewService = WiFiViewService.shared) {
+    init(viewModel: WiFiViewServiceProtocol = WiFiViewService.shared) {
         self.viewService = WiFiViewService()
         
         defer {
@@ -38,9 +35,9 @@ class ChoiceCityVC :  UIViewController {
         let attributes = [NSAttributedString.Key.font: UIFont(name: "STHeitiSC-Light", size: 25) ?? UIFont.systemFont(ofSize: 25.0)]
         self.navigationController?.navigationBar.titleTextAttributes = attributes
         navigationItem.title = "Выберите город"
-        viewService.loadCityList()
         addSubview()
         setupConstraints()
+        viewService.loadCityList()
     }
     
     ///  добавляет все объекты на view

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AddLocationService {
+class AddLocationService: AddLocationServiceProtocol {
     
     internal var locationFormData = WiFiEntity()
     private var coreDataStack: CoreDataStack
@@ -23,3 +23,4 @@ class AddLocationService {
         coreDataStack.addCity(locationFormData.city)
     }
 }
+

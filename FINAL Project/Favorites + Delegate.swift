@@ -47,7 +47,7 @@ extension FavoritesVC: UITableViewDelegate{
             }
             let location = itemsInSection[indexPath.row].adress
             DispatchQueue.main.async {
-                self.viewService.deleteItem(with: location)
+                self.viewService.initDeleteItem(with: location)
                 self.viewService.loadFromCoreData()
                 self.wiFiList.deleteRows(at: [indexPath], with: .automatic)
                 self.wiFiList.reloadData()

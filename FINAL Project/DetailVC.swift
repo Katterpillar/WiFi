@@ -22,7 +22,7 @@ class DetailVC : UIViewController {
     private var cityLbl = UILabel(frame: .zero)
     private var addToFavoritesList = CustomButton(color: UIColor(red:0.69, green:0.79, blue:0.50, alpha:1.0), title: "В избранное")
     /// экземпляр view model
-    internal var viewService: WiFiViewService {
+    internal var viewService: WiFiViewServiceProtocol {
         didSet{
             // устанавливает значение соответствующих полей
             self.viewService.setupDetails = { details in
@@ -37,7 +37,7 @@ class DetailVC : UIViewController {
     }
     
     
-    init(viewModel: WiFiViewService = WiFiViewService.shared) {
+    init(viewModel: WiFiViewServiceProtocol = WiFiViewService.shared) {
         self.viewService = WiFiViewService()
         
         defer {

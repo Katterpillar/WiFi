@@ -13,14 +13,14 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    fileprivate var wifiload: WiFiModel?
-    
-    
+    internal var wifiload: WiFiModelProtocol = WiFiModel()
+    internal var reachability: ReachabilityProtocol = Reachability()
+ 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        wifiload = WiFiModel()
-        if Reachability.isConnectedToNetwork() == true {
-            wifiload?.refreshCoreData()
+        
+        if reachability.isConnectedToNetwork() == true {
+            wifiload.refreshCoreData()
             print("Internet connection OK")
         } else {
             print("Internet connection FAILED")

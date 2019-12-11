@@ -9,20 +9,23 @@
 import Foundation
 import CoreData
 
-class WiFiViewService {
+class WiFiViewService: WiFiViewServiceProtocol{
     
     private var coreDataStack: CoreDataStack
-    private var favoritesCD: FavoritesCDStack
+    private var favoritesCD: FavoritesCDProtocol
     private var predicate: NSPredicate?
     static let shared = WiFiViewService()
     private var location: WiFiEntity?
-    private var model: WiFiModel
+    private var model: WiFiModelProtocol
+    internal var cities: Set<String>?
+    
     internal var dataDidLoad: (() -> ())?
     internal var dataDidChange: (() -> ())?
     internal var cityChange: ((String) -> ())?
     var setupDetails: ((WiFiEntity) -> ())?
-    internal var cities: Set<String>?
-    init(model: WiFiModel = WiFiModel(), coreDataStack: CoreDataStack = CoreDataStack.shared, favoritesCD: FavoritesCDStack = FavoritesCDStack.shared) {
+    
+    
+    init(model: WiFiModelProtocol = WiFiModel(), coreDataStack: CoreDataStack = CoreDataStack.shared, favoritesCD: FavoritesCDProtocol = FavoritesCDStack.shared) {
         self.model = WiFiModel()
         self.coreDataStack = coreDataStack
         self.favoritesCD = favoritesCD
@@ -109,3 +112,5 @@ class WiFiViewService {
     }
     
 }
+
+

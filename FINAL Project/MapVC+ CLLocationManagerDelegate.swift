@@ -12,7 +12,7 @@ import MapKit
 
 
 extension MapVC: CLLocationManagerDelegate{
-    ///возвращиает пользоваательскую геолокацию
+    ///возвращает пользоваательскую геолокацию
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         let location = CLLocationCoordinate2DMake(locValue.latitude, locValue.longitude)

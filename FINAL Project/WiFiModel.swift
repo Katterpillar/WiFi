@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 /// "умная" и самостоятельная модель: ходит в интернет и получает данные, парсит их и записывает в core data
-class WiFiModel {
+class WiFiModel: WiFiModelProtocol {
     
     private var coreDataStack: CoreDataStack
     init(coreDataStack: CoreDataStack = CoreDataStack.shared) {
@@ -18,7 +18,7 @@ class WiFiModel {
     }
     
     /// подгружает данные в формате JSON из интернета
-    private func loadList(completion: @escaping ([[String]]) -> Void) {
+    internal func loadList(completion: @escaping ([[String]]) -> Void) {
         let urlString = "https://script.google.com/macros/s/AKfycbxTPwuAjoWkqcq-Da9iFCQMkKT90l6m2TTIiNWU0M3GaLl-sUA/exec"
         guard let url  = URL(string: urlString) else { return }
         

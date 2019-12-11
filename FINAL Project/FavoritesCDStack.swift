@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 
 /// класс, работающий с core data, для сохранения избранного
-internal final class FavoritesCDStack {
+internal final class FavoritesCDStack: FavoritesCDProtocol {
     
     ///singltone coreData
-    static var shared : FavoritesCDStack {
+    static var shared : FavoritesCDProtocol {
         let shared = FavoritesCDStack()
         return shared
     }

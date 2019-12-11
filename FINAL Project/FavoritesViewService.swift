@@ -15,7 +15,7 @@ class FavoritesViewService {
     var setupDetails: ((WiFiEntity) -> ())?
     var dataDidChange: (() -> ())?
     var deleteRow:(()->())?
-    var favoritesCD: FavoritesCDStack
+    var favoritesCD: FavoritesCDProtocol
     static let shared = FavoritesViewService()
     ///  загружает данные из core data не поднимая все данные, удобно при использовании table view
     var fetchResultController : NSFetchedResultsController<Favorites> = {
@@ -29,7 +29,7 @@ class FavoritesViewService {
         
     }()
     
-    init(favoritesCD: FavoritesCDStack = FavoritesCDStack.shared) {
+    init(favoritesCD: FavoritesCDProtocol = FavoritesCDStack.shared) {
         self.favoritesCD = FavoritesCDStack.shared
         defer{
             self.favoritesCD = favoritesCD
@@ -54,7 +54,7 @@ class FavoritesViewService {
     }
     
     ///удаляет выбранный элемент
-    internal func deleteItem(with location: String){
+    internal func initDeleteItem(with location: String){
         favoritesCD.deleteItem(adress: location)
         self.dataDidChange?()
     }

@@ -15,7 +15,7 @@ class WiFiVC :  UIViewController {
     internal var wiFiList = UITableView(frame: .zero)
     internal var searchBar = UISearchBar(frame: .zero)
     //view model экземпляр
-    var viewService: WiFiViewService {
+    var viewService: WiFiViewServiceProtocol {
         didSet {
             // оповещате о том, что список был изменен и необходимо обновить таблицу
             self.viewService.dataDidLoad = { [weak self] in
@@ -74,7 +74,7 @@ class WiFiVC :  UIViewController {
         return button
     }()
     
-    init(viewModel: WiFiViewService = WiFiViewService.shared) {
+    init(viewModel: WiFiViewServiceProtocol = WiFiViewService.shared) {
         self.viewService = WiFiViewService()
         defer {
             self.viewService = viewModel

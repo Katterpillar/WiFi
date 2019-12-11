@@ -11,9 +11,9 @@ import SystemConfiguration
 
 
 /// проверяет наличие интернета
-class Reachability {
+class Reachability: ReachabilityProtocol{
     ///проверяет наличие интернет подключения
-    class func isConnectedToNetwork() -> Bool {
+     func isConnectedToNetwork() -> Bool {
         var zeroAddress = sockaddr_in()
         zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
         zeroAddress.sin_family = sa_family_t(AF_INET)
@@ -31,3 +31,4 @@ class Reachability {
         return (isReachable && !needsConnection)
     }
 } 
+

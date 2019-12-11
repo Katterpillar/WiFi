@@ -11,7 +11,7 @@ import UIKit
 
 class AddLocationViewModel {
     
-    private var model: AddLocationService
+    private var model: AddLocationServiceProtocol
     internal var locationFormData: WiFiEntity {
         get {
             return self.model.locationFormData
@@ -21,8 +21,9 @@ class AddLocationViewModel {
    internal var showAlert: ( (String) -> () )?
    internal var formDataDidChange: (() -> ())?
    internal var formDataWillChange: ((UITextView) -> ())?
+   internal var alertText: String?
     
-    init(model: AddLocationService = AddLocationService()) {
+    init(model: AddLocationServiceProtocol = AddLocationService()) {
         self.model = model
     }
     
@@ -52,7 +53,8 @@ class AddLocationViewModel {
             refreshLocation()
             formDataDidChange?()
         } else {
-            self.showAlert?("Введите \(textFildName)")
+            alertText = "Введите \(textFildName)"
+            self.showAlert?(alertText ?? "Ошибка при вводу данных")
             
         }
     }
